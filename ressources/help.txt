@@ -1,0 +1,14 @@
+rhorace@TITAN:~/rhorace/Milestone 4/Cub3D/minilibx-linux$ make
+./configure
+configure [error] : Can't find a suitable X11 include directory.
+make: *** [Makefile:17 : do_configure] Erreur 1
+rhorace@TITAN:~/rhorace/Milestone 4/Cub3D/minilibx-linux$ 
+
+L’erreur vient précisément de là :
+	Can't find a suitable X11 include directory
+Donc MiniLibX cherche les fichiers comme X11/Xlib.h, mais ils ne sont pas installés.
+
+sudo apt update
+sudo apt install xorg libxext-dev libbsd-dev
+
+----------------------------------------------------------------------------------------

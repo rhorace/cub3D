@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/07 09:08:36 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 17:14:26 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	main(int argc, char **argv)
 {
 	t_game	cub3d;
 
-	ft_bzero(&cub3d, sizeof(t_game));
-	ft_init(&cub3d);
 	if (argc != 2)
 		return (usage(), 1);
+	ft_bzero(&cub3d, sizeof(t_game));
+	ft_init(&cub3d);
 	if (!check_extension(argv[1], ".cub"))
 		return (send_message("Invalid file name", argv[1]), 1);
 	print_etat(cub3d);

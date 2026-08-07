@@ -6,12 +6,11 @@
 /*   By: rhorace <rhorace@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/21 10:01:56 by rhorace           #+#    #+#             */
-/*   Updated: 2026/07/21 10:01:59 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 15:46:35 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
 
 char	*pad_map_line(char *line, int max_width)
 {

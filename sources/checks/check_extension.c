@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 09:12:42 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/07 09:14:01 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 15:49:04 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,4 @@ int	check_extension(char *path, char *extension)
 		&& path[len_path - 3] == extension[1]
 		&& path[len_path - 2] == extension[2]
 		&& path[len_path - 1] == extension[3]);
-
 }

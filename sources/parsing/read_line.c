@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/06 15:44:34 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 15:52:13 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	read_line_close(t_game *cub3d, char *line, int fd)
 	close_cub3d(cub3d, 1);
 }
 
-void remove_newline(char *line)
+void	remove_newline(char *line)
 {
 	int	len;
 
@@ -67,7 +67,6 @@ void remove_newline(char *line)
 	if (len > 0 && line[len - 1] == '\n')
 		line[len - 1] = '\0';
 }
-
 
 int	read_line(t_game *cub3d, char *path)
 {

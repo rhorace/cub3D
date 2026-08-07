@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:02:01 by rhorace           #+#    #+#             */
-/*   Updated: 2026/07/20 09:36:14 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 15:44:35 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,3 @@ char	*ft_substr2(const char *line, int start, int end)
 	retour[i] = '\0';
 	return (retour);
 }
-

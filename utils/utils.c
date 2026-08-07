@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 11:45:24 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/06 09:51:51 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 09:09:27 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,6 @@ void	send_message(char *msg, char *arg)
 		printf("%sError\n%s%s: %s%s\n", RED, YELLOW, msg, arg, RESET);
 	else
 		printf("%sError\n%s%s%s\n", RED, YELLOW, msg, RESET);
-}
-
-int	has_good_extension(char *path, char *extension)
-{
-	int	len_path;
-	int	len_extension;
-
-	len_path = ft_strlen(path);
-	len_extension = ft_strlen(extension);
-	if (!len_path || !len_extension || len_path < 5)
-		return (0);
-	return (path[len_path - 4] == extension[0]
-		&& path[len_path - 3] == extension[1]
-		&& path[len_path - 2] == extension[2]
-		&& path[len_path - 1] == extension[3]);
-
 }
 
 int	is_empty_line(char *line)

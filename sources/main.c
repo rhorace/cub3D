@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/07/20 09:43:10 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 09:08:36 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	ft_init(&cub3d);
 	if (argc != 2)
 		return (usage(), 1);
-	if (!has_good_extension(argv[1], ".cub"))
+	if (!check_extension(argv[1], ".cub"))
 		return (send_message("Invalid file name", argv[1]), 1);
 	print_etat(cub3d);
 	print_map(cub3d.map.grid);

@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/06 16:04:53 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 09:08:26 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,7 +313,7 @@ char			*ft_substr2(const char *line, int start, int end);
 char			*ft_strstr(const char *texte, const char *str);
 
 // verificateurs
-int				has_good_extension(char *path, char *extension);
+int				check_extension(char *path, char *extension);
 int				check_map_closed(char **map);
 int				check_map(char **map);
 int				check_player_count(char **map);
@@ -328,7 +328,7 @@ int				color_ready(t_color *plafond, t_color *sol);
 int				is_empty_line(char *line);
 
 
-
+// events
 int				key_presser(int val, void *param);
 int				key_releaser(int val, void *param);
 

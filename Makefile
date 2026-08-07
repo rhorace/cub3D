@@ -6,7 +6,7 @@
 #    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/08/07 09:12:01 by rhorace          ###   ########.fr        #
+#    Updated: 2026/08/07 09:46:29 by rhorace          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,23 +20,23 @@ MLX_A   := $(MLX_DIR)/libmlx.a
 MLX_LNK := -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 SRCS    := sources/main.c \
-	checks/check_map_closed.c \
-	checks/check_player_count.c \
-	checks/check_extension.c \
-	cleanup/close_cub3d.c \
-	utils/ft_utils_2.c \
-	utils/ft_utils.c \
+	sources/checks/check_map_closed.c \
+	sources/checks/check_player_count.c \
+	sources/checks/check_extension.c \
+	sources/cleanup/close_cub3d.c \
+	sources/utils/ft_utils_2.c \
+	sources/utils/ft_utils.c \
 	sources/is_ready.c \
-	events/key_press.c \
-	events/key_release.c \
+	sources/events/key_press.c \
+	sources/events/key_release.c \
 	sources/get_next_line_utils.c \
 	sources/get_next_line.c \
-	debug/print_etat.c \
-	debug/print_map.c \
+	sources/debug/print_etat.c \
+	sources/debug/print_map.c \
 	sources/read_line.c \
 	sources/map_node.c \
-	utils/utils.c \
-	utils/utils_2.c \
+	sources/utils/utils.c \
+	sources/utils/utils_2.c \
 	sources/get_the_color.c \
 	sources/get_the_path.c \
 	sources/get_the_map.c \

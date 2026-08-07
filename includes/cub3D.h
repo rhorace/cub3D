@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/07 09:08:26 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 09:32:43 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,8 +296,6 @@ typedef struct s_game
 	t_color		ceiling;
 }	t_game;
 
-
-
 // debug
 void			print_etat(t_game cub3d);
 void			print_map(char **map);
@@ -327,7 +325,6 @@ int				path_ready(t_map *map);
 int				color_ready(t_color *plafond, t_color *sol);
 int				is_empty_line(char *line);
 
-
 // events
 int				key_presser(int val, void *param);
 int				key_releaser(int val, void *param);
@@ -341,8 +338,6 @@ int				ceiling_ready(t_color *plafond);
 int				floor_ready(t_color *sol);
 int				map_ready(char **map);
 
-
-
 int				read_line(t_game *cub3d, char *path);
 
 t_map_node		*new_map_node(char *line);
@@ -350,8 +345,6 @@ void			add_map_line(t_map_node **map_list, char *line);
 int				map_list_size(t_map_node *map_list);
 char			**map_list_to_array(t_map_node *map_list, int max_width);
 void			free_map_list(t_map_node *map_list);
-
-
 
 char			*pad_map_line(char *line, int max_width);
 

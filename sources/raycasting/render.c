@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/07 09:18:23 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/07 09:18:55 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 10:06:57 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,5 @@ void	render_frame(t_game *cub3d)
 		cub3d->mlx.window,
 		cub3d->mlx.image,
 		0,
-		0
-	);
+		0);
 }

@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/07 09:32:43 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/07 09:57:23 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ typedef struct s_texture
 	char	*addr;
 	int		width;
 	int		height;
+	int		line_length;
 	int		endian;
 	int		bpp;
 }	t_texture;

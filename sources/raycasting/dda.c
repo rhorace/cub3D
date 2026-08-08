@@ -12,6 +12,27 @@
 
 #include "cub3D.h"
 
+float	get_wall_distance(t_game *cub3d, t_dda *dda)
+{
+	float	distance;
+
+	if (dda->side == 0)
+	{
+		distance = (dda->map_x - cub3d->player.pos.x
+				+ (1 - dda->step_x) / 2.0)
+			/ dda->ray_dir.x;
+	}
+	else
+	{
+		distance = (dda->map_y - cub3d->player.pos.y
+				+ (1 - dda->step_y) / 2.0)
+			/ dda->ray_dir.y;
+	}
+	if (distance < 0.0001)
+		distance = 0.0001;
+	return (distance);
+}
+
 static int	in_map(t_game *cub3d, int x, int y)
 {
 	if (x < 0 || y < 0)

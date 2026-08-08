@@ -116,6 +116,6 @@ int	read_line(t_game *cub3d, char *path)
 	/*if (!path_ready(&cub3d->map) || !color_ready(&cub3d->ceiling, \
 &cub3d->floor) || (cub3d->map.height < 3))
 		close_cub3d(cub3d, 1);*/
-	the_verificator(cub3d);
+	//the_verificator(cub3d);
 	return (1);
 }

@@ -12,6 +12,22 @@
 
 #include "cub3D.h"
 
+/*static int	get_tex_y(t_texture *texture, t_wall *wall, int y)
+{
+	float	step;
+	float	tex_pos;
+	int		tex_y;
+
+	step = (float)texture->height / wall->height;
+	tex_pos = (y - WIN_HEIGHT / 2 + wall->height / 2) * step;
+	tex_y = (int)tex_pos;
+	if (tex_y < 0)
+		tex_y = 0;
+	if (tex_y >= texture->height)
+		tex_y = texture->height - 1;
+	return (tex_y);
+}*/
+
 static int	get_tex_y(t_texture *texture, t_wall *wall, int y)
 {
 	float	step;

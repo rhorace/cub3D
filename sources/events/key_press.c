@@ -19,14 +19,11 @@ int	key_presser(int val, void *param)
 	cub3d = (t_game *)param;
 	if (val == XK_Escape)
 		close_cub3d(cub3d, 0);
-	if (val == XK_w)
-	{
-		printf("%sW: J'avance.%s\n", GREEN, RESET);
+	if (val == XK_w || val == XK_z)
 		cub3d->player.key_up = 1;
-	}
 	if (val == XK_s)
 		cub3d->player.key_down = 1;
-	if (val == XK_a)
+	if (val == XK_a || val == XK_q)
 		cub3d->player.key_left = 1;
 	if (val == XK_d)
 		cub3d->player.key_right = 1;

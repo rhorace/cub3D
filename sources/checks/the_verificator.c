@@ -31,12 +31,12 @@ int	the_verificator(t_game *cub3d)
 {
 	if (!path_ready(&cub3d->map) || !color_ready(&cub3d->ceiling, \
 &cub3d->floor) || (cub3d->map.height < 3))
-		close_cub3d(cub3d, 1);
+		return (0);
 	if (!go_map(cub3d->map.grid))
-		close_cub3d(cub3d, 1);
+		return (0);
 	if (!check_player_count(cub3d->map.grid))
-		close_cub3d(cub3d, 1);
+		return (0);
 	if (!check_map_closed(cub3d->map.grid))
-		close_cub3d(cub3d, 1);
+		return (0);
 	return (1);
 }

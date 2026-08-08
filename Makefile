@@ -20,6 +20,9 @@ MLX_A   := $(MLX_DIR)/libmlx.a
 MLX_LNK := -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 SRCS    := sources/main.c \
+	sources/init/ft_init.c \
+	sources/init/init_mlx.c \
+	sources/init/init_player.c \
 	sources/checks/check_map_closed.c \
 	sources/checks/check_player_count.c \
 	sources/checks/check_extension.c \
@@ -27,8 +30,11 @@ SRCS    := sources/main.c \
 	sources/utils/ft_utils_2.c \
 	sources/utils/ft_utils.c \
 	sources/parsing/is_ready.c \
+	sources/events/game_loop.c \
 	sources/events/key_press.c \
 	sources/events/key_release.c \
+	sources/events/movement.c \
+	sources/events/rotation.c \
 	sources/get_next_line/get_next_line_utils.c \
 	sources/get_next_line/get_next_line.c \
 	sources/debug/print_etat.c \
@@ -41,7 +47,17 @@ SRCS    := sources/main.c \
 	sources/parsing/get_the_path.c \
 	sources/parsing/get_the_map.c \
 	sources/parsing/pad_map_line.c \
-	sources/checks/the_verificator.c
+	sources/checks/the_verificator.c \
+	sources/raycasting/dda_init.c \
+	sources/raycasting/dda.c \
+	sources/raycasting/ray.c \
+	sources/raycasting/render.c \
+	sources/raycasting/texture_mapping.c \
+	sources/raycasting/wall.c \
+	sources/graphics/background.c \
+	sources/graphics/draw_wall.c \
+	sources/graphics/pixel.c \
+	sources/graphics/textures.c
 
 OBJS    := $(SRCS:.c=.o)
 

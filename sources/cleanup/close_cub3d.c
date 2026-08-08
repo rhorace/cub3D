@@ -46,6 +46,7 @@ static void	close_mlx(t_game *cub3d)
 
 void	close_cub3d(t_game	*cub3d, int code)
 {
+	printf("CLOSE CUB3D !!!\n");
 	static int	closing;
 
 	closing = 0;

@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stddef.h>
+# include <math.h>
 # include <X11/X.h> // KeyPress, KeyPressMask, KeyRelease, KeyReleaseMask
 # include <X11/keysym.h> // XK_Escape, XK_w, XK_s, XK_a, XK_d
 
@@ -351,5 +352,40 @@ char			*pad_map_line(char *line, int max_width);
 
 int				is_texture_line(char *line);
 int				is_color_line(char *line);
+
+/* ============================= RAYCASTING ============================== */
+
+void			render_frame(t_game *cub3d);
+void			cast_ray(t_game *cub3d, int x);
+void			init_dda(t_game *cub3d, t_dda *dda, int x);
+int				run_dda(t_game *cub3d, t_dda *dda);
+float			get_wall_distance(t_game *cub3d, t_dda *dda);
+void			get_wall_limits(t_wall *wall, float distance);
+int				get_texture_id(t_dda *dda);
+int				get_texture_x(t_game *cub3d, t_dda *dda, float distance, int texture_id);
+
+/* ============================== DRAWING ================================ */
+
+void			put_pixel(t_game *cub3d, int x, int y, int color);
+int				get_texture_pixel(t_texture *texture, int x, int y);
+int				rgb_to_int(t_color color);
+void			draw_background(t_game *cub3d);
+void			draw_wall(t_game *cub3d, int x, t_dda *dda, t_wall *wall, int texture_id);
+
+
+int				init_mlx(t_game *cub3d);
+int				load_textures(t_game *cub3d);
+void			init_player(t_game *cub3d);
+
+void			move_forward(t_game *cub3d);
+void			move_backward(t_game *cub3d);
+void			move_left(t_game *cub3d);
+void			move_right(t_game *cub3d);
+
+void			rotate_left(t_game *cub3d);
+void			rotate_right(t_game *cub3d);
+
+int				game_loop(t_game *cub3d);
+
 
 #endif

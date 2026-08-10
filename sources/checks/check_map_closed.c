@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 19:20:41 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/06 15:52:28 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/10 10:20:37 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +67,11 @@ int	check_map_closed(char **map)
 		while (map[y][x])
 		{
 			if (!is_valid_map_char(map[y][x]))
-			{
-				printf("Invalid map char %d, %d %c\n", x, y, map[y][x]);
-				return (0);
-			}
+				return (send_message("Invalid map char !", NULL), 0);
 			if (is_walkable(map[y][x]))
 			{
 				if (!check_cell_closed(map, y, x))
-				{
-					printf("x:%d y: %d\n", x, y);
 					return (send_message("Map not closed !", NULL), 0);
-				}
 			}
 			x++;
 		}

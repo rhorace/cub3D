@@ -6,7 +6,7 @@
 #    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/08/10 08:50:55 by rhorace          ###   ########.fr        #
+#    Updated: 2026/08/10 11:48:58 by rhorace          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRCS    := sources/main.c \
 	sources/get_next_line/get_next_line.c \
 	sources/debug/print_etat.c \
 	sources/debug/print_map.c \
-	sources/parsing/read_line.c \
+	sources/parsing/read_file.c \
 	sources/parsing/map_node.c \
 	sources/utils/utils.c \
 	sources/utils/utils_2.c \

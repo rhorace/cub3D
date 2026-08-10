@@ -1,5 +1,3 @@
-Voici quelques combinaisons qui fonctionnent très bien.
-
 🏰 Château médiéval (ma préférée)
 Sol : gris pierre légèrement chaud
 RGB : (110, 110, 110)

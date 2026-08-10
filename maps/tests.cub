@@ -1,10 +1,10 @@
-NO ./north_texture
-SO ./south_texture
-WE ./west_texture
-EA ./east_texture
+NO textures/north_texture.xpm
+SO textures/south_texture.xpm
+WE textures/west_texture.xpm
+EA textures/east_texture.xpm
 F 111,11,111
-C 222,22,2
+C 222,22,1
 
 111111111111111
-1S0000000000001
+1E0000000000001
 111111111111111

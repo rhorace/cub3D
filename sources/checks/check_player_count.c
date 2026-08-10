@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 19:20:55 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/06 09:46:07 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/10 10:22:34 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	check_player_count(char **map)
 		}
 		y++;
 	}
-	printf("Nb player: %d\n", count);
 	if (count != 1)
 		return (0);
 	return (1);

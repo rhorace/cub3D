@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 08:34:48 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/10 17:31:06 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@
 # include <math.h>
 # include <X11/X.h> // KeyPress, KeyPressMask, KeyRelease, KeyReleaseMask
 # include <X11/keysym.h> // XK_Escape, XK_w, XK_s, XK_a, XK_d
-
-# define SCREEN_WIDTH 800
-# define SCREEN_HEIGHT 600
-
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_ESC 65307
-# define KEY_RIGHT 65363
-# define KEY_LEFT 65361
 
 # define RESET "\e[0m"
 # define BLUE "\e[34m"
@@ -315,11 +304,9 @@ char			*ft_strstr(const char *texte, const char *str);
 // verificateurs
 int				check_extension(char *path, char *extension);
 int				check_map_closed(char **map);
-int				check_map(char **map);
 int				check_player_count(char **map);
 int				the_verificator(t_game *cub3d);
 int				check_player_count(char **map);
-int				check_map_closed(char **map);
 
 void			ft_init(t_game	*cub3d);
 void			send_message(char *msg, char *arg);
@@ -338,9 +325,8 @@ int				get_path(t_game *cub3d, char *line);
 int				get_map(t_game *cub3d, char *line, int in_map);
 int				ceiling_ready(t_color *plafond);
 int				floor_ready(t_color *sol);
-int				map_ready(char **map);
 
-int				read_line(t_game *cub3d, char *path);
+int				read_file(t_game *cub3d, char *path);
 
 t_map_node		*new_map_node(char *line);
 void			add_map_line(t_map_node **map_list, char *line);

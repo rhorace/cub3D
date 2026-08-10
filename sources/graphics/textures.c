@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 08:27:17 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 08:27:21 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/10 15:06:21 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ int	load_textures(t_game *cub3d)
 {
 	if (!load_texture(cub3d, &cub3d->tex[TEX_NO],
 			cub3d->map.no_path))
-		return (0);
+		return (send_message("Invalid TEX_NO !", NULL), 0);
 	if (!load_texture(cub3d, &cub3d->tex[TEX_SO],
 			cub3d->map.so_path))
-		return (0);
+		return (send_message("Invalid TEX_SO !", NULL), 0);
 	if (!load_texture(cub3d, &cub3d->tex[TEX_WE],
 			cub3d->map.we_path))
-		return (0);
+		return (send_message("Invalid TEX_WE !", NULL), 0);
 	if (!load_texture(cub3d, &cub3d->tex[TEX_EA],
 			cub3d->map.ea_path))
-		return (0);
+		return (send_message("Invalid TEX_EA !", NULL), 0);
 	return (1);
 }

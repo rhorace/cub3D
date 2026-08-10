@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_line.c                                        :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 08:41:21 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/10 15:24:13 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static int	get_header(t_game *cub3d, char *line)
 	return (0);
 }
 
-static void	read_line_close(t_game *cub3d, char *line, int fd)
+static void	read_file_close(t_game *cub3d, char *line, int fd)
 {
-	send_message("Pb avec cette ligne: ", line);
+	//send_message("Pb avec cette ligne: ", line);
 	free (line);
 	clear_gnl(fd);
 	close (fd);
@@ -68,7 +68,7 @@ void	remove_newline(char *line)
 		line[len - 1] = '\0';
 }
 
-int	read_line(t_game *cub3d, char *path)
+int	read_file(t_game *cub3d, char *path)
 {
 	int		fd;
 	char	*line;
@@ -78,7 +78,7 @@ int	read_line(t_game *cub3d, char *path)
 		return (0);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (send_message("Cannot open map", path), 0);
+		return (send_message("Cannot open file", path), 0);
 	in_map = 0;
 	cub3d->map.width = 0;
 	line = get_next_line(fd);
@@ -89,18 +89,18 @@ int	read_line(t_game *cub3d, char *path)
 &cub3d->floor))
 		{
 			if (is_texture_line(line))
-				read_line_close(cub3d, line, fd);
+				read_file_close(cub3d, line, fd);
 			if (is_color_line(line))
-				read_line_close(cub3d, line, fd);
+				read_file_close(cub3d, line, fd);
 			if (!is_empty_line(line))
 				in_map = 1;
 			if (get_map(cub3d, line, in_map) == -1)
-				read_line_close(cub3d, line, fd);
+				read_file_close(cub3d, line, fd);
 		}
 		else
 		{
 			if (get_header(cub3d, line) == -1)
-				read_line_close(cub3d, line, fd);
+				read_file_close(cub3d, line, fd);
 		}
 		if (ft_strlen(line) > cub3d->map.width)
 			cub3d->map.width = ft_strlen(line);

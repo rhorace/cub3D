@@ -1,0 +1,101 @@
+.
+├── includes
+│   ├── cub3D.h
+│   └── get_next_line.h
+├── maps
+│   ├── 00_vide.cub
+│   ├── 01_fable.cub
+│   ├── 02_map-2C.cub
+│   ├── 02_map-2F.cub
+│   ├── 03_map-2NO.cub
+│   ├── 04_map-with-line.cub
+│   ├── 42.cub
+│   ├── nimp.cub
+│   ├── normal.cub
+│   ├── normal.pub
+│   └── tests.cub
+├── ressources
+│   ├── couleurs.txt
+│   ├── Cub3D - Google Docs.pdf
+│   ├── Cub3D.pdf
+│   ├── help.txt
+│   ├── Les grandes étapes de Cub3D - Google Docs.pdf
+│   ├── minilibx-fedora.tar.xz
+│   ├── minilibx-linux.tgz
+│   └── to_check.pdf
+├── sources
+│   ├── checks
+│   │   ├── check_extension.c
+│   │   ├── check_map_closed.c
+│   │   ├── check_player_count.c
+│   │   └── the_verificator.c
+│   ├── cleanup
+│   │   └── close_cub3d.c
+│   ├── debug
+│   │   ├── print_etat.c
+│   │   └── print_map.c
+│   ├── events
+│   │   ├── game_loop.c
+│   │   ├── key_press.c
+│   │   ├── key_release.c
+│   │   ├── movement.c
+│   │   └── rotation.c
+│   ├── get_next_line
+│   │   ├── get_next_line.c
+│   │   └── get_next_line_utils.c
+│   ├── graphics
+│   │   ├── background.c
+│   │   ├── draw_wall.c
+│   │   ├── pixel.c
+│   │   └── textures.c
+│   ├── init
+│   │   ├── init_mlx.c
+│   │   └── init_player.c
+│   ├── parsing
+│   │   ├── get_the_color.c
+│   │   ├── get_the_map.c
+│   │   ├── get_the_path.c
+│   │   ├── is_ready.c
+│   │   ├── map_node.c
+│   │   ├── pad_map_line.c
+│   │   └── read_line.c
+│   ├── raycasting
+│   │   ├── dda.c
+│   │   ├── dda_init.c
+│   │   ├── ray.c
+│   │   ├── render.c
+│   │   ├── texture_mapping.c
+│   │   └── wall.c
+│   ├── utils
+│   │   ├── ft_utils_2.c
+│   │   ├── ft_utils.c
+│   │   ├── utils_2.c
+│   │   └── utils.c
+│   └── main.c
+├── textures
+│   ├── textures1
+│   │   ├── autre.xpm
+│   │   ├── east_texture.xpm
+│   │   ├── north_texture.xpm
+│   │   ├── south_texture.xpm
+│   │   ├── tonneau.xpm
+│   │   └── west_texture.xpm
+│   ├── textures2
+│   │   ├── autre.xpm
+│   │   ├── east_texture.xpm
+│   │   ├── north_texture.xpm
+│   │   ├── south_texture.xpm
+│   │   ├── tonneau.xpm
+│   │   └── west_texture.xpm
+│   ├── autre.xpm
+│   ├── east_texture.xpm
+│   ├── north_texture.xpm
+│   ├── south_texture.xpm
+│   ├── tonneau.xpm
+│   └── west_texture.xpm
+├── Makefile
+├── minilibx-linux.tar.xz
+├── README.md
+└── tree.txt
+
+18 directories, 81 files

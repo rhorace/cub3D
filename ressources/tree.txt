@@ -10,6 +10,7 @@
 │   ├── 03_map-2NO.cub
 │   ├── 04_map-with-line.cub
 │   ├── 42.cub
+│   ├── cool.cub
 │   ├── nimp.cub
 │   ├── normal.cub
 │   ├── normal.pub
@@ -22,7 +23,8 @@
 │   ├── Les grandes étapes de Cub3D - Google Docs.pdf
 │   ├── minilibx-fedora.tar.xz
 │   ├── minilibx-linux.tgz
-│   └── to_check.pdf
+│   ├── to_check.pdf
+│   └── tree.txt
 ├── sources
 │   ├── checks
 │   │   ├── check_extension.c
@@ -58,7 +60,7 @@
 │   │   ├── is_ready.c
 │   │   ├── map_node.c
 │   │   ├── pad_map_line.c
-│   │   └── read_line.c
+│   │   └── read_file.c
 │   ├── raycasting
 │   │   ├── dda.c
 │   │   ├── dda_init.c
@@ -98,4 +100,4 @@
 ├── README.md
 └── tree.txt
 
-18 directories, 81 files
+18 directories, 83 files

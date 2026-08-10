@@ -6,7 +6,7 @@
 #    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/08/07 11:03:53 by rhorace          ###   ########.fr        #
+#    Updated: 2026/08/10 08:50:55 by rhorace          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ MLX_A   := $(MLX_DIR)/libmlx.a
 MLX_LNK := -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 SRCS    := sources/main.c \
-	sources/init/ft_init.c \
 	sources/init/init_mlx.c \
 	sources/init/init_player.c \
 	sources/checks/check_map_closed.c \

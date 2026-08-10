@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/07 09:57:23 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/10 08:34:48 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -362,7 +362,8 @@ int				run_dda(t_game *cub3d, t_dda *dda);
 float			get_wall_distance(t_game *cub3d, t_dda *dda);
 void			get_wall_limits(t_wall *wall, float distance);
 int				get_texture_id(t_dda *dda);
-int				get_texture_x(t_game *cub3d, t_dda *dda, float distance, int texture_id);
+int				get_texture_x(t_game *cub3d, t_dda *dda, float distance, \
+int texture_id);
 
 /* ============================== DRAWING ================================ */
 
@@ -370,8 +371,8 @@ void			put_pixel(t_game *cub3d, int x, int y, int color);
 int				get_texture_pixel(t_texture *texture, int x, int y);
 int				rgb_to_int(t_color color);
 void			draw_background(t_game *cub3d);
-void			draw_wall(t_game *cub3d, int x, t_dda *dda, t_wall *wall, int texture_id);
-
+void			draw_wall(t_game *cub3d, int x, t_dda *dda, t_wall *wall, \
+int texture_id);
 
 int				init_mlx(t_game *cub3d);
 int				load_textures(t_game *cub3d);
@@ -386,6 +387,5 @@ void			rotate_left(t_game *cub3d);
 void			rotate_right(t_game *cub3d);
 
 int				game_loop(t_game *cub3d);
-
 
 #endif

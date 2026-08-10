@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/07 17:14:26 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/10 08:50:17 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ static void	usage(void)
 static void	init_hooks(t_game *cub3d)
 {
 	mlx_hook(cub3d->mlx.window, KeyPress, KeyPressMask,
-		key_presser, cub3d);
+		(void *)key_presser, cub3d);
 	mlx_hook(cub3d->mlx.window, KeyRelease, KeyReleaseMask,
-		key_releaser, cub3d);
+		(void *)key_releaser, cub3d);
 	mlx_hook(cub3d->mlx.window, 17, 0,
-		close_win, cub3d);
+		(void *)close_win, cub3d);
 }
 
 int	main(int argc, char **argv)
@@ -89,7 +89,7 @@ int	main(int argc, char **argv)
 	init_player(&cub3d);
 	render_frame(&cub3d);
 	init_hooks(&cub3d);
-	mlx_loop_hook(cub3d.mlx.graphics, game_loop, &cub3d);
+	mlx_loop_hook(cub3d.mlx.graphics, (void *)game_loop, &cub3d);
 	mlx_loop(cub3d.mlx.graphics);
 	return (0);
 }

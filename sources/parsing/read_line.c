@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/07 15:52:13 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/10 08:41:21 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,8 @@ int	read_line(t_game *cub3d, char *path)
 	}
 	close (fd);
 	cub3d->map.grid = map_list_to_array(cub3d->map_list, cub3d->map.width);
-	//cub3d->map.width = ligne_max(cub3d->map.grid);
 	cub3d->map.height = map_list_size(cub3d->map_list);
 	free_map_list(cub3d->map_list);
 	cub3d->map_list = NULL;
-	/*if (!path_ready(&cub3d->map) || !color_ready(&cub3d->ceiling, \
-&cub3d->floor) || (cub3d->map.height < 3))
-		close_cub3d(cub3d, 1);*/
-	//the_verificator(cub3d);
 	return (1);
 }

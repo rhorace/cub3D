@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_cub3d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 13:06:12 by rhorace           #+#    #+#             */
-/*   Updated: 2026/07/15 09:57:46 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/10 08:42:04 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	close_mlx(t_game *cub3d)
 
 void	close_cub3d(t_game	*cub3d, int code)
 {
-	printf("CLOSE CUB3D !!!\n");
 	static int	closing;
 
 	closing = 0;

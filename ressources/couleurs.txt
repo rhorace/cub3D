@@ -20,7 +20,7 @@ Très lumineux et cartoon.
 
 🏠 Maison en bois
 Sol
-RGB : (120, 80, 45)
+RGB : (120, 80, 45) ***
 Hex : #78502D
 Plafond
 RGB : (215, 205, 185)

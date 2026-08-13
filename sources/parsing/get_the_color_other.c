@@ -1,16 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_the_color.c                                    :+:      :+:    :+:   */
+/*   get_the_color_other.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:02:01 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/13 16:26:06 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/13 16:26:17 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static void	skip_spaces(char *line, int *i)
+{
+	while (line[*i] == ' ' || line[*i] == '\t')
+		(*i)++;
+}
+
+char	*get_the_number(char *line, int *i)
+{
+	int		start;
+	int		end;
+
+	skip_spaces(line, i);
+	start = *i;
+	if (!ft_isdigit(line[start]))
+		return (NULL);
+	while (ft_isdigit(line[*i]))
+		(*i)++;
+	end = *i;
+	return (ft_substr2(line, start, end));
+}
 
 int	between_0_255(t_color *couleur)
 {
@@ -25,63 +46,41 @@ int	get_color(t_game *cub3d, char *line)
 	int		i;
 	char	flag;
 	char	*number;
-	int		start;
 
 	if (!cub3d || !line)
 		return (-1);
 	i = 0;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
+	skip_spaces(line, &i);
 	flag = line[i];
 	if (flag != 'C' && flag != 'F')
 		return (-1);
 	i++;
 	if (line[i] != ' ' && line[i] != '\t')
 		return (-1);
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	if (!line[i] || line[i] == '\n')
+	number = get_the_number(line, &i);
+	if (!number)
 		return (-1);
-	start = i;
-	if (!ft_isdigit(line[start]))
-		return (-1);
-	while (ft_isdigit(line[i]))
-		i++;
-	number = ft_substr2(line, start, i);
 	color.r = ft_atoi(number);
 	free(number);
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
+	skip_spaces(line, &i);
 	if (line[i] != ',')
 		return (-1);
 	i++;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	start = i;
-	if (!ft_isdigit(line[start]))
+	number = get_the_number(line, &i);
+	if (!number)
 		return (-1);
-	while (ft_isdigit(line[i]))
-		i++;
-	number = ft_substr2(line, start, i);
 	color.g = ft_atoi(number);
 	free(number);
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
+	skip_spaces(line, &i);
 	if (line[i] != ',')
 		return (-1);
 	i++;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	start = i;
-	if (!ft_isdigit(line[start]))
+	number = get_the_number(line, &i);
+	if (!number)
 		return (-1);
-	while (ft_isdigit(line[i]))
-		i++;
-	number = ft_substr2(line, start, i);
 	color.b = ft_atoi(number);
 	free(number);
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
+	skip_spaces(line, &i);
 	if (line[i] != '\n' && line[i] != '\0')
 		return (-1);
 	if (!between_0_255(&color))

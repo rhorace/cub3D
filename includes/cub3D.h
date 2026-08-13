@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 17:31:06 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/13 14:11:11 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,7 +322,7 @@ void			close_cub3d(t_game	*cub3d, int code);
 int				ligne_max(char **map);
 int				get_color(t_game *cub3d, char *line);
 int				get_path(t_game *cub3d, char *line);
-int				get_map(t_game *cub3d, char *line, int in_map);
+//int				get_map(t_game *cub3d, char *line, int in_map);
 int				ceiling_ready(t_color *plafond);
 int				floor_ready(t_color *sol);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 08:29:20 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 08:29:23 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 11:04:05 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	cast_ray(t_game *cub3d, int x)
 	get_wall_limits(&wall, distance);
 	texture_id = get_texture_id(&dda);
 	wall.tex_x = get_texture_x(cub3d, &dda, distance, texture_id);
-	draw_wall(cub3d, x, &dda, &wall, texture_id);
+	draw_wall(cub3d, x, &wall, texture_id);
 }

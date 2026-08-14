@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/13 14:11:11 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 11:03:40 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -357,7 +357,7 @@ void			put_pixel(t_game *cub3d, int x, int y, int color);
 int				get_texture_pixel(t_texture *texture, int x, int y);
 int				rgb_to_int(t_color color);
 void			draw_background(t_game *cub3d);
-void			draw_wall(t_game *cub3d, int x, t_dda *dda, t_wall *wall, \
+void			draw_wall(t_game *cub3d, int x, t_wall *wall, \
 int texture_id);
 
 int				init_mlx(t_game *cub3d);

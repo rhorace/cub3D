@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 13:06:12 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 08:42:04 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 10:11:00 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,49 @@ static void	free_tab(char **tab)
 	free(tab);
 }
 
+static void	close_images(t_game *cub3d)
+{
+	int	i;
+
+	if (cub3d->mlx.image)
+	{
+		mlx_destroy_image(cub3d->mlx.graphics,
+			cub3d->mlx.image);
+		cub3d->mlx.image = NULL;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		if (cub3d->tex[i].img_ptr)
+		{
+			mlx_destroy_image(cub3d->mlx.graphics,
+				cub3d->tex[i].img_ptr);
+			cub3d->tex[i].img_ptr = NULL;
+		}
+		i++;
+	}
+}
+
 static void	close_mlx(t_game *cub3d)
 {
+	if (!cub3d->mlx.graphics)
+		return ;
+	close_images(cub3d);
 	if (cub3d->mlx.window)
 	{
-		mlx_destroy_window(cub3d->mlx.graphics, cub3d->mlx.window);
+		mlx_destroy_window(cub3d->mlx.graphics,
+			cub3d->mlx.window);
 		cub3d->mlx.window = NULL;
 	}
-	if (cub3d->mlx.graphics)
-	{
-		mlx_destroy_display(cub3d->mlx.graphics);
-		free(cub3d->mlx.graphics);
-		cub3d->mlx.graphics = NULL;
-	}
+	mlx_destroy_display(cub3d->mlx.graphics);
+	free(cub3d->mlx.graphics);
+	cub3d->mlx.graphics = NULL;
 }
 
 void	close_cub3d(t_game	*cub3d, int code)
 {
 	static int	closing;
 
-	closing = 0;
 	if (!cub3d)
 		exit(code);
 	if (closing)

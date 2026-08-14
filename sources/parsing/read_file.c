@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/13 14:15:29 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 09:49:31 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,16 @@ static int	get_header(t_game *cub3d, char *line)
 			return (-1);
 		}
 	}
+	else
+	{
+		send_message("Le probleme concerne cette ligne", line);
+		return (-1);
+	}
 	return (0);
 }
 
 static void	read_file_close(t_game *cub3d, char *line, int fd)
 {
-	//send_message("Pb avec cette ligne: ", line);
 	free (line);
 	clear_gnl(fd);
 	close (fd);
@@ -97,7 +101,7 @@ int	read_file(t_game *cub3d, char *path)
 			if (in_map)
 				add_map_line(&cub3d->map_list, line);
 			if (ft_strlen(line) > cub3d->map.width)
-			cub3d->map.width = ft_strlen(line);
+				cub3d->map.width = ft_strlen(line);
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 18:00:03 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 18:11:06 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	get_header(t_game *cub3d, char *line)
 		return (-1);
 	if (is_texture_line(line))
 	{
-		if (get_path(cub3d, line) == -1)
+		if (get_texture_path(cub3d, line) == -1)
 		{
 			send_message("Le probleme concerne les textures", line);
 			return (-1);

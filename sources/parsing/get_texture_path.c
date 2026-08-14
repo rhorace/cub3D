@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:02:01 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 17:16:27 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 18:10:53 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	*get_xpm(char *line, int *i)
 	return (ft_substr2(line, start, *i));
 }
 
-int	get_path(t_game *cub3d, char *line)
+int	get_texture_path(t_game *cub3d, char *line)
 {
 	char	*chemin;
 	int		i;

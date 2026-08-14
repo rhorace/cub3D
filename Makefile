@@ -6,7 +6,7 @@
 #    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/08/13 16:25:48 by rhorace          ###   ########.fr        #
+#    Updated: 2026/08/14 18:15:00 by rhorace          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ SRCS    := sources/main.c \
 	sources/utils/utils.c \
 	sources/utils/utils_2.c \
 	sources/parsing/get_the_color.c \
-	sources/parsing/get_the_path.c \
+	sources/parsing/get_texture_path.c \
 	sources/parsing/pad_map_line.c \
 	sources/checks/the_verificator.c \
 	sources/raycasting/dda_init.c \

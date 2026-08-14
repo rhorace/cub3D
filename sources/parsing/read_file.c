@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 16:45:40 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 18:00:03 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static void	read_file_close(t_game *cub3d, char *line, int fd)
 	free (line);
 	clear_gnl(fd);
 	close (fd);
+	free_map_list(cub3d->map_list);
+	cub3d->map_list = NULL;
 	close_cub3d(cub3d, 1);
 }
 

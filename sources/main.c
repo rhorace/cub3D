@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 16:47:20 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 17:37:27 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int argc, char **argv)
 		return (send_message("Invalid file name", argv[1]), 1);
 	if (!read_file(&cub3d, argv[1]))
 		return (close_cub3d(&cub3d, 1), 1);
+	print_map(cub3d.map.grid);
 	if (!the_verificator(&cub3d))
 		return (close_cub3d(&cub3d, 1), 1);
 	if (!init_mlx(&cub3d))

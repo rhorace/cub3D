@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 11:45:24 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/06 15:48:07 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 13:33:22 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ int	is_color_line(char *line)
 		i++;
 	if ((line[i] == 'F' || line[i] == 'C')
 		&& (line[i + 1] == ' ' || line[i + 1] == '\t'))
+		return (1);
+	return (0);
+}
+
+int	is_empty_line(char *line)
+{
+	int	i;
+
+	if (!line)
+		return (1);
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if (line[i] == '\n' || line[i] == '\0')
 		return (1);
 	return (0);
 }

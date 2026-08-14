@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 11:03:40 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 13:34:18 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -310,7 +310,7 @@ int				check_player_count(char **map);
 
 void			ft_init(t_game	*cub3d);
 void			send_message(char *msg, char *arg);
-int				path_ready(t_map *map);
+int				texture_ready(t_map *map);
 int				color_ready(t_color *plafond, t_color *sol);
 int				is_empty_line(char *line);
 
@@ -322,9 +322,9 @@ void			close_cub3d(t_game	*cub3d, int code);
 int				ligne_max(char **map);
 int				get_color(t_game *cub3d, char *line);
 int				get_path(t_game *cub3d, char *line);
-//int				get_map(t_game *cub3d, char *line, int in_map);
 int				ceiling_ready(t_color *plafond);
 int				floor_ready(t_color *sol);
+void			remove_newline(char *line);
 
 int				read_file(t_game *cub3d, char *path);
 

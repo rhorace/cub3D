@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 11:29:15 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/12 15:05:42 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 13:11:39 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	check_empty_line(char **map)
 
 int	the_verificator(t_game *cub3d)
 {
-	if (!path_ready(&cub3d->map) || !color_ready(&cub3d->ceiling, \
+	if (!texture_ready(&cub3d->map) || !color_ready(&cub3d->ceiling, \
 &cub3d->floor) || (cub3d->map.height < 3))
 		return (0);
 	if (!check_texture(cub3d))

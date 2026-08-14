@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 11:45:24 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/07 09:09:27 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 13:33:42 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,13 @@ void	send_message(char *msg, char *arg)
 		printf("%sError\n%s%s%s\n", RED, YELLOW, msg, RESET);
 }
 
-int	is_empty_line(char *line)
+void	remove_newline(char *line)
 {
-	int	i;
+	int	len;
 
 	if (!line)
-		return (1);
-	i = 0;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	if (line[i] == '\n' || line[i] == '\0')
-		return (1);
-	return (0);
+		return ;
+	len = ft_strlen(line);
+	if (len > 0 && line[len - 1] == '\n')
+		line[len - 1] = '\0';
 }

@@ -6,13 +6,13 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 14:59:54 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 17:24:01 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 13:12:08 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	path_ready(t_map *map)
+int	texture_ready(t_map *map)
 {
 	return (map->ea_path != NULL && map->no_path != NULL \
 && map->so_path != NULL && map->we_path != NULL);

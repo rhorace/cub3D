@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 13:33:38 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 16:45:40 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,8 @@ static void	read_file_close(t_game *cub3d, char *line, int fd)
 
 void	manage_line(t_game *cub3d, char *line, int fd)
 {
-	int	in_map;
+	static int	in_map;
 
-	in_map = 0;
 	if (texture_ready(&cub3d->map) && color_ready(&cub3d->ceiling, \
 &cub3d->floor))
 	{

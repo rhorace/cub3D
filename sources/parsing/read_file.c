@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 09:49:31 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/14 11:41:42 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	get_header(t_game *cub3d, char *line)
 			return (-1);
 		}
 	}
-	else
+	else if (!is_empty_line(line))
 	{
 		send_message("Le probleme concerne cette ligne", line);
 		return (-1);

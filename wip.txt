@@ -1,0 +1,28 @@
+Valeur de FOV : A quoi correspond-elle ?
+
+sol et plafond : textures plutot que des couleurs ?
+
+difference entre dir et plane ? plane definit la largeur du champ de vision, alors pourquoi des nombres negatifs ?
+
+mettre les codes des touches en enum plutot que dans le player ?
+texture : verifier si height et width sont corrigees ou non 
+
+height : hauteur projete selon la distance, mais comment est geree la largeur projetee ?
+
+gestion des collisions : perp ?
+
+redondance char **grid / t_map_node ? --> retirer la liste du t_game pour ne l'avoir que dans les fonctions concernees, et remplir map.height des qu'elle est remplie.
+
+sortir distinctement si gnl foire ou termine de lire
+
+verifier allocations et sortir si NULL (map_list_to _array). Et de maniere generale appliquer le "je sors si ca foire, plutot que de verifier a chaque fonction que tous les trucs d'avant sont valides"
+
+the_verificator l.45 : verifier si le check "map.height < 3" est utile : si seulement 2 lignes ou 2 colonnes, soit pas de player soit il est sur un bord et la map n'est pas fermee, donc sans doute redondant avec un autre check
+
+verifier map closed : oblige de faire un floodfill pour controler uniquement les cases accessibles vis-a-vis de la fermeture de la map
+
+que fait mlx_get_data_addr ?
+
+A quoi correspondent +/-0.57735026919 si ce n'est pas la moitie de FOV ?
+
+que fait la fonction put_pixel ?

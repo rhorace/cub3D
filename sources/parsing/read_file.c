@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 18:11:06 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/21 15:22:42 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	clear_gnl(int fd)
 
 static int	get_header(t_game *cub3d, char *line)
 {
-	if (!cub3d || !line)
-		return (-1);
+	// if (!cub3d || !line)
+	// 	return (-1);
 	if (is_texture_line(line))
 	{
 		if (get_texture_path(cub3d, line) == -1)
@@ -93,12 +93,12 @@ int	read_file(t_game *cub3d, char *path)
 	int		fd;
 	char	*line;
 
-	if (!cub3d || !path)
-		return (0);
+	//if (!cub3d || !path)
+	//	return (0);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (send_message("Cannot open file", path), 0);
-	cub3d->map.width = 0;
+//	cub3d->map.width = 0;
 	line = get_next_line(fd);
 	while (line)
 	{

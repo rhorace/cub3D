@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 18:10:39 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/21 14:41:01 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,9 @@ typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
-	t_vector	plane;
-	float		angle;
-	int			key_up;
+	t_vector	plane; //difference avec dir ?
+	float		angle; // constante ?
+	int			key_up; // enum pour les touches ?
 	int			key_down;
 	int			key_left;
 	int			key_right;
@@ -144,15 +144,14 @@ typedef struct s_wall
 ** grid      : tableau contenant la carte (.cub)
 ** width     : largeur maximale de la carte
 ** height    : nombre de lignes de la carte
-** line_len  : longueur réelle de chaque ligne
-**
+	(meme avec des trous pas besoin de completer)
 ** no_path   : chemin de la texture Nord
 ** so_path   : chemin de la texture Sud
 ** we_path   : chemin de la texture Ouest
 ** ea_path   : chemin de la texture Est
 */
 
-typedef struct s_map
+typedef struct s_map //ajouter les textures sol et plafond
 {
 	char	**grid;
 	int		width;
@@ -168,8 +167,8 @@ typedef struct s_map
 /*
 ** img_ptr   : image MLX
 ** addr      : adresse du premier pixel
-** width     : largeur de la texture
-** height    : hauteur de la texture
+** width     : largeur de la texture corrigee ?
+** height    : hauteur de la texture corrigee ?
 ** line_len  : nombre d'octets par ligne
 ** endian    : ordre des octets
 ** bpp       : bits par pixel

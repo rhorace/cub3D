@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 18:16:30 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/21 14:46:43 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (usage(), 1);
-	ft_bzero(&cub3d, sizeof(t_game));
+//	ft_bzero(&cub3d, sizeof(t_game));
 	ft_init(&cub3d);
 	if (!check_extension(argv[1], ".cub"))
 		return (send_message("Invalid file name", argv[1]), 1);

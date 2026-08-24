@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/21 14:41:01 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/08/14 18:10:39 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,9 @@ typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
-	t_vector	plane; //difference avec dir ?
-	float		angle; // constante ?
-	int			key_up; // enum pour les touches ?
+	t_vector	plane;
+	float		angle;
+	int			key_up;
 	int			key_down;
 	int			key_left;
 	int			key_right;
@@ -144,14 +144,15 @@ typedef struct s_wall
 ** grid      : tableau contenant la carte (.cub)
 ** width     : largeur maximale de la carte
 ** height    : nombre de lignes de la carte
-	(meme avec des trous pas besoin de completer)
+** line_len  : longueur réelle de chaque ligne
+**
 ** no_path   : chemin de la texture Nord
 ** so_path   : chemin de la texture Sud
 ** we_path   : chemin de la texture Ouest
 ** ea_path   : chemin de la texture Est
 */
 
-typedef struct s_map //ajouter les textures sol et plafond
+typedef struct s_map
 {
 	char	**grid;
 	int		width;
@@ -167,8 +168,8 @@ typedef struct s_map //ajouter les textures sol et plafond
 /*
 ** img_ptr   : image MLX
 ** addr      : adresse du premier pixel
-** width     : largeur de la texture corrigee ?
-** height    : hauteur de la texture corrigee ?
+** width     : largeur de la texture
+** height    : hauteur de la texture
 ** line_len  : nombre d'octets par ligne
 ** endian    : ordre des octets
 ** bpp       : bits par pixel

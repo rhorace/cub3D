@@ -4,7 +4,6 @@ sol et plafond : textures plutôt que des couleurs ?
 
 Différence entre dir et plane ? plane définit la largeur du champ de vision, alors pourquoi des nombres négatifs ?
 
-mettre les codes des touches en enum plutôt que dans le player ?
 texture : vérifier si height et width sont corrigées ou non
 
 height : hauteur projetée selon la distance, mais comment est gérée la largeur projetée ?

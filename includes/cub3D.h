@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 18:10:39 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/24 15:11:01 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,6 +307,7 @@ int				check_map_closed(char **map);
 int				check_player_count(char **map);
 int				the_verificator(t_game *cub3d);
 int				check_player_count(char **map);
+int				line_map_valid(char *line);
 
 void			ft_init(t_game	*cub3d);
 void			send_message(char *msg, char *arg);

@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 18:11:06 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/08/24 16:08:41 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ static int	get_header(t_game *cub3d, char *line)
 	return (0);
 }
 
-static void	read_file_close(t_game *cub3d, char *line, int fd)
+static void	read_file_close(t_game *cub3d, char *line, int fd, char *msg)
 {
+	if (msg)
+		send_message(msg, line);
 	free (line);
 	clear_gnl(fd);
 	close (fd);
@@ -70,21 +72,23 @@ void	manage_line(t_game *cub3d, char *line, int fd)
 	if (texture_ready(&cub3d->map) && color_ready(&cub3d->ceiling, \
 &cub3d->floor))
 	{
-		if (is_texture_line(line))
-			read_file_close(cub3d, line, fd);
-		if (is_color_line(line))
-			read_file_close(cub3d, line, fd);
+		if (is_texture_line(line) || is_color_line(line))
+			read_file_close(cub3d, line, fd, "Doublon");
 		if (!is_empty_line(line))
 			in_map = 1;
 		if (in_map)
+		{
+			if (!line_map_valid(line))
+				read_file_close(cub3d, line, fd, "Invalid map line");
 			add_map_line(&cub3d->map_list, line);
+		}
 		if (ft_strlen(line) > cub3d->map.width)
 			cub3d->map.width = ft_strlen(line);
 	}
 	else
 	{
 		if (get_header(cub3d, line) == -1)
-			read_file_close(cub3d, line, fd);
+			read_file_close(cub3d, line, fd, "header");
 	}
 }
 

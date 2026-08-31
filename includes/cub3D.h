@@ -375,4 +375,6 @@ void			rotate_right(t_game *cub3d);
 
 int				game_loop(t_game *cub3d);
 
+int				mouse_move(int x, int y, void *param);
+
 #endif

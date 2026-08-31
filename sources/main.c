@@ -34,6 +34,7 @@ static void	init_hooks(t_game *cub3d)
 		(void *)key_releaser, cub3d);
 	mlx_hook(cub3d->mlx.window, 17, 0,
 		(void *)close_win, cub3d);
+	mlx_hook(cub3d->mlx.window, 6, 1L << 6, mouse_move, cub3d);
 }
 
 int	main(int argc, char **argv)

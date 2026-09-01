@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 19:20:55 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 10:22:34 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/01 10:30:21 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	check_player_count(char **map)
 		y++;
 	}
 	if (count != 1)
-		return (0);
+		return (send_message("Invalid number of players", NULL), 0);
 	return (1);
 }

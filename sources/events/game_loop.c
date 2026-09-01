@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 08:25:56 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 08:26:02 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/01 09:46:02 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,66 @@ int	game_loop(t_game *cub3d)
 	if (cub3d->player.key_rot_right)
 		rotate_right(cub3d);
 	render_frame(cub3d);
+	return (0);
+}
+
+int	key_presser(int val, void *param)
+{
+	t_game	*cub3d;
+
+	cub3d = (t_game *)param;
+	if (val == XK_Escape)
+		close_cub3d(cub3d, 0);
+	if (val == XK_w || val == XK_z)
+		cub3d->player.key_up = 1;
+	if (val == XK_s)
+		cub3d->player.key_down = 1;
+	if (val == XK_a || val == XK_q)
+		cub3d->player.key_left = 1;
+	if (val == XK_d)
+		cub3d->player.key_right = 1;
+	if (val == XK_Left)
+		cub3d->player.key_rot_left = 1;
+	if (val == XK_Right)
+		cub3d->player.key_rot_right = 1;
+	return (0);
+}
+
+int	key_releaser(int val, void *param)
+{
+	t_game	*cub3d;
+
+	cub3d = (t_game *)param;
+	if (val == XK_w || val == XK_z)
+		cub3d->player.key_up = 0;
+	if (val == XK_s)
+		cub3d->player.key_down = 0;
+	if (val == XK_a || val == XK_q)
+		cub3d->player.key_left = 0;
+	if (val == XK_d)
+		cub3d->player.key_right = 0;
+	if (val == XK_Left)
+		cub3d->player.key_rot_left = 0;
+	if (val == XK_Right)
+		cub3d->player.key_rot_right = 0;
+	return (0);
+}
+
+int	mouse_move(int x, int y, void *param)
+{
+	t_game	*cub3d;
+	int		center_x;
+
+	(void)y;
+	cub3d = (t_game *)param;
+	center_x = WIN_WIDTH / 2;
+	if (x < center_x)
+		rotate_left(cub3d);
+	else if (x > center_x)
+		rotate_right(cub3d);
+	mlx_mouse_move(cub3d->mlx.graphics,
+		cub3d->mlx.window,
+		center_x,
+		WIN_HEIGHT / 2);
 	return (0);
 }

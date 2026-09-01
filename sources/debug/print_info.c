@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 12:07:59 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 13:11:23 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/01 09:56:33 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,24 @@ cub3d.ceiling.b);
 	printf("path_ready: %d\n", texture_ready(&cub3d.map));
 	printf("color_ready: %d\n", color_ready(&cub3d.ceiling, &cub3d.floor));
 	printf("%s--- end of the header ---%s\n", RED, RESET);
+}
+
+void	print_map(char **map)
+{
+	int	i;
+
+	printf("%s--- start of the map ---%s\n", GREEN, YELLOW);
+	if (!map)
+	{
+		printf("Map = NULL\n");
+		printf("%s--- end of the map ---%s\n", RED, RESET);
+		return ;
+	}
+	i = 0;
+	while (map[i])
+	{
+		printf("%2d : %s\n", i, map[i]);
+		i++;
+	}
+	printf("%s--- end of the map ---%s\n", RED, RESET);
 }

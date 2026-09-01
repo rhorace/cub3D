@@ -6,7 +6,7 @@
 #    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/08/14 18:15:00 by rhorace          ###   ########.fr        #
+#    Updated: 2026/09/01 09:57:34 by rhorace          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,15 +30,11 @@ SRCS    := sources/main.c \
 	sources/utils/ft_utils.c \
 	sources/parsing/is_ready.c \
 	sources/events/game_loop.c \
-	sources/events/key_press.c \
-	sources/events/key_release.c \
-	sources/events/mouse_move.c \
 	sources/events/movement.c \
 	sources/events/rotation.c \
 	sources/get_next_line/get_next_line_utils.c \
 	sources/get_next_line/get_next_line.c \
-	sources/debug/print_etat.c \
-	sources/debug/print_map.c \
+	sources/debug/print_info.c \
 	sources/parsing/read_file.c \
 	sources/parsing/map_node.c \
 	sources/utils/utils.c \

@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/24 15:11:01 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/01 09:37:13 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 # define GREEN "\e[32m"
 # define YELLOW "\e[33m"
 # define RED "\e[31m"
+
+# define MOVE_SPEED 0.01
+# define ROT_SPEED 0.01
 
 /** =============================== CONSTANTES ============================= **/
 
@@ -318,6 +321,7 @@ int				is_empty_line(char *line);
 // events
 int				key_presser(int val, void *param);
 int				key_releaser(int val, void *param);
+int				mouse_move(int x, int y, void *param);
 
 void			close_cub3d(t_game	*cub3d, int code);
 int				ligne_max(char **map);
@@ -374,7 +378,5 @@ void			rotate_left(t_game *cub3d);
 void			rotate_right(t_game *cub3d);
 
 int				game_loop(t_game *cub3d);
-
-int				mouse_move(int x, int y, void *param);
 
 #endif

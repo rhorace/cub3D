@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotation.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 08:26:30 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 08:26:34 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/01 09:21:41 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-#define ROT_SPEED 0.03
 
 void	rotate_left(t_game *cub3d)
 {

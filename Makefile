@@ -6,7 +6,7 @@
 #    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/09/01 09:57:34 by rhorace          ###   ########.fr        #
+#    Updated: 2026/09/02 15:29:49 by rhorace          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,39 +20,39 @@ MLX_A   := $(MLX_DIR)/libmlx.a
 MLX_LNK := -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 SRCS    := sources/main.c \
-	sources/init/init_mlx.c \
-	sources/init/init_player.c \
+	sources/checks/check_extension.c \
 	sources/checks/check_map_closed.c \
 	sources/checks/check_player_count.c \
-	sources/checks/check_extension.c \
+	sources/checks/the_verificator.c \
 	sources/cleanup/close_cub3d.c \
-	sources/utils/ft_utils_2.c \
-	sources/utils/ft_utils.c \
-	sources/parsing/is_ready.c \
+	sources/debug/print_info.c \
 	sources/events/game_loop.c \
 	sources/events/movement.c \
 	sources/events/rotation.c \
 	sources/get_next_line/get_next_line_utils.c \
 	sources/get_next_line/get_next_line.c \
-	sources/debug/print_info.c \
-	sources/parsing/read_file.c \
-	sources/parsing/map_node.c \
-	sources/utils/utils.c \
-	sources/utils/utils_2.c \
-	sources/parsing/get_the_color.c \
+	sources/graphics/background.c \
+	sources/graphics/draw_wall.c \
+	sources/graphics/pixel.c \
+	sources/graphics/textures.c \
+	sources/init/init_mlx.c \
+	sources/init/init_player.c \
 	sources/parsing/get_texture_path.c \
+	sources/parsing/get_the_color.c \
+	sources/parsing/is_ready.c \
+	sources/parsing/map_node.c \
 	sources/parsing/pad_map_line.c \
-	sources/checks/the_verificator.c \
+	sources/parsing/read_file.c \
 	sources/raycasting/dda_init.c \
 	sources/raycasting/dda.c \
 	sources/raycasting/ray.c \
 	sources/raycasting/render.c \
 	sources/raycasting/texture_mapping.c \
 	sources/raycasting/wall.c \
-	sources/graphics/background.c \
-	sources/graphics/draw_wall.c \
-	sources/graphics/pixel.c \
-	sources/graphics/textures.c
+	sources/utils/ft_utils_2.c \
+	sources/utils/ft_utils.c \
+	sources/utils/utils_2.c \
+	sources/utils/utils.c
 
 OBJS    := $(SRCS:.c=.o)
 

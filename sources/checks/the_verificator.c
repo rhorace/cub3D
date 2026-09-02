@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 11:29:15 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/01 08:59:45 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/02 16:24:54 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	the_verificator(t_game *cub3d)
 {
 	if (!texture_ready(&cub3d->map) || !color_ready(&cub3d->ceiling, \
 &cub3d->floor) || (cub3d->map.height < 3))
-		return (0);
+		return (send_message("map, texture or color !", NULL), 0);
 	if (!check_texture(cub3d))
 		return (0);
 	if (!check_empty_line(cub3d->map.grid))

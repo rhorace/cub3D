@@ -201,7 +201,10 @@ typedef struct s_texture
 ** step_x/y      : direction de déplacement dans la grille
 ** side          : côté du mur touché
 **                 0 = mur vertical
-**                 1 = mur horizontal
+**                 1 = mur horizontal --> Ici est-ce qu'il n'y aurait pas besoin
+					de rajouter 2 et 3 pour preciser si on tape un mur cote
+					nord sud est ou ouest ?
+					Il me semble que les murs ont 4 cotes
 */
 
 typedef struct s_dda

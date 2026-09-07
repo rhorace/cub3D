@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/01 09:37:13 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/07 21:17:47 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 
 # define BLOCK			64
 # define WIN_WIDTH		1280
-# define WIN_HEIGHT	720
+# define WIN_HEIGHT		720
 # define PI				3.14159265358979323846
 # define FOV			1.0471975511965976f
 

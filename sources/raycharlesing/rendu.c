@@ -6,19 +6,79 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 18:27:50 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/04 16:11:41 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/07 21:27:47 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	charles_ray(t_game *cub3d, int x)
+unsigned int	abs(int n)
 {
-	float	theta;
-	theta
+	if (n >= 0)
+		return (n);
+	return (-n);
 }
 
-//mais donc ici on ne stocke pas les pixels pour tous les afficher d'un coup, on les affiche un a un
+int	is_wall(t_vector v)
+{
+
+}
+
+int	charles_ray(t_game *cub3d, int n)
+{
+	t_vector	ray;
+	float		theta;
+	float		pente;
+	float		origine;
+	t_vector	current;
+	t_vector	new;
+
+	theta = FOV * (-0.5 + (n / WIN_WIDTH));
+	ray.x = cub3d->player.dir.x * cos(theta) - cub3d->player.dir.y * sin(theta);
+	ray.y = cub3d->player.dir.x * sin(theta) + cub3d->player.dir.y * cos(theta);
+	pente = ray.x / ray.y;
+	origine = cub3d->player.pos.y - (cub3d->player.pos.x * ray.y / ray.x);
+	current.y = cub3d->player.pos.y + 0.5 * (ray.y / abs(ray.y));
+	current.x = (current.y - origine) / pente;
+	if (ray.x < 0 && ray.y < 0)
+		{
+			if (new.x < abs(current.x))
+		}
+		if (ray.x > 0 && ray.y < 0)
+		{
+			if (new.x > abs(current.x) + 1)
+		}
+		if (ray.x < 0 && ray.y > 0)
+		{
+			if (new.x < abs(current.x))
+		}
+		if (ray.x > 0 && ray.y > 0)
+		{
+			if (new.x > abs(current.x) + 1)
+		}
+	while (!is_wall(current))
+	{
+		new.y = current.y + (ray.y / abs(ray.y));
+		new.x = (current.y - origine) / pente;
+		if (ray.x < 0 && ray.y < 0)
+		{
+			if (new.x < abs(current.x))
+		}
+		if (ray.x > 0 && ray.y < 0)
+		{
+			if (new.x > abs(current.x) + 1)
+		}
+		if (ray.x < 0 && ray.y > 0)
+		{
+			if (new.x < abs(current.x))
+		}
+		if (ray.x > 0 && ray.y > 0)
+		{
+			if (new.x > abs(current.x) + 1)
+		}
+	}
+}
+
 int	put_pixel(t_game *cub3d, int x, int y, int color)
 {
 	char	*pixel;

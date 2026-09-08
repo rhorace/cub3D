@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 18:27:50 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/07 21:27:47 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:50:11 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,63 +19,123 @@ unsigned int	abs(int n)
 	return (-n);
 }
 
-int	is_wall(t_vector v)
+int	is_wall(t_vector current, t_game cub, t_vector ray)
 {
+	return (coin(current, cub, ray) || gauche(current, cub, ray)
+		|| droite(current, cub, ray) || haut(current, cub, ray)
+		|| bas()current, cub, ray);
+}
+
+void	reloc(t_vector *current, t_vector *new, t_game cub, t_vector ray)
+{
+	//if (ray.y < 0)
+	//{
+		if (ray.x < 0)
+		{
+			if (new->x < abs(current.x))
+			{
+				new->x = abs(new->x) + 1;
+				new->y = (new->x * ray.x / ray.y)
+					+ cub.player.pos.y - (cub.player.pos.x * ray.y / ray.x);
+			}
+		}
+		if (ray.x > 0)
+		{
+			if (new->x > abs(current->x) + 1)
+			{
+				new->x = abs(new->x);
+				new->y = (new->x * ray.x / ray.y)
+					+ cub.player.pos.y - (cub.player.pos.x * ray.y / ray.x);
+			}
+		}
+	//}
+	//else
+	//{
+	/*	if (ray.x < 0)
+		{
+			if (new.x < abs(current.x))
+			{
+				new->x = abs(new->x) + 1;
+				new->y = (new->x * ray.x / ray.y)
+					+ cub.player.pos.y - (cub.player.pos.x * ray.y / ray.x);
+			}
+		}
+		if (ray.x > 0)
+		{
+			if (new.x > abs(current.x) + 1)
+			{
+				new->x = abs(new->x);
+				new->y = (new->x * ray.x / ray.y)
+					+ cub.player.pos.y - (cub.player.pos.x * ray.y / ray.x);
+			}
+		}*/
+	//}
+	/*if (ray.x < 0 && ray.y < 0)
+	{
+		if (new.x < abs(current.x))
+	}
+	if (ray.x > 0 && ray.y < 0)
+	{
+		if (new.x > abs(current.x) + 1)
+	}
+	if (ray.x < 0 && ray.y > 0)
+	{
+		if (new.x < abs(current.x))
+	}
+	if (ray.x > 0 && ray.y > 0)
+	{
+		if (new.x > abs(current.x) + 1)
+	}*/
 
 }
 
-int	charles_ray(t_game *cub3d, int n)
+void	tarzan(t_vector *current, t_vector *new, t_game cub, t_vector ray)
+{
+	if (current->y == 0)
+	{
+			new->y = cub3->player.pos.y + 0.5 * (ray.y / abs(ray.y));
+			new->x = (new->y - cub3d.player.pos.y
+				+ (cub3d.player.pos.x * ray.y / ray.x)) * (ray.y / ray.x);
+	}
+	else
+	{
+		if (current->y - abs(current->y) == 0)
+			new->y = current->y + (ray.y / abs(ray.y));
+		else
+		{
+			if (ray.y > 0)
+				new->y = abs(current->y) + 1;
+			else
+				new->y = abs(current->y);
+		}
+		new->x = (new->y - cub3d.player.pos.y
+			+ (cub3d.player.pos.x * ray.y / ray.x)) * (ray.y / ray.x);
+	}
+	reloc(&current, &new, cub3d, ray);
+}
+
+void	matrix(t_vector *ray, t_game cub, int	n)
+{
+	ray->x = cub->player.dir.x * cos(FOV * (-0.5 + (n / WIN_WIDTH)))
+		- cub->player.dir.y * sin(FOV * (-0.5 + (n / WIN_WIDTH)));
+	ray->y = cub->player.dir.x * sin(FOV * (-0.5 + (n / WIN_WIDTH)))
+		+ cub->player.dir.y * cos(FOV * (-0.5 + (n / WIN_WIDTH)));
+}
+
+int	hit_the_wall_jack(t_game *cub, int n)
 {
 	t_vector	ray;
-	float		theta;
-	float		pente;
 	float		origine;
 	t_vector	current;
 	t_vector	new;
 
-	theta = FOV * (-0.5 + (n / WIN_WIDTH));
-	ray.x = cub3d->player.dir.x * cos(theta) - cub3d->player.dir.y * sin(theta);
-	ray.y = cub3d->player.dir.x * sin(theta) + cub3d->player.dir.y * cos(theta);
-	pente = ray.x / ray.y;
-	origine = cub3d->player.pos.y - (cub3d->player.pos.x * ray.y / ray.x);
-	current.y = cub3d->player.pos.y + 0.5 * (ray.y / abs(ray.y));
-	current.x = (current.y - origine) / pente;
-	if (ray.x < 0 && ray.y < 0)
-		{
-			if (new.x < abs(current.x))
-		}
-		if (ray.x > 0 && ray.y < 0)
-		{
-			if (new.x > abs(current.x) + 1)
-		}
-		if (ray.x < 0 && ray.y > 0)
-		{
-			if (new.x < abs(current.x))
-		}
-		if (ray.x > 0 && ray.y > 0)
-		{
-			if (new.x > abs(current.x) + 1)
-		}
-	while (!is_wall(current))
+	matrix(&ray, cub, n);
+	current.y = 0;
+	while (!is_wall(current, cub, ray))
 	{
-		new.y = current.y + (ray.y / abs(ray.y));
-		new.x = (current.y - origine) / pente;
-		if (ray.x < 0 && ray.y < 0)
-		{
-			if (new.x < abs(current.x))
-		}
-		if (ray.x > 0 && ray.y < 0)
-		{
-			if (new.x > abs(current.x) + 1)
-		}
-		if (ray.x < 0 && ray.y > 0)
-		{
-			if (new.x < abs(current.x))
-		}
-		if (ray.x > 0 && ray.y > 0)
-		{
-			if (new.x > abs(current.x) + 1)
-		}
+		tarzan(&current, &new, cub, ray);
+		current->x = new->x;
+		current->y = new->y;
 	}
 }
 
@@ -128,7 +188,7 @@ int	rendu(t_game *cub3d)
 	remplir_fond(cub3d);
 	while (x < WIN_WIDTH)
 	{
-		charles_ray(cub3d, x);
+		hit_the_wall_jack(cub3d, x);
 		x++;
 	}
 	mlx_put_image_to_window(cub3d->mlx.graphics, cub3d->mlx.window,

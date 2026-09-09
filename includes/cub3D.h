@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/08 18:51:30 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/09 20:32:18 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,13 +207,13 @@ typedef struct s_texture
 					Il me semble que les murs ont 4 cotes
 */
 
-typedef struct s_ray
+/* typedef struct s_ray
 {
 	t_vector	ray;
 	float		theta;
 	float		pente;
 	float		origine;
-}
+} */
 
 typedef struct s_dda
 {

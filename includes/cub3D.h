@@ -31,7 +31,7 @@
 # define YELLOW "\e[33m"
 # define RED "\e[31m"
 
-# define MOVE_SPEED 0.01
+# define MOVE_SPEED 0.05
 # define ROT_SPEED 0.01
 
 /** =============================== CONSTANTES ============================= **/
@@ -301,6 +301,9 @@ typedef struct s_game
 	t_color		ceiling;
 }	t_game;
 
+// initialisation
+t_game			*init_cub3d(void);
+
 // debug
 void			print_etat(t_game cub3d);
 void			print_map(char **map);
@@ -314,6 +317,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 char			*ft_strdup(const char *s);
 char			*ft_substr2(const char *line, int start, int end);
 char			*ft_strstr(const char *texte, const char *str);
+void			*ft_calloc(size_t count, size_t size);
 
 // verificateurs
 int				check_extension(char *path, char *extension);
@@ -323,7 +327,6 @@ int				the_verificator(t_game *cub3d);
 int				check_player_count(char **map);
 int				line_map_valid(char *line);
 
-void			ft_init(t_game	*cub3d);
 void			send_message(char *msg, char *arg);
 int				texture_ready(t_map *map);
 int				color_ready(t_color *plafond, t_color *sol);

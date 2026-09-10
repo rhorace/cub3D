@@ -35,6 +35,7 @@ SRCS    := sources/main.c \
 	sources/graphics/draw_wall.c \
 	sources/graphics/pixel.c \
 	sources/graphics/textures.c \
+	sources/init/init_cub3d.c \
 	sources/init/init_mlx.c \
 	sources/init/init_player.c \
 	sources/parsing/get_texture_path.c \

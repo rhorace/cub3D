@@ -28,24 +28,6 @@ int	ligne_max(char **map)
 	return (max);
 }
 
-void	ft_init(t_game *cub3d)
-{
-	cub3d->map.ea_path = NULL;
-	cub3d->map.no_path = NULL;
-	cub3d->map.so_path = NULL;
-	cub3d->map.we_path = NULL;
-	cub3d->map.grid = NULL;
-	cub3d->map_list = NULL;
-	cub3d->mlx.graphics = NULL;
-	cub3d->mlx.window = NULL;
-	cub3d->ceiling.r = -1;
-	cub3d->ceiling.g = -1;
-	cub3d->ceiling.b = -1;
-	cub3d->floor.r = -1;
-	cub3d->floor.g = -1;
-	cub3d->floor.b = -1;
-}
-
 void	send_message(char *msg, char *arg)
 {
 	if (arg)

@@ -14,31 +14,43 @@
 
 // static int	closing : Empêche double free/double destroy (ESC + croix, etc.)
 
-static void	free_tab(char **tab)
+static void	free_grid(char **grid)
 {
 	int	i;
 
-	if (!tab)
+	if (!grid)
 		return ;
 	i = 0;
-	while (tab[i])
+	while (grid[i])
 	{
-		free(tab[i]);
+		free(grid[i]);
 		i++;
 	}
-	free(tab);
+	free(grid);
 }
 
-static void	close_images(t_game *cub3d)
+static void	free_map(t_map *map)
+{
+	if (!map)
+		return ;
+	free_grid(map->grid);
+	free(map->no_path);
+	free(map->so_path);
+	free(map->we_path);
+	free(map->ea_path);
+	map->grid = NULL;
+	map->no_path = NULL;
+	map->so_path = NULL;
+	map->we_path = NULL;
+	map->ea_path = NULL;
+}
+
+static void	destroy_textures(t_game *cub3d)
 {
 	int	i;
 
-	if (cub3d->mlx.image)
-	{
-		mlx_destroy_image(cub3d->mlx.graphics,
-			cub3d->mlx.image);
-		cub3d->mlx.image = NULL;
-	}
+	if (!cub3d->mlx.graphics)
+		return ;
 	i = 0;
 	while (i < 4)
 	{
@@ -52,11 +64,16 @@ static void	close_images(t_game *cub3d)
 	}
 }
 
-static void	close_mlx(t_game *cub3d)
+static void	destroy_mlx(t_game *cub3d)
 {
 	if (!cub3d->mlx.graphics)
 		return ;
-	close_images(cub3d);
+	if (cub3d->mlx.image)
+	{
+		mlx_destroy_image(cub3d->mlx.graphics,
+			cub3d->mlx.image);
+		cub3d->mlx.image = NULL;
+	}
 	if (cub3d->mlx.window)
 	{
 		mlx_destroy_window(cub3d->mlx.graphics,
@@ -72,17 +89,14 @@ void	close_cub3d(t_game	*cub3d, int code)
 {
 	static int	closing;
 
-	if (!cub3d)
-		exit(code);
 	if (closing)
 		exit(code);
 	closing = 1;
-	close_mlx(cub3d);
-	free(cub3d->map.no_path);
-	free(cub3d->map.so_path);
-	free(cub3d->map.we_path);
-	free(cub3d->map.ea_path);
-	free_tab(cub3d->map.grid);
-	cub3d->map.grid = NULL;
+	if (!cub3d)
+		exit(code);
+	destroy_textures(cub3d);
+	destroy_mlx(cub3d);
+	free_map(&cub3d->map);
+	free(cub3d);
 	exit(code);
 }

@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/01 10:43:40 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/11 18:34:31 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	read_file(t_game *cub3d, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (send_message("Cannot open file", path), 0);
-	cub3d->map.width = 0;
+	//cub3d->map.width = 0;
 	line = get_next_line(fd);
 	while (line)
 	{

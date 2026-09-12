@@ -40,15 +40,15 @@ int	main(int argc, char **argv)
 	cub3d = init_cub3d();
 	if (!cub3d)
 		return (send_message("Initialization failed", NULL), 1);
-	if (!check_extension(argv[1], ".cub"))
+	if (bad_extension(argv[1], ".cub"))
 		return (send_message("Invalid file name", argv[1]), 1);
-	if (!read_file(cub3d, argv[1]))
+	if (bad_file(cub3d, argv[1]))
 		return (close_cub3d(cub3d, 1), 1);
-	if (!the_verificator(cub3d))
+	if (verificator_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
-	if (!init_mlx(cub3d))
+	if (init_mlx_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
-	if (!load_textures(cub3d))
+	if (load_textures_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
 	init_player(cub3d);
 	//rendu(&cub3d);

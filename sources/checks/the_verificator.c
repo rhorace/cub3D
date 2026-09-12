@@ -12,20 +12,20 @@
 
 #include "cub3D.h"
 
-static int	check_texture(t_game *cub3d)
+static int	bad_texture_extension(t_game *cub3d)
 {
-	if (!check_extension(cub3d->map.no_path, ".xpm"))
-		return (0);
-	if (!check_extension(cub3d->map.so_path, ".xpm"))
-		return (0);
-	if (!check_extension(cub3d->map.we_path, ".xpm"))
-		return (0);
-	if (!check_extension(cub3d->map.ea_path, ".xpm"))
-		return (0);
-	return (1);
+	if (bad_extension(cub3d->map.no_path, ".xpm"))
+		return (1);
+	if (bad_extension(cub3d->map.so_path, ".xpm"))
+		return (1);
+	if (bad_extension(cub3d->map.we_path, ".xpm"))
+		return (1);
+	if (bad_extension(cub3d->map.ea_path, ".xpm"))
+		return (1);
+	return (0);
 }
 
-static int	check_empty_line(char **map)
+static int	map_have_empty_line(char **map)
 {
 	int	i;
 
@@ -33,24 +33,24 @@ static int	check_empty_line(char **map)
 	while (map[i])
 	{
 		if (is_empty_line(map[i]))
-			return (send_message("Empty line in the map !", NULL), 0);
+			return (send_message("Empty line in the map !", NULL), 1);
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
-int	the_verificator(t_game *cub3d)
+int	verificator_failed(t_game *cub3d)
 {
 	if (!texture_ready(&cub3d->map) || !color_ready(&cub3d->ceiling, \
 &cub3d->floor) || (cub3d->map.height < 3))
-		return (send_message("map, texture or color !", NULL), 0);
-	if (!check_texture(cub3d))
-		return (0);
-	if (!check_empty_line(cub3d->map.grid))
-		return (0);
-	if (!check_player_count(cub3d->map.grid))
-		return (0);
-	if (!check_map_closed(cub3d->map.grid))
-		return (0);
-	return (1);
+		return (send_message("map, texture or color !", NULL), 1);
+	if (bad_texture_extension(cub3d))
+		return (1);
+	if (map_have_empty_line(cub3d->map.grid))
+		return (1);
+	if (bad_player_count(cub3d->map.grid))
+		return (1);
+	if (map_not_closed(cub3d->map.grid))
+		return (1);
+	return (0);
 }

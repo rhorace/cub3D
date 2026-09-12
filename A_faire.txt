@@ -12,27 +12,15 @@ par
 dans read_file.c/manage_line()
 ATTENTION : Besoin de garder texture_ready et color_ready en individuel
 ----------------------------------------------------------
-Renommer
-	check_texture()
-par
-	check_texture_extension()
-dans the_verificator.c/check_texture
+
 ----------------------------------------------------------
-Renommer
-	check_empty_line()
-par
-	check_map_empty_line()
-dans the_verificator.c/check_empty_line
+
 ----------------------------------------------------------
 Dans read_file.c/read_file()
 	cub3d->map.width = 0;
 est utile ?
 --------------------------------------------------------.
-Renommer
-	map_list_to_array()
-par
-	map_list_to_grid()
-dans read_file.c/read_file()
+
 ------------------------------------------------------
 
 modifier utils_2.c/is_texture_line() pour accepter de nouvelles textures DO pour porte par exemple

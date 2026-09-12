@@ -55,7 +55,7 @@ static int	is_valid_map_char(char c)
 		|| c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-int	check_map_closed(char **map)
+int	map_not_closed(char **map)
 {
 	int	y;
 	int	x;
@@ -67,15 +67,15 @@ int	check_map_closed(char **map)
 		while (map[y][x])
 		{
 			if (!is_valid_map_char(map[y][x]))
-				return (send_message("Invalid map char !", NULL), 0);
+				return (send_message("Invalid map char !", NULL), 1);
 			if (is_walkable(map[y][x]))
 			{
 				if (!check_cell_closed(map, y, x))
-					return (send_message("Map not closed !", NULL), 0);
+					return (send_message("Map not closed !", NULL), 1);
 			}
 			x++;
 		}
 		y++;
 	}
-	return (1);
+	return (0);
 }

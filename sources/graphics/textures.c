@@ -31,19 +31,19 @@ static int	load_texture(t_game *cub3d, t_texture *texture, char *path)
 	return (1);
 }
 
-int	load_textures(t_game *cub3d)
+int	load_textures_failed(t_game *cub3d)
 {
 	if (!load_texture(cub3d, &cub3d->tex[TEX_NO],
 			cub3d->map.no_path))
-		return (send_message("Invalid TEX_NO !", NULL), 0);
+		return (send_message("Invalid TEX_NO !", NULL), 1);
 	if (!load_texture(cub3d, &cub3d->tex[TEX_SO],
 			cub3d->map.so_path))
-		return (send_message("Invalid TEX_SO !", NULL), 0);
+		return (send_message("Invalid TEX_SO !", NULL), 1);
 	if (!load_texture(cub3d, &cub3d->tex[TEX_WE],
 			cub3d->map.we_path))
-		return (send_message("Invalid TEX_WE !", NULL), 0);
+		return (send_message("Invalid TEX_WE !", NULL), 1);
 	if (!load_texture(cub3d, &cub3d->tex[TEX_EA],
 			cub3d->map.ea_path))
-		return (send_message("Invalid TEX_EA !", NULL), 0);
-	return (1);
+		return (send_message("Invalid TEX_EA !", NULL), 1);
+	return (0);
 }

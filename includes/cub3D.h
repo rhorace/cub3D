@@ -320,11 +320,10 @@ char			*ft_strstr(const char *texte, const char *str);
 void			*ft_calloc(size_t count, size_t size);
 
 // verificateurs
-int				check_extension(char *path, char *extension);
-int				check_map_closed(char **map);
-int				check_player_count(char **map);
-int				the_verificator(t_game *cub3d);
-int				check_player_count(char **map);
+int				bad_extension(char *path, char *extension);
+int				map_not_closed(char **map);
+int				verificator_failed(t_game *cub3d);
+int				bad_player_count(char **map);
 int				line_map_valid(char *line);
 
 void			send_message(char *msg, char *arg);
@@ -345,12 +344,12 @@ int				ceiling_ready(t_color *plafond);
 int				floor_ready(t_color *sol);
 void			remove_newline(char *line);
 
-int				read_file(t_game *cub3d, char *path);
+int				bad_file(t_game *cub3d, char *path);
 
 t_map_node		*new_map_node(char *line);
 void			add_map_line(t_map_node **map_list, char *line);
 int				map_list_size(t_map_node *map_list);
-char			**map_list_to_array(t_map_node *map_list, int max_width);
+char			**map_list_to_grid(t_map_node *map_list, int max_width);
 void			free_map_list(t_map_node *map_list);
 
 char			*pad_map_line(char *line, int max_width);
@@ -379,8 +378,8 @@ void			draw_background(t_game *cub3d);
 void			draw_wall(t_game *cub3d, int x, t_wall *wall, \
 int texture_id);
 
-int				init_mlx(t_game *cub3d);
-int				load_textures(t_game *cub3d);
+int				init_mlx_failed(t_game *cub3d);
+int				load_textures_failed(t_game *cub3d);
 void			init_player(t_game *cub3d);
 
 void			move_forward(t_game *cub3d);

@@ -61,7 +61,7 @@ int	map_list_size(t_map_node *map_list)
 	return (count);
 }
 
-char	**map_list_to_array(t_map_node *map_list, int max_width)
+char	**map_list_to_grid(t_map_node *map_list, int max_width)
 {
 	char	**map;
 	int		size;

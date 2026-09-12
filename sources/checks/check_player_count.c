@@ -17,7 +17,7 @@ static int	is_player(char c)
 	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-int	check_player_count(char **map)
+int	bad_player_count(char **map)
 {
 	int	y;
 	int	x;
@@ -37,6 +37,6 @@ int	check_player_count(char **map)
 		y++;
 	}
 	if (count != 1)
-		return (send_message("Invalid number of players", NULL), 0);
-	return (1);
+		return (send_message("Invalid number of players", NULL), 1);
+	return (0);
 }

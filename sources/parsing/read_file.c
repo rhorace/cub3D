@@ -83,16 +83,16 @@ void	manage_line(t_game *cub3d, char *line, int fd)
 	}
 }
 
-int	read_file(t_game *cub3d, char *path)
+int	bad_file(t_game *cub3d, char *path)
 {
 	int		fd;
 	char	*line;
 
 	if (!cub3d || !path)
-		return (0);
+		return (1);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		return (send_message("Cannot open file", path), 0);
+		return (send_message("Cannot open file", path), 1);
 	//cub3d->map.width = 0;
 	line = get_next_line(fd);
 	while (line)
@@ -103,9 +103,9 @@ int	read_file(t_game *cub3d, char *path)
 		line = get_next_line(fd);
 	}
 	close (fd);
-	cub3d->map.grid = map_list_to_array(cub3d->map_list, cub3d->map.width);
+	cub3d->map.grid = map_list_to_grid(cub3d->map_list, cub3d->map.width);
 	cub3d->map.height = map_list_size(cub3d->map_list);
 	free_map_list(cub3d->map_list);
 	cub3d->map_list = NULL;
-	return (1);
+	return (0);
 }

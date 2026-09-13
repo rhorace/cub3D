@@ -93,7 +93,6 @@ int	bad_file(t_game *cub3d, char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		return (send_message("Cannot open file", path), 1);
-	//cub3d->map.width = 0;
 	line = get_next_line(fd);
 	while (line)
 	{

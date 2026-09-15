@@ -6,7 +6,7 @@
 #    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/09/02 15:29:49 by rhorace          ###   ########.fr        #
+#    Updated: 2026/09/15 19:25:39 by rhorace          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS    := sources/main.c \
 	sources/init/init_player.c \
 	sources/parsing/get_texture_path.c \
 	sources/parsing/get_the_color.c \
+	sources/parsing/manage_line.c \
 	sources/parsing/is_ready.c \
 	sources/parsing/map_node.c \
 	sources/parsing/pad_map_line.c \

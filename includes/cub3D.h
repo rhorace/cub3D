@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/15 11:18:03 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/15 19:24:30 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -349,6 +349,7 @@ int				floor_ready(t_color *sol);
 void			remove_newline(char *line);
 
 int				bad_file(t_game *cub3d, char *path);
+void			manage_line(t_game *cub3d, char *line, int fd);
 
 t_map_node		*new_map_node(char *line);
 void			add_map_line(t_map_node **map_list, char *line);

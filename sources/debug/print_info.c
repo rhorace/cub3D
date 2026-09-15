@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 12:07:59 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/15 10:46:36 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/15 19:19:18 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ cub3d.ceiling.b);
 	printf("t_map we_path : %s\n", cub3d.map.we_path);
 	printf("t_map ea_path : %s\n", cub3d.map.ea_path);
 	printf("t_map do_path : %s\n", cub3d.map.do_path);
-	printf("path_ready: %d\n", texture_ready(&cub3d.map));
+	printf("path_ready : %d\n", texture_ready(&cub3d.map));
 	printf("color_ready: %d\n", color_ready(&cub3d.ceiling, &cub3d.floor));
 	printf("%s--- end of the header ---%s\n", RED, RESET);
 }

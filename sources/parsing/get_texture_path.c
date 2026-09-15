@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_the_path.c                                     :+:      :+:    :+:   */
+/*   get_texture_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:02:01 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 18:10:53 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/15 10:34:15 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ static int	remplir_chemin(t_game *cub3d, char *chemin, char *flag)
 		if (cub3d->map.ea_path)
 			return (0);
 		cub3d->map.ea_path = chemin;
+	}
+	else if (ft_strcmp(flag, "DO") == 0)
+	{
+		if (cub3d->map.do_path)
+			return (0);
+		cub3d->map.do_path = chemin;
 	}
 	return (1);
 }
@@ -73,7 +79,8 @@ int	get_texture_path(t_game *cub3d, char *line)
 	flag[1] = line[i + 1];
 	flag[2] = '\0';
 	if (ft_strcmp(flag, "NO") != 0 && ft_strcmp(flag, "SO") != 0
-		&& ft_strcmp(flag, "WE") != 0 && ft_strcmp(flag, "EA") != 0)
+		&& ft_strcmp(flag, "WE") != 0 && ft_strcmp(flag, "EA") != 0
+		&& ft_strcmp(flag, "DO") != 0)
 		return (-1);
 	chemin = get_xpm(line, &i);
 	if (!chemin)

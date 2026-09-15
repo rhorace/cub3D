@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 11:29:15 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/02 16:24:54 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/15 14:06:24 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	map_have_empty_line(char **map)
 	int	i;
 
 	i = 0;
+	if (!map)
+		return (send_message("No map !", NULL), 1);
 	while (map[i])
 	{
 		if (is_empty_line(map[i]))

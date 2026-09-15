@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 17:29:00 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/11 18:34:31 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/15 16:26:31 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,42 @@ static void	read_file_close(t_game *cub3d, char *line, int fd, char *msg)
 	close_cub3d(cub3d, 1);
 }
 
+static int	is_first_map_line(char *line)
+{
+	int	i;
+	int	has_wall;
+
+	i = 0;
+	has_wall = 0;
+	while (line[i])
+	{
+		if (line[i] != '1' && line[i] != ' ')
+			return (0);
+		if (line[i] == '1')
+			has_wall = 1;
+		i++;
+	}
+	return (has_wall);
+}
+
 void	manage_line(t_game *cub3d, char *line, int fd)
 {
-	static int	in_map;
+	static int	map_started;
 
-	if (texture_ready(&cub3d->map) && color_ready(&cub3d->ceiling, \
-&cub3d->floor))
+	if (!map_started && is_first_map_line(line))
 	{
-		if (is_texture_line(line) || is_color_line(line))
-			read_file_close(cub3d, line, fd, "Doublon");
-		if (!is_empty_line(line))
-			in_map = 1;
-		if (in_map)
-		{
-			if (!line_map_valid(line))
-				read_file_close(cub3d, line, fd, "Invalid map line");
-			add_map_line(&cub3d->map_list, line);
-		}
+		map_started = 1;
+		if (!line_map_valid(line, cub3d->map.do_path))
+			read_file_close(cub3d, line, fd, "Invalid map line");
+		add_map_line(&cub3d->map_list, line);
+		if (ft_strlen(line) > cub3d->map.width)
+			cub3d->map.width = ft_strlen(line);
+	}
+	else if (map_started)
+	{
+		if (!line_map_valid(line, cub3d->map.do_path))
+			read_file_close(cub3d, line, fd, "Invalid map line");
+		add_map_line(&cub3d->map_list, line);
 		if (ft_strlen(line) > cub3d->map.width)
 			cub3d->map.width = ft_strlen(line);
 	}
@@ -81,6 +100,7 @@ void	manage_line(t_game *cub3d, char *line, int fd)
 		if (get_header(cub3d, line) == -1)
 			read_file_close(cub3d, line, fd, "header");
 	}
+
 }
 
 int	bad_file(t_game *cub3d, char *path)

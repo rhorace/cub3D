@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 19:20:41 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/10 10:20:37 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/15 11:06:41 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	is_walkable(char c)
 
 static int	is_valid_map_char(char c)
 {
-	return (c == '0' || c == '1' || c == ' '
+	return (c == '0' || c == '1' || c == ' ' || c == 'D'
 		|| c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 

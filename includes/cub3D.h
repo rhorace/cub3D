@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/09 20:32:18 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/15 11:18:03 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 ** TEX_SO = Sud
 ** TEX_WE = Ouest
 ** TEX_EA = Est
+** TEX_DO = Door
 */
 
 typedef enum e_texture_id
@@ -66,7 +67,8 @@ typedef enum e_texture_id
 	TEX_NO = 0,
 	TEX_SO = 1,
 	TEX_WE = 2,
-	TEX_EA = 3
+	TEX_EA = 3,
+	TEX_DO = 4
 }	t_texture_id;
 
 /** ============================== VECTEUR 2D ============================== **/
@@ -164,6 +166,7 @@ typedef struct s_map
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
+	char	*do_path;
 }	t_map;
 
 /** =============================== TEXTURE ================================ **/
@@ -324,7 +327,8 @@ int				bad_extension(char *path, char *extension);
 int				map_not_closed(char **map);
 int				verificator_failed(t_game *cub3d);
 int				bad_player_count(char **map);
-int				line_map_valid(char *line);
+//int				line_map_valid(char *line);
+int				line_map_valid(char *line, char *do_path);
 
 void			send_message(char *msg, char *arg);
 int				texture_ready(t_map *map);
@@ -356,6 +360,7 @@ char			*pad_map_line(char *line, int max_width);
 
 int				is_texture_line(char *line);
 int				is_color_line(char *line);
+int				is_door_line(char *line);
 
 /* ============================= RAYCASTING ============================== */
 

@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		return (send_message("Invalid file name", argv[1]), 1);
 	cub3d = init_cub3d();
 	if (!cub3d)
-		return (send_message("Initialization failed", NULL), 1);	
+		return (send_message("Initialization failed", NULL), 1);
 	if (bad_file(cub3d, argv[1]))
 		return (close_cub3d(cub3d, 1), 1);
 	if (verificator_failed(cub3d))

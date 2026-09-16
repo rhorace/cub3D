@@ -30,6 +30,7 @@ SRCS    := sources/main.c \
 	sources/events/movement.c \
 	sources/events/rotation.c \
 	sources/get_next_line/get_next_line.c \
+	sources/get_next_line/gnl_utils.c \
 	sources/graphics/background.c \
 	sources/graphics/draw_wall.c \
 	sources/graphics/pixel.c \

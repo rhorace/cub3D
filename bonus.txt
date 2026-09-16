@@ -1,0 +1,23 @@
+OK	• Collisions avec les murs.
+NO	• Un système de mini-carte.
+NO	• Des portes qui peuvent s'ouvrir et se fermer.
+NO	• Des sprites animés.
+OK	• Rotation du point de vue à la souris.
+
+Chapitre VII
+
+Partie bonus
+
+Les bonus ne seront évalués que si votre partie obligatoire est parfaite.
+Par « parfaite », nous entendons naturellement qu'elle doit être complète et ne présenter aucune défaillance, même face à des erreurs critiques telles qu'une mauvaise utilisation, etc. Cela signifie que si votre partie obligatoire n'obtient pas la totalité des points lors de l'évaluation, vos bonus seront totalement ignorés.
+
+Liste des bonus :
+• Collisions avec les murs.
+• Système de mini-carte.
+• Portes pouvant s'ouvrir et se fermer.
+• Sprites animés.
+• Rotation du point de vue à la souris.
+
+Vous pourrez créer de meilleurs jeux plus tard ; ne perdez pas trop de temps !
+
+Vous êtes autorisé à utiliser d'autres fonctions ou à ajouter des symboles sur la carte pour réaliser la partie bonus, à condition que leur usage soit justifié lors de l'évaluation. Vous pouvez également modifier le format de fichier de scène attendu pour l'adapter à vos besoins. Faites preuve d'ingéniosité !

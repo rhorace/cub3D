@@ -29,7 +29,6 @@ SRCS    := sources/main.c \
 	sources/events/game_loop.c \
 	sources/events/movement.c \
 	sources/events/rotation.c \
-	sources/get_next_line/get_next_line_utils.c \
 	sources/get_next_line/get_next_line.c \
 	sources/graphics/background.c \
 	sources/graphics/draw_wall.c \

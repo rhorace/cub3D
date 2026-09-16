@@ -10,106 +10,111 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
 #include "get_next_line.h"
 
-static char	*ajouter_tant_que(int fd, char *s_chaine, char *espace_memoire);
-static char	*couper_ligne(char *ligne_retour_M);
-static char	*cherche_n(char *s, int c);
+char	*ft_strchr(char *s, int c)
+{
+	int	i = 0;
+
+	while (s[i])
+	{
+		if (s[i] == c)
+			return (s + i);
+		i++;
+	}
+	return (NULL);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i = 0;
+
+	while (i < n)
+	{
+		((char *)dest)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dest);
+}
+
+static size_t	ft_strlen(char *s)
+{
+	size_t	ret = 0;
+
+	if (!s)
+		return (0);
+	while (s[ret])
+		ret++;
+	return (ret);
+}
+
+int	str_append_mem(char **s1, char *s2, size_t size2)
+{
+	size_t	size1 = ft_strlen(*s1);
+	char	*tmp = malloc(size2 + size1 + 1);
+
+	if (!tmp)
+		return (0);
+	ft_memcpy(tmp, *s1, size1);
+	ft_memcpy(tmp + size1, s2, size2);
+	tmp [size1 + size2] = 0;
+	free(*s1);
+	*s1 = tmp;
+	return (1);
+}
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+
+	if (!dest && !src)
+		return (NULL);
+	if (dest > src)
+	{
+		i = n;
+		while (i > 0)
+		{
+			i--;
+			((char *)dest)[i] = ((char *)src)[i];
+		}
+	}
+	else
+		ft_memcpy(dest, src, n);
+	return (dest);
+}
 
 char	*get_next_line(int fd)
 {
-	static char	*s_chaine;
-	char		*ligne_retour;
-	char		*espace_memoire;
+	static char	b[BUFFER_SIZE + 1] = "";
+	char	*ret = NULL;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	char	*tmp = ft_strchr(b, '\n');
+	while (!tmp)
 	{
-		free(s_chaine);
-		s_chaine = NULL;
-		return (NULL);
-	}
-	espace_memoire = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!espace_memoire)
-		return (NULL);
-	ligne_retour = ajouter_tant_que(fd, s_chaine, espace_memoire);
-	free(espace_memoire);
-	if (!ligne_retour)
-	{
-		free(s_chaine);
-		s_chaine = NULL;
-		return (NULL);
-	}
-	s_chaine = couper_ligne(ligne_retour);
-	return (ligne_retour);
-}
-
-static char	*couper_ligne(char *ligne_retour_M)
-{
-	char	*s_chaine;
-	int		i;
-	int		len;
-
-	i = 0;
-	while (ligne_retour_M[i] != '\n' && ligne_retour_M[i] != '\0')
-		i++;
-	if (ligne_retour_M[i] == '\0' || ligne_retour_M[i + 1] == '\0')
-		return (NULL);
-	len = ft_strlen(ligne_retour_M);
-	s_chaine = ft_substr(ligne_retour_M, i + 1, len - i);
-	if (!s_chaine)
-		return (NULL);
-	if (s_chaine[0] == '\0')
-	{
-		free(s_chaine);
-		s_chaine = NULL;
-	}
-	ligne_retour_M[i + 1] = '\0';
-	return (s_chaine);
-}
-
-static char	*ajouter_tant_que(int fd, char *s_chaine, char *espace_memoire)
-{
-	ssize_t	b_read;
-	char	*tmp;
-
-	b_read = 1;
-	while (b_read > 0)
-	{
-		b_read = read(fd, espace_memoire, BUFFER_SIZE);
-		if (b_read == -1)
+		if (b[0] != '\0')
+		{
+			if (!str_append_mem(&ret, b, ft_strlen(b)))
+			{
+				free(ret);
+				return (NULL);
+			}
+		}
+		int read_ret = read(fd, b, BUFFER_SIZE);
+		if (read_ret == -1)
+		{
+			free(ret);
 			return (NULL);
-		if (b_read == 0)
-			break ;
-		espace_memoire[b_read] = '\0';
-		if (!s_chaine)
-			s_chaine = ft_strdup("");
-		tmp = s_chaine;
-		s_chaine = ft_strjoin(tmp, espace_memoire);
-		free(tmp);
-		tmp = NULL;
-		if (cherche_n(espace_memoire, '\n'))
-			break ;
+		}
+		b[read_ret] = 0;
+		if (read_ret == 0)
+			return (ret);
+		tmp = ft_strchr(b, '\n');
 	}
-	return (s_chaine);
-}
-
-static char	*cherche_n(char *s, int n)
-{
-	unsigned int	i;
-	char			nn;
-
-	if (!s)
-		return (NULL);
-	nn = (char)n;
-	i = 0;
-	while (s[i])
+	if (!str_append_mem(&ret, b, tmp - b + 1))
 	{
-		if (s[i] == nn)
-			return ((char *)&s[i]);
-		i++;
+		free(ret);
+		return (NULL);
 	}
-	if (s[i] == nn)
-		return ((char *)&s[i]);
-	return (NULL);
+	ft_memmove(b, tmp + 1, ft_strlen(tmp + 1) + 1);
+	return (ret);
 }

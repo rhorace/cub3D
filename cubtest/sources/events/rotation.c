@@ -1,0 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotation.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/10 08:26:30 by rhorace           #+#    #+#             */
+/*   Updated: 2026/09/01 09:21:41 by rhorace          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub3D.h"
+
+void	rotate_left(t_game *cub3d)
+{
+	float	old_dir_x;
+	float	old_plane_x;
+
+	old_dir_x = cub3d->player.dir.x;
+	cub3d->player.dir.x = cub3d->player.dir.x * cos(-ROT_SPEED)
+		- cub3d->player.dir.y * sin(-ROT_SPEED);
+	cub3d->player.dir.y = old_dir_x * sin(-ROT_SPEED)
+		+ cub3d->player.dir.y * cos(-ROT_SPEED);
+	old_plane_x = cub3d->player.plane.x;
+	cub3d->player.plane.x = cub3d->player.plane.x * cos(-ROT_SPEED)
+		- cub3d->player.plane.y * sin(-ROT_SPEED);
+	cub3d->player.plane.y = old_plane_x * sin(-ROT_SPEED)
+		+ cub3d->player.plane.y * cos(-ROT_SPEED);
+}
+
+void	rotate_right(t_game *cub3d)
+{
+	float	old_dir_x;
+	float	old_plane_x;
+
+	old_dir_x = cub3d->player.dir.x;
+	cub3d->player.dir.x = cub3d->player.dir.x * cos(ROT_SPEED)
+		- cub3d->player.dir.y * sin(ROT_SPEED);
+	cub3d->player.dir.y = old_dir_x * sin(ROT_SPEED)
+		+ cub3d->player.dir.y * cos(ROT_SPEED);
+	old_plane_x = cub3d->player.plane.x;
+	cub3d->player.plane.x = cub3d->player.plane.x * cos(ROT_SPEED)
+		- cub3d->player.plane.y * sin(ROT_SPEED);
+	cub3d->player.plane.y = old_plane_x * sin(ROT_SPEED)
+		+ cub3d->player.plane.y * cos(ROT_SPEED);
+}

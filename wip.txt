@@ -1,0 +1,13 @@
+sol et plafond : textures plutôt que des couleurs ?
+gestion des collisions : perp ?
+
+sortir distinctement si gnl foire ou termine de lire
+
+vérifier allocations et sortir si NULL (map_list_to _array). Et de manière générale appliquer le "je sors si ca foire, plutôt que de vérifier à chaque fonction que tous les trucs d'avant sont valides"
+
+the_verificator l.45 : vérifiez si le check "map.height < 3" est utile : si seulement 2 lignes ou 2 colonnes, soit pas de player soit il est sur un bord et la map n'est pas fermée, donc sans doute redondant avec un autre check
+
+verifier utilite de plane
+
+Sophie : collisions, textures, tenir compte des portes
+Rodrigue : minimap, preparer le code pour accueillir plein de textures pour les animations

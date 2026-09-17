@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 08:28:21 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 10:47:20 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/17 18:32:38 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,11 @@ static void	set_player_direction(t_player *player, char direction)
 	}
 }
 
-static void	set_player_plane(t_player *player, char direction)
-{
-	if (direction == 'N')
-	{
-		player->plane.x = 0.57735026919;
-		player->plane.y = 0.0;
-	}
-	else if (direction == 'S')
-	{
-		player->plane.x = -0.57735026919;
-		player->plane.y = 0.0;
-	}
-	else if (direction == 'E')
-	{
-		player->plane.x = 0.0;
-		player->plane.y = 0.57735026919;
-	}
-	else if (direction == 'W')
-	{
-		player->plane.x = 0.0;
-		player->plane.y = -0.57735026919;
-	}
-}
-
 static void	set_player_position(t_game *cub3d, int x, int y, char direction)
 {
 	cub3d->player.pos.x = x + 0.5;
 	cub3d->player.pos.y = y + 0.5;
 	set_player_direction(&cub3d->player, direction);
-	set_player_plane(&cub3d->player, direction);
 }
 
 void	init_player(t_game *cub3d)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/17 13:49:38 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/17 18:35:02 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	main(int argc, char **argv)
 		return (close_cub3d(cub3d, 1), 1);
 	init_player(cub3d);
 	rendu(cub3d);
-	//render_frame(&cub3d);
 	init_hooks(cub3d);
 	mlx_loop_hook(cub3d->mlx.graphics, (void *)game_loop, cub3d);
 	mlx_loop(cub3d->mlx.graphics);

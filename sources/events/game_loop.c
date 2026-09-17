@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 08:25:56 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/01 09:46:02 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/17 14:28:39 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	game_loop(t_game *cub3d)
 		rotate_left(cub3d);
 	if (cub3d->player.key_rot_right)
 		rotate_right(cub3d);
-	render_frame(cub3d);
+	//render_frame(cub3d);
+	rendu(cub3d);
 	return (0);
 }
 
@@ -34,6 +35,7 @@ int	key_presser(int val, void *param)
 {
 	t_game	*cub3d;
 
+	printf("key_presser\n");
 	cub3d = (t_game *)param;
 	if (val == XK_Escape)
 		close_cub3d(cub3d, 0);

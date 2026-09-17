@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
+#    By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/09/15 19:25:39 by rhorace          ###   ########.fr        #
+#    Updated: 2026/09/11 17:28:20 by sohollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    := cub3D
 
 CC      := cc
-CFLAGS  := -Wall -Wextra -Werror -Iincludes -Iminilibx-linux
+CFLAGS  := -g -Wall -Wextra -Werror -Iincludes -Iminilibx-linux
 
 MLX_DIR := minilibx-linux
 MLX_A   := $(MLX_DIR)/libmlx.a
@@ -31,9 +31,6 @@ SRCS    := sources/main.c \
 	sources/events/rotation.c \
 	sources/get_next_line/get_next_line.c \
 	sources/get_next_line/gnl_utils.c \
-	sources/graphics/background.c \
-	sources/graphics/draw_wall.c \
-	sources/graphics/pixel.c \
 	sources/graphics/textures.c \
 	sources/init/init_cub3d.c \
 	sources/init/init_mlx.c \
@@ -45,16 +42,20 @@ SRCS    := sources/main.c \
 	sources/parsing/map_node.c \
 	sources/parsing/pad_map_line.c \
 	sources/parsing/read_file.c \
-	sources/raycasting/dda_init.c \
-	sources/raycasting/dda.c \
-	sources/raycasting/ray.c \
-	sources/raycasting/render.c \
-	sources/raycasting/texture_mapping.c \
-	sources/raycasting/wall.c \
+	sources/raycharlesing/affichage_utils.c \
+	sources/raycharlesing/mur.c \
+	sources/raycharlesing/paf.c \
+	sources/raycharlesing/rendu.c \
+	sources/raycharlesing/tarzan_utils.c \
 	sources/utils/ft_utils_2.c \
 	sources/utils/ft_utils.c \
 	sources/utils/utils_2.c \
+	sources/utils/utils_maths.c \
 	sources/utils/utils.c
+ 	
+#	sources/graphics/pixel.c \
+# 	sources/graphics/background.c \
+# 	sources/graphics/draw_wall.c \
 
 OBJS    := $(SRCS:.c=.o)
 

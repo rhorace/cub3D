@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/01 09:01:46 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/17 13:49:38 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ int	main(int argc, char **argv)
 		return (close_cub3d(cub3d, 1), 1);
 	if (init_mlx_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
-	if (load_textures_failed(cub3d))
+	if (!load_textures(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
 	init_player(cub3d);
-	//rendu(&cub3d);
-	render_frame(cub3d);
+	rendu(cub3d);
+	//render_frame(&cub3d);
 	init_hooks(cub3d);
 	mlx_loop_hook(cub3d->mlx.graphics, (void *)game_loop, cub3d);
 	mlx_loop(cub3d->mlx.graphics);

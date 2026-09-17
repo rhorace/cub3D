@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/15 19:24:30 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/17 14:48:57 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <stddef.h>
+//# include <stddef.h>
 # include <math.h>
 # include <X11/X.h> // KeyPress, KeyPressMask, KeyRelease, KeyReleaseMask
 # include <X11/keysym.h> // XK_Escape, XK_w, XK_s, XK_a, XK_d
@@ -31,7 +31,7 @@
 # define YELLOW "\e[33m"
 # define RED "\e[31m"
 
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.01
 # define ROT_SPEED 0.01
 # define MOUSE_SENSITIVITY 0.002
 
@@ -48,7 +48,7 @@
 # define BLOCK			64
 # define WIN_WIDTH		1280
 # define WIN_HEIGHT		720
-# define PI				3.14159265358979323846
+//# define PI				3.14159265358979323846
 # define FOV			1.0471975511965976f
 
 /** ============================== ENUM TEXTURES =========================== **/
@@ -86,6 +86,12 @@ typedef struct s_vector
 	float	x;
 	float	y;
 }	t_vector;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
 
 /** ============================== COULEUR RGB ============================= **/
 
@@ -156,6 +162,7 @@ typedef struct s_wall
 ** so_path   : chemin de la texture Sud
 ** we_path   : chemin de la texture Ouest
 ** ea_path   : chemin de la texture Est
+** do_path   : chemin de la texture Porte
 */
 
 typedef struct s_map
@@ -184,54 +191,15 @@ typedef struct s_map
 
 typedef struct s_texture
 {
-	void	*img_ptr;
-	char	*addr;
-	int		width;
-	int		height;
-	int		line_length;
-	int		endian;
-	int		bpp;
+	void			*img_ptr;
+	char			*addr;
+	t_texture_id	id;
+	int				width;
+	int				height;
+	int				line_length;
+	int				endian;
+	int				bpp;
 }	t_texture;
-
-/** ================================= DDA ================================= **/
-
-/*
-** ray_dir       : direction du rayon
-** map_x/y       : case actuellement traversée
-**
-** side_dist_x/y : distance jusqu'à la prochaine frontière
-** delta_dist_x/y: distance entre deux frontières successives
-**
-** step_x/y      : direction de déplacement dans la grille
-** side          : côté du mur touché
-**                 0 = mur vertical
-**                 1 = mur horizontal --> Ici est-ce qu'il n'y aurait pas besoin
-					de rajouter 2 et 3 pour preciser si on tape un mur cote
-					nord sud est ou ouest ?
-					Il me semble que les murs ont 4 cotes
-*/
-
-/* typedef struct s_ray
-{
-	t_vector	ray;
-	float		theta;
-	float		pente;
-	float		origine;
-} */
-
-typedef struct s_dda
-{
-	t_vector	ray_dir;
-	int			map_x;
-	int			map_y;
-	float		side_dist_x;
-	float		side_dist_y;
-	float		delta_dist_x;
-	float		delta_dist_y;
-	int			step_x;
-	int			step_y;
-	int			side;
-}	t_dda;
 
 /** ============================== DONNÉES MLX ============================= **/
 
@@ -308,10 +276,19 @@ typedef struct s_game
 
 // initialisation
 t_game			*init_cub3d(void);
+int				init_mlx_failed(t_game *cub3d);
+int				load_textures(t_game *cub3d);
+void			init_player(t_game *cub3d);
+int				game_loop(t_game *cub3d);
 
 // debug
 void			print_etat(t_game cub3d);
 void			print_map(char **map);
+
+//gestion erreurs et sorties
+void			send_message(char *msg, char *arg);
+void			close_cub3d(t_game	*cub3d, int code);
+void			free_map_list(t_map_node *map_list);
 
 // ft_fonctions
 void			ft_bzero(void *s, size_t n);
@@ -324,80 +301,71 @@ char			*ft_substr2(const char *line, int start, int end);
 char			*ft_strstr(const char *texte, const char *str);
 void			*ft_calloc(size_t count, size_t size);
 
-// verificateurs
+// verificateurs map
 int				bad_extension(char *path, char *extension);
 int				map_not_closed(char **map);
-int				verificator_failed(t_game *cub3d);
 int				bad_player_count(char **map);
-//int				line_map_valid(char *line);
+int				verificator_failed(t_game *cub3d);
 int				line_map_valid(char *line, char *do_path);
-
-void			send_message(char *msg, char *arg);
 int				texture_ready(t_map *map);
 int				color_ready(t_color *plafond, t_color *sol);
 int				is_empty_line(char *line);
-
-// events
-int				key_presser(int val, void *param);
-int				key_releaser(int val, void *param);
-int				mouse_move(int x, int y, void *param);
-
-void			close_cub3d(t_game	*cub3d, int code);
 int				ligne_max(char **map);
 int				get_color(t_game *cub3d, char *line);
 int				get_texture_path(t_game *cub3d, char *line);
 int				ceiling_ready(t_color *plafond);
 int				floor_ready(t_color *sol);
 void			remove_newline(char *line);
-
 int				bad_file(t_game *cub3d, char *path);
 void			manage_line(t_game *cub3d, char *line, int fd);
+int				is_texture_line(char *line);
+int				is_color_line(char *line);
+char			*pad_map_line(char *line, int max_width);
 
 t_map_node		*new_map_node(char *line);
 void			add_map_line(t_map_node **map_list, char *line);
 int				map_list_size(t_map_node *map_list);
 char			**map_list_to_grid(t_map_node *map_list, int max_width);
-void			free_map_list(t_map_node *map_list);
 
-char			*pad_map_line(char *line, int max_width);
-
-int				is_texture_line(char *line);
-int				is_color_line(char *line);
-int				is_door_line(char *line);
-
-/* ============================= RAYCASTING ============================== */
-
-void			render_frame(t_game *cub3d);
-void			cast_ray(t_game *cub3d, int x);
-void			init_dda(t_game *cub3d, t_dda *dda, int x);
-int				run_dda(t_game *cub3d, t_dda *dda);
-float			get_wall_distance(t_game *cub3d, t_dda *dda);
-void			get_wall_limits(t_wall *wall, float distance);
-int				get_texture_id(t_dda *dda);
-int				get_texture_x(t_game *cub3d, t_dda *dda, float distance, \
-int texture_id);
-
-/* ============================== DRAWING ================================ */
-
-void			put_pixel(t_game *cub3d, int x, int y, int color);
-int				get_texture_pixel(t_texture *texture, int x, int y);
-int				rgb_to_int(t_color color);
-void			draw_background(t_game *cub3d);
-void			draw_wall(t_game *cub3d, int x, t_wall *wall, \
-int texture_id);
-
-int				init_mlx_failed(t_game *cub3d);
-int				load_textures_failed(t_game *cub3d);
-void			init_player(t_game *cub3d);
-
+// events
+int				key_presser(int val, void *param);
+int				key_releaser(int val, void *param);
+int				mouse_move(int x, int y, void *param);
 void			move_forward(t_game *cub3d);
 void			move_backward(t_game *cub3d);
 void			move_left(t_game *cub3d);
 void			move_right(t_game *cub3d);
-
 void			rotate_left(t_game *cub3d);
 void			rotate_right(t_game *cub3d);
 
-int				game_loop(t_game *cub3d);
+/* ============================= RAYCASTING ============================== */
+
+void			rendu(t_game *cub3d);
+void			reloc(t_vector *current, t_vector *new,
+					t_game *cub, t_vector ray);
+void			jack_on_the_magic_bean(t_vector *current,
+					t_vector *new, t_game *cub, t_vector ray);
+void			run_forrest(t_vector *current,
+					t_vector *new, t_game *cub, t_vector ray);
+void			init_ray(t_vector *current, t_vector *new,
+					t_game *cub, t_vector ray);
+int				get_brique(int brique, int h);
+int				get_col(t_vector impact, t_texture tex);
+int				hauteur_mur(t_game *cub, t_vector impact);
+int				is_wall(t_vector *current, t_game *cub, t_vector *ray);
+
+/* ============================== DRAWING ================================ */
+
+void			remplir_fond(t_game *cub3d);
+void			store_pixel(t_game *cub3d, int x, int y, int color);
+void			put_column(t_texture tex, t_vector impact, int n, t_game *cub);
+
+/* ======================= UTILS DE CALCUL ET RENDU ======================= */
+
+float			y_moins_b_sur_a(t_vector *new, t_game *cub, t_vector ray);
+void			matrix(t_vector *ray, t_game *cub, int n);
+float			valeur_absolue(float n);
+unsigned int	partie_entiere(float n);
+int				is_pos_int(float x);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 08:27:17 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/17 14:01:05 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/18 13:49:10 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@ static int	load_texture(t_game *cub3d, t_texture *texture,
 	return (1);
 }
 
-int	load_textures(t_game *cub3d)
+int	load_textures_failed(t_game *cub3d)
 {
 	if (!load_texture(cub3d, &cub3d->tex[TEX_NO],
 			cub3d->map.no_path, TEX_NO))
-		return (send_message("Invalid TEX_NO !", NULL), 0);
+		return (send_message("Invalid TEX_NO !", NULL), 1);
 	if (!load_texture(cub3d, &cub3d->tex[TEX_SO],
 			cub3d->map.so_path, TEX_SO))
-		return (send_message("Invalid TEX_SO !", NULL), 0);
+		return (send_message("Invalid TEX_SO !", NULL), 1);
 	if (!load_texture(cub3d, &cub3d->tex[TEX_WE],
 			cub3d->map.we_path, TEX_WE))
-		return (send_message("Invalid TEX_WE !", NULL), 0);
+		return (send_message("Invalid TEX_WE !", NULL), 1);
 	if (!load_texture(cub3d, &cub3d->tex[TEX_EA],
 			cub3d->map.ea_path, TEX_EA))
-		return (send_message("Invalid TEX_EA !", NULL), 0);
+		return (send_message("Invalid TEX_EA !", NULL), 1);
 	if (cub3d->map.do_path)
 	{
 		if (!load_texture(cub3d, &cub3d->tex[TEX_DO],
 				cub3d->map.do_path, TEX_DO))
-			return (send_message("Invalid TEX_DO !", NULL), 0);
+			return (send_message("Invalid TEX_DO !", NULL), 1);
 	}
-	return (1);
+	return (0);
 }

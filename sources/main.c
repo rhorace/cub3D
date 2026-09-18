@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/17 18:35:02 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/18 13:49:54 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 		return (close_cub3d(cub3d, 1), 1);
 	if (init_mlx_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
-	if (!load_textures(cub3d))
+	if (load_textures_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
 	init_player(cub3d);
 	rendu(cub3d);

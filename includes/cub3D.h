@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/17 18:32:19 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/18 13:49:38 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,7 +280,7 @@ typedef struct s_game
 // initialisation
 t_game			*init_cub3d(void);
 int				init_mlx_failed(t_game *cub3d);
-int				load_textures(t_game *cub3d);
+int				load_textures_failed(t_game *cub3d);
 void			init_player(t_game *cub3d);
 int				game_loop(t_game *cub3d);
 

@@ -35,6 +35,10 @@
 # define ROT_SPEED 0.01
 # define MOUSE_SENSITIVITY 0.002
 
+# define MINIMAP_TILE 8
+# define MINIMAP_X 20
+# define MINIMAP_Y 20
+
 /** =============================== CONSTANTES ============================= **/
 
 /*
@@ -366,5 +370,10 @@ void			matrix(t_vector *ray, t_game *cub, int n);
 float			valeur_absolue(float n);
 unsigned int	partie_entiere(float n);
 int				is_pos_int(float x);
+
+// MINIMAP
+void			draw_minimap(t_game *cub3d);
+void			draw_minimap_square(t_game *cub3d, int x, int y, int color);
+void			draw_minimap_player(t_game *cub3d, int x, int y);
 
 #endif

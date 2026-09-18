@@ -35,6 +35,8 @@ SRCS    := sources/main.c \
 	sources/init/init_cub3d.c \
 	sources/init/init_mlx.c \
 	sources/init/init_player.c \
+	sources/minimap/draw_minimap.c \
+	sources/minimap/minimap_utils.c \
 	sources/parsing/get_texture_path.c \
 	sources/parsing/get_the_color.c \
 	sources/parsing/manage_line.c \

@@ -76,6 +76,7 @@ void	rendu(t_game *cub3d)
 		hit_the_wall_jack(cub3d, x);
 		x++;
 	}
+	draw_minimap(cub3d);
 	mlx_put_image_to_window(cub3d->mlx.graphics, cub3d->mlx.window,
 		cub3d->mlx.image, 0, 0);
 }

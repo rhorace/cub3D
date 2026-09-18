@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/18 13:49:38 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/18 19:33:13 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@
 
 typedef enum e_texture_id
 {
-	TEX_NO = 0,
-	TEX_SO = 1,
-	TEX_WE = 2,
-	TEX_EA = 3,
-	TEX_DO = 4
+	TEX_NO = 1,
+	TEX_SO = 2,
+	TEX_WE = 3,
+	TEX_EA = 4,
+	TEX_DO = 5
 }	t_texture_id;
 
 /** ============================== VECTEUR 2D ============================== **/
@@ -272,7 +272,7 @@ typedef struct s_game
 	t_map_node	*map_list;
 	t_map		map;
 	t_mlx		mlx;
-	t_texture	tex[4];
+	t_texture	tex[5];
 	t_color		floor;
 	t_color		ceiling;
 }	t_game;
@@ -340,6 +340,10 @@ void			move_left(t_game *cub3d);
 void			move_right(t_game *cub3d);
 void			rotate_left(t_game *cub3d);
 void			rotate_right(t_game *cub3d);
+int				worlds_collide(t_vector *current, t_game *cub,
+					t_vector *move_dir);
+int				ceiling_above(float x);
+int				mattress_under(float x);
 
 /* ============================= RAYCASTING ============================== */
 
@@ -355,7 +359,7 @@ void			init_ray(t_vector *current, t_vector *new,
 int				get_brique(int brique, int h);
 int				get_col(t_vector impact, t_texture tex);
 int				hauteur_mur(t_game *cub, t_vector impact);
-int				is_wall(t_vector *current, t_game *cub, t_vector *ray);
+int				is_wall_or_door(t_vector *current, t_game *cub, t_vector *ray);
 
 /* ============================== DRAWING ================================ */
 

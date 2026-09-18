@@ -6,7 +6,7 @@
 #    By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/09/11 17:28:20 by sohollar         ###   ########.fr        #
+#    Updated: 2026/09/18 17:28:45 by sohollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,8 @@ SRCS    := sources/main.c \
 	sources/debug/print_info.c \
 	sources/events/game_loop.c \
 	sources/events/movement.c \
+	sources/events/collisions.c \
+	sources/events/anticipate_collision.c \
 	sources/events/rotation.c \
 	sources/get_next_line/get_next_line.c \
 	sources/get_next_line/gnl_utils.c \
@@ -54,7 +56,7 @@ SRCS    := sources/main.c \
 	sources/utils/utils_2.c \
 	sources/utils/utils_maths.c \
 	sources/utils/utils.c
- 	
+
 #	sources/graphics/pixel.c \
 # 	sources/graphics/background.c \
 # 	sources/graphics/draw_wall.c \

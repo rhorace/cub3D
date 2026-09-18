@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 08:25:56 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/17 14:28:39 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/18 18:48:48 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	game_loop(t_game *cub3d)
 		rotate_left(cub3d);
 	if (cub3d->player.key_rot_right)
 		rotate_right(cub3d);
-	//render_frame(cub3d);
 	rendu(cub3d);
 	return (0);
 }
@@ -35,7 +34,6 @@ int	key_presser(int val, void *param)
 {
 	t_game	*cub3d;
 
-	printf("key_presser\n");
 	cub3d = (t_game *)param;
 	if (val == XK_Escape)
 		close_cub3d(cub3d, 0);
@@ -80,12 +78,13 @@ int	mouse_move(int x, int y, void *param)
 	int		delta_x;
 
 	(void)y;
+	printf("mouse_is_moving\n");
 	cub3d = (t_game *)param;
-	if (cub3d->mlx.mouse_x == -1)
+/* 	if (cub3d->mlx.mouse_x == -1)
 	{
 		cub3d->mlx.mouse_x = x;
 		return (0);
-	}
+	} */
 	delta_x = x - cub3d->mlx.mouse_x;
 	cub3d->mlx.mouse_x = x;
 	if (delta_x < 0)

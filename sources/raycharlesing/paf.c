@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 15:25:38 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/14 17:10:19 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/18 19:30:59 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ static int	haut(t_vector *current, t_game *cub, t_vector *ray)
 		{
 			if (cub->map.grid[(int)(current->y)]
 				[partie_entiere(current->x)] == '1')
-			{
-				ray->y = current->y;
-				ray->x = partie_entiere(current->x);
-				return (1);
-			}
+				return (TEX_NO);
+			else if (cub->map.grid[(int)(current->y)]
+				[partie_entiere(current->x)] == 'D')
+				return (TEX_DO);
 		}
 	}
 	return (0);
@@ -38,11 +37,10 @@ static int	bas(t_vector *current, t_game *cub, t_vector *ray)
 		{
 			if (cub->map.grid[(int)(current->y) - 1]
 				[partie_entiere(current->x)] == '1')
-			{
-				ray->x = partie_entiere(current->x);
-				ray->y = current->y - 1;
-				return (2);
-			}
+				return (TEX_SO);
+			else if (cub->map.grid[(int)(current->y) - 1]
+				[partie_entiere(current->x)] == 'D')
+				return (TEX_DO);
 		}
 	}
 	return (0);
@@ -56,11 +54,10 @@ static int	gauche(t_vector *current, t_game *cub, t_vector *ray)
 		{
 			if (cub->map.grid[partie_entiere(current->y)]
 				[(int)(current->x)] == '1')
-			{
-				ray->x = current->x;
-				ray->y = partie_entiere(current->y);
-				return (3);
-			}
+				return (TEX_WE);
+			else if (cub->map.grid[partie_entiere(current->y)]
+				[(int)(current->x)] == 'D')
+				return (TEX_DO);
 		}
 	}
 	return (0);
@@ -74,25 +71,24 @@ static int	droite(t_vector *current, t_game *cub, t_vector *ray)
 		{
 			if (cub->map.grid[partie_entiere(current->y)]
 				[(int)(current->x) - 1] == '1')
-			{
-				ray->y = partie_entiere(current->y);
-				ray->x = current->x - 1;
-				return (4);
-			}
+				return (TEX_EA);
+			else if (cub->map.grid[partie_entiere(current->y)]
+				[(int)(current->x) - 1] == 'D')
+				return (TEX_DO);
 		}
 	}
 	return (0);
 }
 
-int	is_wall(t_vector *current, t_game *cub, t_vector *ray)
+int	is_wall_or_door(t_vector *current, t_game *cub, t_vector *ray)
 {
 	if (gauche(current, cub, ray) != 0)
-		return (3);
+		return (gauche(current, cub, ray));
 	if (droite(current, cub, ray) != 0)
-		return (4);
+		return (droite(current, cub, ray));
 	if (haut(current, cub, ray) != 0)
-		return (1);
+		return (haut(current, cub, ray));
 	if (bas(current, cub, ray) != 0)
-		return (2);
+		return (bas(current, cub, ray));
 	return (0);
 }

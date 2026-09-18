@@ -9,8 +9,11 @@ the_verificator l.45 : vérifiez si le check "map.height < 3" est utile : si seu
 
 verifier utilite de plane
 
-Sophie : collisions, textures, tenir compte des portes
+Sophie : collisions, --> numeriquement, c'est bon. Visuellement, c'est pas bon. Je comprends pas pourquoi mon personnage s'arrete aux bonnes coordonnees mais visuellement il traverse le mur. A reflechir.
+textures --> j'ai GIMP, c'est un debut
+tenir compte des portes --> "normalement" c'est bon de mon cote (mais vraiment pas sur parce qu'il faut adapter la partie parser pour que je puisse tester --> Je te le rajoute)
 
 Rodrigue : 	
 		✅ minimap
 		preparer le code pour accueillir plein de textures pour les animations
+		adapter parser pour tenir compte des portes

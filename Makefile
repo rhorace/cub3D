@@ -77,11 +77,7 @@ BONUS_SRCS	:= \
 	sources/main_bonus.c \
 	bonus/parsing/is_texture_line_bonus.c \
 	bonus/raycharlesing/rendu_bonus.c \
-	$(COMMON_SRCS) \
-	bonus/door/door_utils.c \
-	bonus/door/free_doors.c \
-	bonus/door/init_doors.c \
-	bonus/door/interact_door.c \
+	$(COMMON_SRCS) \	
 	bonus/minimap/draw_minimap.c \
 	bonus/minimap/minimap_utils.c
 

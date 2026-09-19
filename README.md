@@ -3,6 +3,9 @@
 ## Description
 
 ## Usage
+    make
+    
+    make bonus
 
 ## Resources
 

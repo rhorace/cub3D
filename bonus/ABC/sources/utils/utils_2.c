@@ -13,6 +13,25 @@
 #include "get_next_line.h"
 #include "cub3D.h"
 
+int	is_texture_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if ((line[i] == 'N' && line[i + 1] == 'O')
+		|| (line[i] == 'S' && line[i + 1] == 'O')
+		|| (line[i] == 'W' && line[i + 1] == 'E')
+		|| (line[i] == 'D' && line[i + 1] == 'O')
+		|| (line[i] == 'E' && line[i + 1] == 'A'))
+	{
+		if (line[i + 2] == ' ' || line[i + 2] == '\t')
+			return (1);
+	}
+	return (0);
+}
+
 int	is_color_line(char *line)
 {
 	int	i;

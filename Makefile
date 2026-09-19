@@ -10,16 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME    := cub3D
+NAME		:= cub3D
 
-CC      := cc
-CFLAGS  := -g -Wall -Wextra -Werror -Iincludes -Iminilibx-linux
+CC			:= cc
+CFLAGS		:= -g -Wall -Wextra -Werror
+INCLUDES	:= -Iincludes -Iminilibx-linux
 
-MLX_DIR := minilibx-linux
-MLX_A   := $(MLX_DIR)/libmlx.a
-MLX_LNK := -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+MLX_DIR		:= minilibx-linux
+MLX_A		:= $(MLX_DIR)/libmlx.a
+MLX_LNK		:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
-SRCS    := sources/main.c \
+# ============================================================================ #
+#                              COMMON SOURCES                                  #
+# ============================================================================ #
+
+COMMON_SRCS	:= \
 	sources/checks/check_extension.c \
 	sources/checks/check_map_closed.c \
 	sources/checks/check_player_count.c \
@@ -37,8 +42,6 @@ SRCS    := sources/main.c \
 	sources/init/init_cub3d.c \
 	sources/init/init_mlx.c \
 	sources/init/init_player.c \
-	sources/minimap/draw_minimap.c \
-	sources/minimap/minimap_utils.c \
 	sources/parsing/get_texture_path.c \
 	sources/parsing/get_the_color.c \
 	sources/parsing/manage_line.c \
@@ -49,7 +52,6 @@ SRCS    := sources/main.c \
 	sources/raycharlesing/affichage_utils.c \
 	sources/raycharlesing/mur.c \
 	sources/raycharlesing/paf.c \
-	sources/raycharlesing/rendu.c \
 	sources/raycharlesing/tarzan_utils.c \
 	sources/utils/ft_utils_2.c \
 	sources/utils/ft_utils.c \
@@ -57,25 +59,63 @@ SRCS    := sources/main.c \
 	sources/utils/utils_maths.c \
 	sources/utils/utils.c
 
-#	sources/graphics/pixel.c \
-# 	sources/graphics/background.c \
-# 	sources/graphics/draw_wall.c \
+# ============================================================================ #
+#                             MANDATORY SOURCES                                #
+# ============================================================================ #
 
-OBJS    := $(SRCS:.c=.o)
+MANDATORY_SRCS	:= \
+	sources/main.c \
+	sources/parsing/is_texture_line.c \
+	sources/raycharlesing/rendu.c \
+	$(COMMON_SRCS)
+
+# ============================================================================ #
+#                               BONUS SOURCES                                  #
+# ============================================================================ #
+
+BONUS_SRCS	:= \
+	sources/main_bonus.c \
+	bonus/parsing/is_texture_line_bonus.c \
+	bonus/raycharlesing/rendu_bonus.c \
+	$(COMMON_SRCS) \
+	bonus/door/door_utils.c \
+	bonus/door/free_doors.c \
+	bonus/door/init_doors.c \
+	bonus/door/interact_door.c \
+	bonus/minimap/draw_minimap.c \
+	bonus/minimap/minimap_utils.c
+
+# ============================================================================ #
+#                                  OBJECTS                                     #
+# ============================================================================ #
+
+MANDATORY_OBJS	:= $(MANDATORY_SRCS:.c=.o)
+BONUS_OBJS		:= $(BONUS_SRCS:.c=.bonus.o)
+
+# ============================================================================ #
+#                                  RULES                                       #
+# ============================================================================ #
 
 all: $(NAME)
 
-$(NAME): $(MLX_A) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MLX_LNK) -o $(NAME)
+$(NAME): $(MLX_A) $(MANDATORY_OBJS)
+	$(CC) $(CFLAGS) $(MANDATORY_OBJS) $(MLX_LNK) -o $(NAME)
+
+bonus: $(MLX_A) $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) $(MLX_LNK) -o $(NAME)
 
 $(MLX_A):
 	$(MAKE) -C $(MLX_DIR)
 
 %.o: %.c includes/cub3D.h
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+%.bonus.o: %.c includes/cub3D.h
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(MANDATORY_OBJS)
+	rm -f $(BONUS_OBJS)
 	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
@@ -83,4 +123,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re

@@ -39,6 +39,11 @@
 # define MINIMAP_X 20
 # define MINIMAP_Y 20
 
+# define DOOR_FRAMES 5
+# define DOOR_CLOSED 0
+# define DOOR_OPENING 1
+# define DOOR_OPEN 2
+
 /** =============================== CONSTANTES ============================= **/
 
 /*
@@ -253,6 +258,18 @@ typedef struct s_map_node
 	struct s_map_node	*next;
 }	t_map_node;
 
+
+// LES PORTES : chaque D aura son propre t_door
+typedef struct s_door
+{
+	int				x;
+	int				y;
+	int				state;
+	int				frame;
+	int				timer;
+	struct s_door	*next;
+}	t_door;
+
 /** =============================== JEU ==================================== **/
 
 /*
@@ -273,6 +290,8 @@ typedef struct s_game
 	t_map		map;
 	t_mlx		mlx;
 	t_texture	tex[5];
+	t_texture	door_tex[DOOR_FRAMES];
+	t_door		*doors;
 	t_color		floor;
 	t_color		ceiling;
 }	t_game;
@@ -379,5 +398,14 @@ int				is_pos_int(float x);
 void			draw_minimap(t_game *cub3d);
 void			draw_minimap_square(t_game *cub3d, int x, int y, int color);
 void			draw_minimap_player(t_game *cub3d, int x, int y);
+
+//DOOR
+int				init_doors(t_game *cub3d);
+t_door			*get_door(t_game *cub3d, int x, int y);
+void			interact_door(t_game *cub3d);
+void			update_door(t_game *cub3d, t_door *door);
+void			update_doors(t_game *cub3d);
+void			destroy_doors(t_game *cub3d);
+void			destroy_door_textures(t_game *cub3d);
 
 #endif

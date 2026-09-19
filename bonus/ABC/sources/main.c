@@ -27,6 +27,7 @@ static void	init_hooks(t_game *cub3d)
 		(void *)key_presser, cub3d);
 	mlx_hook(cub3d->mlx.window, KeyRelease, KeyReleaseMask,
 		(void *)key_releaser, cub3d);
+	mlx_hook(cub3d->mlx.window, 6, 1L << 6, (void *)mouse_move, cub3d);
 	mlx_hook(cub3d->mlx.window, 17, 0, (void *)close_win, cub3d);
 	printf("hooks initiated\n");
 }

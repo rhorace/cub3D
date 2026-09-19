@@ -27,6 +27,7 @@ cub3d.ceiling.b);
 	printf("t_map ea_path : %s\n", cub3d.map.ea_path);
 	printf("path_ready: %d\n", texture_ready(&cub3d.map));
 	printf("color_ready: %d\n", color_ready(&cub3d.ceiling, &cub3d.floor));
+	printf("color_ready: %d\n", color_ready(&cub3d.ceiling, &cub3d.floor));
 	printf("%s--- end of the header ---%s\n", RED, RESET);
 }
 

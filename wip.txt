@@ -16,4 +16,4 @@ tenir compte des portes --> "normalement" c'est bon de mon cote (mais vraiment p
 Rodrigue : 	
 		✅ minimap
 		preparer le code pour accueillir plein de textures pour les animations
-		adapter parser pour tenir compte des portes
+		✅ adapter parser pour tenir compte des portes

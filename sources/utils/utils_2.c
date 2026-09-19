@@ -23,6 +23,7 @@ int	is_texture_line(char *line)
 	if ((line[i] == 'N' && line[i + 1] == 'O')
 		|| (line[i] == 'S' && line[i + 1] == 'O')
 		|| (line[i] == 'W' && line[i + 1] == 'E')
+		|| (line[i] == 'D' && line[i + 1] == 'O')
 		|| (line[i] == 'E' && line[i + 1] == 'A'))
 	{
 		if (line[i + 2] == ' ' || line[i + 2] == '\t')
@@ -66,7 +67,7 @@ int	line_map_valid(char *line, char *do_path)
 	while (line[i])
 	{
 		if (line[i] == 'D' && do_path == NULL)
-			return (0);
+			return (send_message("do_path is empty", NULL), 0);
 		if (line[i] != '0' && line[i] != '1' && line[i] != ' '
 			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'E'
 			&& line[i] != 'W' && line[i] != 'D')

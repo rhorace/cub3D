@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+         #
+#    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/09/18 17:28:45 by sohollar         ###   ########.fr        #
+#    Updated: 2026/09/21 09:49:21 by rhorace          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ BONUS_SRCS	:= \
 	sources/main_bonus.c \
 	bonus/parsing/is_texture_line_bonus.c \
 	bonus/raycharlesing/rendu_bonus.c \
-	$(COMMON_SRCS) \	
+	$(COMMON_SRCS) \
 	bonus/minimap/draw_minimap.c \
 	bonus/minimap/minimap_utils.c
 

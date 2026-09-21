@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mur.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
+/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 16:11:56 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/14 20:35:30 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/21 17:59:37 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,15 @@ int    get_col(t_vector impact, t_texture tex)
 		arrondi = 1;
 	return (partie_entiere(j) + arrondi);
 }*/
-int    get_brique(int brique, int h)
+int	get_brique(int brique, int h)
 {
-    float    j;
-    int        arrondi;
+	float	j;
+	int		arrondi;
 
-    j = (BLOCK * brique) / h;
-    if (j - partie_entiere(j) < 0.5 || j > BLOCK - 1)
-        arrondi = 0;
-    else
-        arrondi = 1;
-    return (partie_entiere(j) + arrondi);
+	j = (BLOCK * brique) / h;
+	if (j - partie_entiere(j) < 0.5 || j > BLOCK - 1)
+		arrondi = 0;
+	else
+		arrondi = 1;
+	return (partie_entiere(j) + arrondi);
 }

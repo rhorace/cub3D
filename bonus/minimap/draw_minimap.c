@@ -6,7 +6,7 @@
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 18:02:17 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/18 02:26:52 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/21 17:54:08 by rhorace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	get_tile_color(char tile)
 	if (tile == 'E' || tile == 'W')
 		return (0xEEEEEE);
 	if (tile == 'D')
-		return (0x888888);
+		return (0x0000FF);
 	return (-1);
 }
 

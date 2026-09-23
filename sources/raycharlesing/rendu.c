@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 18:27:50 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/18 19:31:38 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/23 19:52:25 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,21 @@ static void	hit_the_wall_jack(t_game *cub, int n)
 	t_vector	ray;
 	t_vector	current;
 	t_vector	new;
-	int			tex;
+	t_wall_hit	wall;
 
 	matrix(&ray, cub, n);
 	current.y = 0;
-	tex = 0;
-	while (!tex)
+	wall.tex = 0;
+	wall.side = 0;
+	while (!wall.side)
 	{
 		tarzan(&current, &new, cub, ray);
 		current.x = new.x;
 		current.y = new.y;
-		tex = is_wall_or_door(&current, cub, &ray);
+		wall = is_wall_or_door(&current, cub, &ray);
 	}
-	put_column(cub->tex[tex], current, n, cub);
+	//put_column(cub->tex[tex], current, n, cub);
+	put_column(&wall, current, n, cub);
 }
 
 void	rendu(t_game *cub3d)

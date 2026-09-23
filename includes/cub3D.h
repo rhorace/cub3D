@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/18 19:33:13 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/23 19:58:18 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,20 @@ typedef enum e_texture_id
 	TEX_EA = 4,
 	TEX_DO = 5
 }	t_texture_id;
+
+typedef enum s_side_id
+{
+	SI_NO = 1,
+	SI_SO = 2,
+	SI_WE = 3,
+	SI_EA = 4
+}	t_side_id;
+
+typedef struct s_wall_hit
+{
+	t_texture_id	tex;
+	t_side_id		side;
+}	t_wall_hit;
 
 /** ============================== VECTEUR 2D ============================== **/
 
@@ -201,7 +215,7 @@ typedef struct s_texture
 {
 	void			*img_ptr;
 	char			*addr;
-	t_texture_id	id;
+//	t_texture_id	id;
 	int				width;
 	int				height;
 	int				line_length;
@@ -257,7 +271,6 @@ typedef struct s_map_node
 	char				*line;
 	struct s_map_node	*next;
 }	t_map_node;
-
 
 // LES PORTES : chaque D aura son propre t_door
 typedef struct s_door
@@ -376,15 +389,16 @@ void			run_forrest(t_vector *current,
 void			init_ray(t_vector *current, t_vector *new,
 					t_game *cub, t_vector ray);
 int				get_brique(int brique, int h);
-int				get_col(t_vector impact, t_texture tex);
+int				get_col(t_vector impact, t_wall_hit *wall);
 int				hauteur_mur(t_game *cub, t_vector impact);
-int				is_wall_or_door(t_vector *current, t_game *cub, t_vector *ray);
+t_wall_hit		is_wall_or_door(t_vector *current, t_game *cub, t_vector *ray);
 
 /* ============================== DRAWING ================================ */
 
 void			remplir_fond(t_game *cub3d);
 void			store_pixel(t_game *cub3d, int x, int y, int color);
-void			put_column(t_texture tex, t_vector impact, int n, t_game *cub);
+void			put_column(t_wall_hit *wall, t_vector current,
+					int n, t_game *cub);
 
 /* ======================= UTILS DE CALCUL ET RENDU ======================= */
 

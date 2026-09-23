@@ -38,6 +38,7 @@
 # define MINIMAP_TILE 8
 # define MINIMAP_X 20
 # define MINIMAP_Y 20
+# define MINIMAP_DIR_LEN 15
 
 # define DOOR_FRAMES 5
 # define DOOR_CLOSED 0
@@ -412,6 +413,7 @@ int				is_pos_int(float x);
 void			draw_minimap(t_game *cub3d);
 void			draw_minimap_square(t_game *cub3d, int x, int y, int color);
 void			draw_minimap_player(t_game *cub3d, int x, int y);
+void			draw_line(t_game *cub3d, t_vector start, t_vector end);
 
 //DOOR
 int				init_doors(t_game *cub3d);

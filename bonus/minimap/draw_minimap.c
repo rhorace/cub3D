@@ -12,6 +12,34 @@
 
 #include "cub3D.h"
 
+static void	put_pixel(t_game *cub3d, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
+		return ;
+	dst = cub3d->mlx.image_add
+		+ (y * cub3d->mlx.line_length
+			+ x * (cub3d->mlx.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+static void	draw_player_direction(t_game *cub3d)
+{
+	t_vector	start;
+	t_vector	end;
+
+	start.x = MINIMAP_X
+		+ cub3d->player.pos.x * MINIMAP_TILE;
+	start.y = MINIMAP_Y
+		+ cub3d->player.pos.y * MINIMAP_TILE;
+	end.x = start.x
+		+ cub3d->player.dir.x * MINIMAP_DIR_LEN;
+	end.y = start.y
+		+ cub3d->player.dir.y * MINIMAP_DIR_LEN;
+	draw_line(cub3d, start, end);
+}
+
 static int	get_tile_color(char tile)
 {
 	if (tile == '1')
@@ -41,15 +69,22 @@ static void	draw_player(t_game *cub3d)
 {
 	int	x;
 	int	y;
+	int	px;
+	int	py;
 
-	x = MINIMAP_X
-		+ (int)(cub3d->player.pos.x * MINIMAP_TILE);
-	y = MINIMAP_Y
-		+ (int)(cub3d->player.pos.y * MINIMAP_TILE);
-	draw_minimap_square(cub3d,
-		(x - MINIMAP_X) / MINIMAP_TILE,
-		(y - MINIMAP_Y) / MINIMAP_TILE,
-		0xFF0000);
+	x = MINIMAP_X + cub3d->player.pos.x * MINIMAP_TILE;
+	y = MINIMAP_Y + cub3d->player.pos.y * MINIMAP_TILE;
+	py = -2;
+	while (py <= 2)
+	{
+		px = -2;
+		while (px <= 2)
+		{
+			put_pixel(cub3d, x + px, y + py, 0xFF0000);
+			px++;
+		}
+		py++;
+	}
 }
 
 void	draw_minimap(t_game *cub3d)
@@ -68,5 +103,6 @@ void	draw_minimap(t_game *cub3d)
 		}
 		y++;
 	}
+	draw_player_direction(cub3d);
 	draw_player(cub3d);
 }

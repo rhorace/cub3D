@@ -24,6 +24,27 @@ static void	put_pixel(t_game *cub3d, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	draw_line(t_game *cub3d, t_vector start, t_vector end)
+{
+	t_vector	delta;
+	t_vector	pos;
+	int			steps;
+	int			i;
+
+	delta.x = end.x - start.x;
+	delta.y = end.y - start.y;
+	steps = fmax(fabs(delta.x), fabs(delta.y));
+	pos = start;
+	i = 0;
+	while (i <= steps)
+	{
+		put_pixel(cub3d, (int)pos.x, (int)pos.y, 0xFF0000);
+		pos.x += delta.x / steps;
+		pos.y += delta.y / steps;
+		i++;
+	}
+}
+
 void	draw_minimap_square(t_game *cub3d, int x, int y, int color)
 {
 	int	px;

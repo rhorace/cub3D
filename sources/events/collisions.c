@@ -21,6 +21,11 @@ static int	collision_haut(t_vector *current, t_game *cub, t_vector *move_dir)
 			return (printf("collision par le haut\nx : %.2f\ny : %.2f\n",\
 				current->x, current->y), printf("case : %d, %d\n",\
 				partie_entiere(current->x), (int)(current->y) + 1), 1);
+		if (cub->map.grid[(int)(current->y) + 1]
+			[partie_entiere(current->x)] == 'D')
+			return (printf("Porte fermeé par le haut\nx : %.2f\ny : %.2f\n",\
+				current->x, current->y), printf("case : %d, %d\n",\
+				partie_entiere(current->x), (int)(current->y) + 1), 1);
 	}
 	return (0);
 }
@@ -32,6 +37,11 @@ static int	collision_bas(t_vector *current, t_game *cub, t_vector *move_dir)
 		if (cub->map.grid[(int)(current->y) - 1]
 			[partie_entiere(current->x)] == '1')
 			return (printf("collision par le bas\nx : %.2f\ny : %.2f\n",\
+				current->x, current->y), printf("case : %d, %d\n",\
+				partie_entiere(current->x), (int)(current->y) - 1), 2);
+		if (cub->map.grid[(int)(current->y) - 1]
+			[partie_entiere(current->x)] == 'D')
+			return (printf("Porte fermeé par le bas\nx : %.2f\ny : %.2f\n",\
 				current->x, current->y), printf("case : %d, %d\n",\
 				partie_entiere(current->x), (int)(current->y) - 1), 2);
 	}
@@ -47,6 +57,11 @@ static int	collision_gauche(t_vector *current, t_game *cub, t_vector *move_dir)
 			return (printf("collision par la gauche\nx : %.2f\ny : %.2f\n",\
 				current->x, current->y), printf("case : %d, %d\n",\
 				(int)(current->x) + 1, partie_entiere(current->y)), 3);
+		if (cub->map.grid[partie_entiere(current->y)]
+			[(int)(current->x) + 1] == 'D')
+			return (printf("Porte fermeé par la gauche\nx : %.2f\ny : %.2f\n",\
+				current->x, current->y), printf("case : %d, %d\n",\
+				(int)(current->x) + 1, partie_entiere(current->y)), 3);
 	}
 	return (0);
 }
@@ -58,6 +73,11 @@ static int	collision_droite(t_vector *current, t_game *cub, t_vector *move_dir)
 		if (cub->map.grid[partie_entiere(current->y)]
 			[(int)(current->x) - 1] == '1')
 			return (printf("collision par la droite\n\nx : %.2f\ny : %.2f\n",\
+				current->x, current->y), printf("case : %d, %d\n",\
+				(int)(current->x) - 1, partie_entiere(current->y)), 4);
+		if (cub->map.grid[partie_entiere(current->y)]
+			[(int)(current->x) - 1] == 'D')
+			return (printf("Porte fermeé par la droite\n\nx : %.2f\ny : %.2f\n",\
 				current->x, current->y), printf("case : %d, %d\n",\
 				(int)(current->x) - 1, partie_entiere(current->y)), 4);
 	}

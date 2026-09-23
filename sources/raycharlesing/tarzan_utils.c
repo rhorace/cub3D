@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 17:20:05 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/23 23:17:36 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/23 23:27:01 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	jack_on_the_magic_bean(t_vector *current, t_vector *new,
 {
 	if (current->y == 0)
 	{
-		new->y = cub->player.pos.y + 0.5 * (ray.y / valeur_absolue(ray.y));
+		if (ray.y > 0)
+			new->y = partie_entiere(cub->player.pos.y) + 1;
+		else
+			new->y = partie_entiere(cub->player.pos.y);
 		new->x = cub->player.pos.x;
 	}
 	else
@@ -55,8 +58,11 @@ void	run_forrest(t_vector *current, t_vector *new,
 {
 	if (current->y == 0)
 	{
+		if (ray.x > 0)
+			new->x = partie_entiere(cub->player.pos.x) + 1;
+		else
+			new->x = partie_entiere(cub->player.pos.x);
 		new->y = cub->player.pos.y;
-		new->x = cub->player.pos.x + 0.5 * (ray.x / valeur_absolue(ray.x));
 	}
 	else
 		new->x = current->x + (ray.x / valeur_absolue(ray.x));

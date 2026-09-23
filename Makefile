@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+         #
+#    By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/09/21 09:49:21 by rhorace          ###   ########.fr        #
+#    Updated: 2026/09/23 23:16:48 by sohollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,5 +118,7 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+rebonus : fclean bonus
 
 .PHONY: all bonus clean fclean re

@@ -44,6 +44,7 @@
 # define DOOR_CLOSED 0
 # define DOOR_OPENING 1
 # define DOOR_OPEN 2
+# define DOOR_INTERACT 1.0 //Distance max de la porte pour interagir avec elle
 
 /** =============================== CONSTANTES ============================= **/
 
@@ -342,7 +343,7 @@ int				bad_extension(char *path, char *extension);
 int				map_not_closed(char **map);
 int				bad_player_count(char **map);
 int				verificator_failed(t_game *cub3d);
-int				line_map_valid(char *line, char *do_path);
+int				line_map_valid(char *line);
 int				texture_ready(t_map *map);
 int				color_ready(t_color *plafond, t_color *sol);
 int				is_empty_line(char *line);
@@ -418,6 +419,7 @@ void			draw_line(t_game *cub3d, t_vector start, t_vector end);
 //DOOR
 int				init_doors(t_game *cub3d);
 t_door			*get_door(t_game *cub3d, int x, int y);
+int				load_doors_textures(t_game *cub3d);
 void			interact_door(t_game *cub3d);
 void			update_door(t_game *cub3d, t_door *door);
 void			update_doors(t_game *cub3d);

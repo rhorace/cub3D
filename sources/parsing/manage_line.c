@@ -81,7 +81,7 @@ void	manage_line(t_game *cub3d, char *line, int fd)
 	if (!map_started && is_first_map_line(line))
 	{
 		map_started = 1;
-		if (!line_map_valid(line, cub3d->map.do_path))
+		if (!line_map_valid(line))
 			read_file_close(cub3d, line, fd, "Invalid map line");
 		add_map_line(&cub3d->map_list, line);
 		if (ft_strlen(line) > cub3d->map.width)
@@ -89,7 +89,7 @@ void	manage_line(t_game *cub3d, char *line, int fd)
 	}
 	else if (map_started)
 	{
-		if (!line_map_valid(line, cub3d->map.do_path))
+		if (!line_map_valid(line))
 			read_file_close(cub3d, line, fd, "Invalid map line");
 		add_map_line(&cub3d->map_list, line);
 		if (ft_strlen(line) > cub3d->map.width)

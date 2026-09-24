@@ -22,8 +22,8 @@ static int	bad_texture_extension(t_game *cub3d)
 		return (1);
 	if (bad_extension(cub3d->map.ea_path, ".xpm"))
 		return (1);
-	if (bad_extension(cub3d->map.do_path, ".xpm"))
-		return (1);
+	/*if (bad_extension(cub3d->map.do_path, ".xpm"))
+		return (1);*/
 	return (0);
 }
 

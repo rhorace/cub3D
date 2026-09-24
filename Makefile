@@ -31,7 +31,6 @@ COMMON_SRCS	:= \
 	sources/checks/the_verificator.c \
 	sources/cleanup/close_cub3d.c \
 	sources/debug/print_info.c \
-	sources/events/game_loop.c \
 	sources/events/movement.c \
 	sources/events/collisions.c \
 	sources/events/anticipate_collision.c \
@@ -66,6 +65,7 @@ COMMON_SRCS	:= \
 MANDATORY_SRCS	:= \
 	sources/main.c \
 	sources/parsing/is_texture_line.c \
+	sources/events/game_loop.c \
 	sources/raycharlesing/rendu.c \
 	$(COMMON_SRCS)
 
@@ -76,6 +76,12 @@ MANDATORY_SRCS	:= \
 BONUS_SRCS	:= \
 	sources/main_bonus.c \
 	bonus/parsing/is_texture_line_bonus.c \
+	bonus/events/game_loop_bonus.c \
+	bonus/door/door_utils.c \
+	bonus/door/free_doors.c \
+	bonus/door/init_doors.c \
+	bonus/door/interact_door.c \
+	bonus/door/load_doors_textures.c \
 	bonus/raycharlesing/rendu_bonus.c \
 	$(COMMON_SRCS) \
 	bonus/minimap/draw_minimap.c \

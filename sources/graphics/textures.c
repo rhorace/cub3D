@@ -49,12 +49,12 @@ int	load_textures_failed(t_game *cub3d)
 	if (!load_texture(cub3d, &cub3d->tex[TEX_EA],
 			cub3d->map.ea_path))
 		return (send_message("Invalid TEX_EA !", NULL), 1);
-	if (cub3d->map.do_path)
+	/*if (cub3d->map.do_path)	// A RETIRER
 	{
 		if (!load_texture(cub3d, &cub3d->tex[TEX_DO],
 				cub3d->map.do_path))
 			return (send_message("Invalid TEX_DO !", NULL), 1);
-	}
+	}*/
 	return (0);
 }
 

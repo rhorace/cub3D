@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_cub3d.c                                      :+:      :+:    :+:   */
+/*   close_cub3d_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -78,6 +78,7 @@ void	close_cub3d(t_game	*cub3d, int code)
 	if (closing)
 		exit(code);
 	closing = 1;
+	destroy_door_texture(cub3d);
 	close_mlx(cub3d);
 	free(cub3d->map.no_path);
 	free(cub3d->map.so_path);

@@ -79,7 +79,6 @@ BONUS_SRCS	:= \
 	bonus/events/game_loop_bonus.c \
 	bonus/door/door_utils.c \
 	bonus/door/free_doors.c \
-	bonus/door/init_doors.c \
 	bonus/door/interact_door.c \
 	bonus/door/load_doors_textures.c \
 	bonus/raycharlesing/rendu_bonus.c \

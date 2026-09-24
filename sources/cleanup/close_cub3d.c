@@ -29,6 +29,7 @@ static void	free_tab(char **tab)
 	free(tab);
 }
 
+// 5 textures à détruire (ligne 44)
 static void	close_images(t_game *cub3d)
 {
 	int	i;
@@ -40,7 +41,7 @@ static void	close_images(t_game *cub3d)
 		cub3d->mlx.image = NULL;
 	}
 	i = 0;
-	while (i < 4)
+	while (i < 5)
 	{
 		if (cub3d->tex[i].img_ptr)
 		{
@@ -77,12 +78,15 @@ void	close_cub3d(t_game	*cub3d, int code)
 	if (closing)
 		exit(code);
 	closing = 1;
+	destroy_door_texture(cub3d);
 	close_mlx(cub3d);
 	free(cub3d->map.no_path);
 	free(cub3d->map.so_path);
 	free(cub3d->map.we_path);
 	free(cub3d->map.ea_path);
+	free(cub3d->map.do_path);
 	free_tab(cub3d->map.grid);
 	cub3d->map.grid = NULL;
+	free(cub3d);
 	exit(code);
 }

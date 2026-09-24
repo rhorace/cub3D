@@ -39,11 +39,10 @@
 # define MINIMAP_Y 20
 # define MINIMAP_DIR_LEN 15
 
-# define DOOR_FRAMES 5
 # define DOOR_CLOSED 0
 # define DOOR_OPENING 1
 # define DOOR_OPEN 2
-# define DOOR_INTERACT 1.0 //Distance max de la porte pour interagir avec elle
+# define DOOR_DISTANCE 1.0 //Distance max de la porte pour interagir avec elle
 
 /** =============================== CONSTANTES ============================= **/
 
@@ -240,10 +239,7 @@ typedef struct s_map_node
 typedef struct s_door
 {
 	int				x;
-	int				y;
-	int				state;
-	int				frame;
-	int				timer;
+	int				y;	
 	struct s_door	*next;
 }	t_door;
 
@@ -267,7 +263,7 @@ typedef struct s_game
 	t_map		map;
 	t_mlx		mlx;
 	t_texture	tex[5];
-	t_texture	door_tex[DOOR_FRAMES];
+	t_texture	door_tex;
 	t_door		*doors;
 	t_color		floor;
 	t_color		ceiling;
@@ -380,13 +376,9 @@ void			draw_minimap_player(t_game *cub3d, int x, int y);
 void			draw_line(t_game *cub3d, t_vector start, t_vector end);
 
 //DOOR
-int				init_doors(t_game *cub3d);
 t_door			*get_door(t_game *cub3d, int x, int y);
-int				load_doors_textures_and_init_doors(t_game *cub3d);
+int				load_door_texture(t_game *cub3d);
 void			interact_door(t_game *cub3d);
-void			update_door(t_game *cub3d, t_door *door);
-void			update_doors(t_game *cub3d);
-void			destroy_doors(t_game *cub3d);
-void			destroy_door_textures(t_game *cub3d);
+void			destroy_door_texture(t_game *cub3d);
 
 #endif

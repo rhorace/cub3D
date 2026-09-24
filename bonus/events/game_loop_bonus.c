@@ -26,7 +26,6 @@ int	game_loop(t_game *cub3d)
 		rotate_left(cub3d);
 	if (cub3d->player.key_rot_right)
 		rotate_right(cub3d);
-	update_doors(cub3d);
 	rendu(cub3d);
 	return (0);
 }

@@ -38,6 +38,12 @@ static int	remplir_chemin(t_game *cub3d, char *chemin, char *flag)
 			return (0);
 		cub3d->map.ea_path = chemin;
 	}
+	else if (ft_strcmp(flag, "DO") == 0)
+	{
+		if (cub3d->map.do_path)
+			return (0);
+		cub3d->map.do_path = chemin;
+	}
 	return (1);
 }
 

@@ -50,8 +50,11 @@ int	main(int argc, char **argv)
 		return (close_cub3d(cub3d, 1), 1);
 	if (load_textures_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
-	if (!load_doors_textures_and_init_doors(cub3d))
+	if (!load_door_texture(cub3d))
+	{
+		printf("load_door_texture\n");
 		return (close_cub3d(cub3d, 1), 1);
+	}
 	init_player(cub3d);
 	rendu(cub3d);
 	init_hooks(cub3d);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop_bonus                                    :+:      :+:    :+:   */
+/*   game_loop_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/10 08:25:56 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/23 22:36:24 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/24 16:40:18 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	mouse_move(int x, int y, void *param)
 	int		delta_x;
 
 	(void)y;
-	printf("mouse_is_moving\n");
 	cub3d = (t_game *)param;
 	if (cub3d->mlx.mouse_x == -1)
 	{

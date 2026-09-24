@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/10 16:06:33 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/15 19:25:16 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/24 17:08:57 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 mais uniquement pour les nombres positifs.
 Ce qui n'est pas genant vu que nos coordonnees sont positives dans notre repere.
 Mais pour la forme et la rapidite du programme, pour prend l'autre ecriture. */
-unsigned int	partie_entiere(float n)
+int	partie_entiere(float n)
 {
 	return (n / 1);
 }

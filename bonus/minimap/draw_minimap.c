@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/17 18:02:17 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/21 17:54:08 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/24 16:46:47 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-static void	put_pixel(t_game *cub3d, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x < 0 || x >= WIN_WIDTH || y < 0 || y >= WIN_HEIGHT)
-		return ;
-	dst = cub3d->mlx.image_add
-		+ (y * cub3d->mlx.line_length
-			+ x * (cub3d->mlx.bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 static void	draw_player_direction(t_game *cub3d)
 {

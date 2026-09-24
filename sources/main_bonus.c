@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/18 18:29:44 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/24 17:15:22 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	init_hooks(t_game *cub3d)
 		(void *)key_releaser, cub3d);
 	mlx_hook(cub3d->mlx.window, 6, 1L << 6, (void *)mouse_move, cub3d);
 	mlx_hook(cub3d->mlx.window, 17, 0, (void *)close_win, cub3d);
-	printf("hooks initiated\n");
 }
 
 int	main(int argc, char **argv)
@@ -51,9 +50,7 @@ int	main(int argc, char **argv)
 		return (close_cub3d(cub3d, 1), 1);
 	if (load_textures_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
-	if (!load_doors_textures(cub3d))
-		return (close_cub3d(cub3d, 1), 1);
-	if (!init_doors(cub3d))
+	if (!load_doors_textures_and_init_doors(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
 	init_player(cub3d);
 	rendu(cub3d);

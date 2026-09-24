@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/18 18:29:44 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/24 16:41:42 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	init_hooks(t_game *cub3d)
 	mlx_hook(cub3d->mlx.window, KeyRelease, KeyReleaseMask,
 		(void *)key_releaser, cub3d);
 	mlx_hook(cub3d->mlx.window, 17, 0, (void *)close_win, cub3d);
-	printf("hooks initiated\n");
 }
 
 int	main(int argc, char **argv)

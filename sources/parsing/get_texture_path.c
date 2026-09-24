@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_the_path.c                                     :+:      :+:    :+:   */
+/*   get_texture_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 14:02:01 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/14 18:10:53 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/24 17:06:16 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ static int	remplir_chemin(t_game *cub3d, char *chemin, char *flag)
 			return (0);
 		cub3d->map.ea_path = chemin;
 	}
-	/*else if (ft_strcmp(flag, "DO") == 0)
-	{
-		if (cub3d->map.do_path)
-			return (0);
-		cub3d->map.do_path = chemin;
-	}*/
 	return (1);
 }
 
@@ -64,6 +58,15 @@ static char	*get_xpm(char *line, int *i)
 	return (ft_substr2(line, start, *i));
 }
 
+static int	matches_flag(char *flag)
+{
+	if (ft_strcmp(flag, "NO") != 0 && ft_strcmp(flag, "SO") != 0
+		&& ft_strcmp(flag, "WE") != 0 && ft_strcmp(flag, "EA") != 0
+		&& ft_strcmp(flag, "DO") != 0)
+		return (0);
+	return (1);
+}
+
 int	get_texture_path(t_game *cub3d, char *line)
 {
 	char	*chemin;
@@ -78,9 +81,7 @@ int	get_texture_path(t_game *cub3d, char *line)
 	flag[0] = line[i];
 	flag[1] = line[i + 1];
 	flag[2] = '\0';
-	if (ft_strcmp(flag, "NO") != 0 && ft_strcmp(flag, "SO") != 0
-		&& ft_strcmp(flag, "WE") != 0 && ft_strcmp(flag, "EA") != 0
-		&& ft_strcmp(flag, "DO") != 0)
+	if (matches_flag(flag) == 0)
 		return (-1);
 	chemin = get_xpm(line, &i);
 	if (!chemin)

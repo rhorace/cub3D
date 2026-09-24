@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_doors_textures.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/24 16:46:06 by sohollar          #+#    #+#             */
+/*   Updated: 2026/09/24 17:14:27 by sohollar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 static int	load_door_texture(t_game *cub3d, int index, char *path)
@@ -18,7 +30,7 @@ static int	load_door_texture(t_game *cub3d, int index, char *path)
 	return (1);
 }
 
-int	load_doors_textures(t_game *cub3d)
+int	load_doors_textures_and_init_doors(t_game *cub3d)
 {
 	if (!load_door_texture(cub3d, 0, "textures/doors/door_0.xpm"))
 		return (0);
@@ -29,6 +41,8 @@ int	load_doors_textures(t_game *cub3d)
 	if (!load_door_texture(cub3d, 3, "textures/doors/door_3.xpm"))
 		return (0);
 	if (!load_door_texture(cub3d, 4, "textures/doors/door_4.xpm"))
+		return (0);
+	if (!init_doors(cub3d))
 		return (0);
 	return (1);
 }

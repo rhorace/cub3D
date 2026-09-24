@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/23 19:58:18 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/24 17:17:12 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-//# include <stddef.h>
 # include <math.h>
 # include <X11/X.h> // KeyPress, KeyPressMask, KeyRelease, KeyReleaseMask
 # include <X11/keysym.h> // XK_Escape, XK_w, XK_s, XK_a, XK_d
@@ -59,7 +58,6 @@
 # define BLOCK			64
 # define WIN_WIDTH		1280
 # define WIN_HEIGHT		720
-//# define PI				3.14159265358979323846
 # define FOV			1.0471975511965976f
 
 /** ============================== ENUM TEXTURES =========================== **/
@@ -157,23 +155,6 @@ typedef struct s_player
 	int			key_rot_right;
 }	t_player;
 
-/** ============================== MUR RENDU =============================== **/
-
-/*
-** start   : premier pixel vertical du mur
-** end     : dernier pixel vertical du mur
-** tex_x   : colonne de la texture à afficher
-** height  : hauteur projetée du mur à l'écran
-*/
-
-typedef struct s_wall
-{
-	int		start;
-	int		end;
-	int		tex_x;
-	float	height;
-}	t_wall;
-
 /** ================================= CARTE ================================ **/
 
 /*
@@ -217,7 +198,6 @@ typedef struct s_texture
 {
 	void			*img_ptr;
 	char			*addr;
-//	t_texture_id	id;
 	int				width;
 	int				height;
 	int				line_length;
@@ -248,24 +228,6 @@ typedef struct s_mlx
 	int		endian;
 	int		mouse_x;
 }	t_mlx;
-
-/** ============================ GESTION COLLISION ========================= **/
-
-/*
-** new_x   : future position en X
-** new_y   : future position en Y
-**
-** perp_x  : déplacement sur l'axe X
-** perp_y  : déplacement sur l'axe Y
-*/
-
-typedef struct s_collision
-{
-	float	new_x;
-	float	new_y;
-	float	perp_x;
-	float	perp_y;
-}	t_collision;
 
 /** ========================== LISTE CHAINEE =============================== **/
 typedef struct s_map_node
@@ -399,6 +361,7 @@ t_wall_hit		is_wall_or_door(t_vector *current, t_game *cub, t_vector *ray);
 
 void			remplir_fond(t_game *cub3d);
 void			store_pixel(t_game *cub3d, int x, int y, int color);
+void			put_pixel(t_game *cub3d, int x, int y, int color);
 void			put_column(t_wall_hit *wall, t_vector current,
 					int n, t_game *cub);
 
@@ -407,7 +370,7 @@ void			put_column(t_wall_hit *wall, t_vector current,
 float			y_moins_b_sur_a(t_vector *new, t_game *cub, t_vector ray);
 void			matrix(t_vector *ray, t_game *cub, int n);
 float			valeur_absolue(float n);
-unsigned int	partie_entiere(float n);
+int				partie_entiere(float n);
 int				is_pos_int(float x);
 
 // MINIMAP
@@ -419,7 +382,7 @@ void			draw_line(t_game *cub3d, t_vector start, t_vector end);
 //DOOR
 int				init_doors(t_game *cub3d);
 t_door			*get_door(t_game *cub3d, int x, int y);
-int				load_doors_textures(t_game *cub3d);
+int				load_doors_textures_and_init_doors(t_game *cub3d);
 void			interact_door(t_game *cub3d);
 void			update_door(t_game *cub3d, t_door *door);
 void			update_doors(t_game *cub3d);

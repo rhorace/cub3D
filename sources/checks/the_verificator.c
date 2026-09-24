@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_verificator.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 11:29:15 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/15 14:06:24 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/24 17:19:00 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static int	bad_texture_extension(t_game *cub3d)
 		return (1);
 	if (bad_extension(cub3d->map.ea_path, ".xpm"))
 		return (1);
-	/*if (bad_extension(cub3d->map.do_path, ".xpm"))
-		return (1);*/
 	return (0);
 }
 

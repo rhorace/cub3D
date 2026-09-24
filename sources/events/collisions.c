@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/18 16:56:47 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/18 19:17:58 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/24 16:43:39 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@ static int	collision_haut(t_vector *current, t_game *cub, t_vector *move_dir)
 	{
 		if (cub->map.grid[(int)(current->y) + 1]
 			[partie_entiere(current->x)] == '1')
-			return (printf("collision par le haut\nx : %.2f\ny : %.2f\n",\
-				current->x, current->y), printf("case : %d, %d\n",\
-				partie_entiere(current->x), (int)(current->y) + 1), 1);
+			return (1);
 		if (cub->map.grid[(int)(current->y) + 1]
 			[partie_entiere(current->x)] == 'D')
-			return (printf("Porte fermeé par le haut\nx : %.2f\ny : %.2f\n",\
-				current->x, current->y), printf("case : %d, %d\n",\
-				partie_entiere(current->x), (int)(current->y) + 1), 1);
+			return (1);
 	}
 	return (0);
 }
@@ -36,14 +32,10 @@ static int	collision_bas(t_vector *current, t_game *cub, t_vector *move_dir)
 	{
 		if (cub->map.grid[(int)(current->y) - 1]
 			[partie_entiere(current->x)] == '1')
-			return (printf("collision par le bas\nx : %.2f\ny : %.2f\n",\
-				current->x, current->y), printf("case : %d, %d\n",\
-				partie_entiere(current->x), (int)(current->y) - 1), 2);
+			return (2);
 		if (cub->map.grid[(int)(current->y) - 1]
 			[partie_entiere(current->x)] == 'D')
-			return (printf("Porte fermeé par le bas\nx : %.2f\ny : %.2f\n",\
-				current->x, current->y), printf("case : %d, %d\n",\
-				partie_entiere(current->x), (int)(current->y) - 1), 2);
+			return (2);
 	}
 	return (0);
 }
@@ -54,14 +46,10 @@ static int	collision_gauche(t_vector *current, t_game *cub, t_vector *move_dir)
 	{
 		if (cub->map.grid[partie_entiere(current->y)]
 			[(int)(current->x) + 1] == '1')
-			return (printf("collision par la gauche\nx : %.2f\ny : %.2f\n",\
-				current->x, current->y), printf("case : %d, %d\n",\
-				(int)(current->x) + 1, partie_entiere(current->y)), 3);
+			return (3);
 		if (cub->map.grid[partie_entiere(current->y)]
 			[(int)(current->x) + 1] == 'D')
-			return (printf("Porte fermeé par la gauche\nx : %.2f\ny : %.2f\n",\
-				current->x, current->y), printf("case : %d, %d\n",\
-				(int)(current->x) + 1, partie_entiere(current->y)), 3);
+			return (3);
 	}
 	return (0);
 }
@@ -72,14 +60,10 @@ static int	collision_droite(t_vector *current, t_game *cub, t_vector *move_dir)
 	{
 		if (cub->map.grid[partie_entiere(current->y)]
 			[(int)(current->x) - 1] == '1')
-			return (printf("collision par la droite\n\nx : %.2f\ny : %.2f\n",\
-				current->x, current->y), printf("case : %d, %d\n",\
-				(int)(current->x) - 1, partie_entiere(current->y)), 4);
+			return (4);
 		if (cub->map.grid[partie_entiere(current->y)]
 			[(int)(current->x) - 1] == 'D')
-			return (printf("Porte fermeé par la droite\n\nx : %.2f\ny : %.2f\n",\
-				current->x, current->y), printf("case : %d, %d\n",\
-				(int)(current->x) - 1, partie_entiere(current->y)), 4);
+			return (4);
 	}
 	return (0);
 }

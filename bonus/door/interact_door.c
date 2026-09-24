@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   interact_door.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/19 12:02:29 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/19 12:50:18 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/24 16:40:13 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	interact_door(t_game *cub3d)
 	int		x;
 	int		y;
 
-	printf("Interaction avec une porte !\n");
 	x = (int)(cub3d->player.pos.x
 			+ cub3d->player.dir.x * DOOR_INTERACT);
 	y = (int)(cub3d->player.pos.y

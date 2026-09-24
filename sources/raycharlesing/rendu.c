@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/31 18:27:50 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/23 19:52:25 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/24 17:08:16 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static void	hit_the_wall_jack(t_game *cub, int n)
 		current.y = new.y;
 		wall = is_wall_or_door(&current, cub, &ray);
 	}
-	//put_column(cub->tex[tex], current, n, cub);
 	put_column(&wall, current, n, cub);
 }
 

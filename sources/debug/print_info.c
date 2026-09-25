@@ -25,6 +25,8 @@ cub3d.ceiling.b);
 	printf("t_map so_path : %s\n", cub3d.map.so_path);
 	printf("t_map we_path : %s\n", cub3d.map.we_path);
 	printf("t_map ea_path : %s\n", cub3d.map.ea_path);
+	printf("t_map do_path : %s\n", cub3d.map.do_path);
+	printf("t_map od_path : %s\n", cub3d.map.od_path);
 	printf("path_ready: %d\n", texture_ready(&cub3d.map));
 	printf("color_ready: %d\n", color_ready(&cub3d.ceiling, &cub3d.floor));
 	printf("color_ready: %d\n", color_ready(&cub3d.ceiling, &cub3d.floor));

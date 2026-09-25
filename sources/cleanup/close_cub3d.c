@@ -84,6 +84,7 @@ void	close_cub3d(t_game	*cub3d, int code)
 	free(cub3d->map.we_path);
 	free(cub3d->map.ea_path);
 	free(cub3d->map.do_path);
+	free(cub3d->map.od_path);
 	free_tab(cub3d->map.grid);
 	cub3d->map.grid = NULL;
 	free(cub3d);

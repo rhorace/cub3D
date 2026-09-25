@@ -69,6 +69,7 @@
 ** TEX_WE = Ouest
 ** TEX_EA = Est
 ** TEX_DO = Door
+** TEX_OD = Open Door
 */
 
 typedef enum e_texture_id
@@ -77,7 +78,8 @@ typedef enum e_texture_id
 	TEX_SO = 2,
 	TEX_WE = 3,
 	TEX_EA = 4,
-	TEX_DO = 5
+	TEX_DO = 5,
+	TEX_OD = 6
 }	t_texture_id;
 
 typedef enum s_side_id
@@ -167,6 +169,7 @@ typedef struct s_player
 ** we_path   : chemin de la texture Ouest
 ** ea_path   : chemin de la texture Est
 ** do_path   : chemin de la texture Porte
+** od_path   : chemin de la texture Porte Ouverte
 */
 
 typedef struct s_map
@@ -179,6 +182,7 @@ typedef struct s_map
 	char	*we_path;
 	char	*ea_path;
 	char	*do_path;
+	char	*od_path;
 }	t_map;
 
 /** =============================== TEXTURE ================================ **/
@@ -264,6 +268,7 @@ typedef struct s_game
 	t_mlx		mlx;
 	t_texture	tex[5];
 	t_texture	door_tex;
+	t_texture	open_door_tex;
 	t_door		*doors;
 	t_color		floor;
 	t_color		ceiling;

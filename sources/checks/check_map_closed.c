@@ -46,13 +46,14 @@ static int	check_cell_closed(char **map, int y, int x)
 
 static int	is_walkable(char c)
 {
-	return (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W');
+	return (c == '0' || c == 'N' || c == 'S' || c == 'E'
+		|| c == 'W' || c == '2');
 }
 
 static int	is_valid_map_char(char c)
 {
 	return (c == '0' || c == '1' || c == ' ' || c == 'D'
-		|| c == 'N' || c == 'S' || c == 'E' || c == 'W');
+		|| c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '2');
 }
 
 int	map_not_closed(char **map)

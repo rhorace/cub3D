@@ -22,4 +22,10 @@ void	destroy_door_texture(t_game *cub3d)
 			cub3d->door_tex.img_ptr);
 		cub3d->door_tex.img_ptr = NULL;
 	}
+	if (cub3d->open_door_tex.img_ptr)
+	{
+		mlx_destroy_image(cub3d->mlx.graphics,
+			cub3d->open_door_tex.img_ptr);
+		cub3d->open_door_tex.img_ptr = NULL;
+	}
 }

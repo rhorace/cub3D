@@ -23,5 +23,7 @@ void	interact_door(t_game *cub3d)
 	y = (int)(cub3d->player.pos.y
 			+ cub3d->player.dir.y * DOOR_DISTANCE);
 	if (cub3d->map.grid[y][x] == 'D')
-		cub3d->map.grid[y][x] = '0';
+		cub3d->map.grid[y][x] = '2';
+	else if (cub3d->map.grid[y][x] == '2')
+		cub3d->map.grid[y][x] = 'D';
 }

@@ -21,6 +21,7 @@ int	is_texture_line(char *line)
 		|| (line[i] == 'S' && line[i + 1] == 'O')
 		|| (line[i] == 'W' && line[i + 1] == 'E')
 		|| (line[i] == 'D' && line[i + 1] == 'O')
+		|| (line[i] == 'O' && line[i + 1] == 'D')
 		|| (line[i] == 'E' && line[i + 1] == 'A'))
 	{
 		if (line[i + 2] == ' ' || line[i + 2] == '\t')

@@ -40,6 +40,8 @@ static int	get_tile_color(char tile)
 		return (0xEEEEEE);
 	if (tile == 'D')
 		return (0x0000FF);
+	if (tile == '2')
+		return (0x00FF00);
 	return (-1);
 }
 

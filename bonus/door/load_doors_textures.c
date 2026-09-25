@@ -12,19 +12,26 @@
 
 #include "cub3D.h"
 
-int	load_door_texture(t_game *cub3d)
+static int	load_texture(t_game *cub3d, t_texture *tex, char *path)
 {
-	t_texture	*tex;
-
-	printf("cub3d->map.do_path: %s\n", cub3d->map.do_path);
-	tex = &cub3d->door_tex;
 	tex->img_ptr = mlx_xpm_file_to_image(cub3d->mlx.graphics,
-			cub3d->map.do_path, &tex->width, &tex->height);
+			path, &tex->width, &tex->height);
 	if (!tex->img_ptr)
 		return (0);
 	tex->addr = mlx_get_data_addr(tex->img_ptr,
 			&tex->bpp, &tex->line_length, &tex->endian);
 	if (!tex->addr)
+		return (0);
+	return (1);
+}
+
+int	load_door_texture(t_game *cub3d)
+{
+	if (!load_texture(cub3d, &cub3d->door_tex,
+			cub3d->map.do_path))
+		return (0);
+	if (!load_texture(cub3d, &cub3d->open_door_tex,
+			cub3d->map.od_path))
 		return (0);
 	return (1);
 }

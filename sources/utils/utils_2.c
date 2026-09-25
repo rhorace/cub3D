@@ -49,7 +49,7 @@ int	line_map_valid(char *line)
 	{
 		if (line[i] != '0' && line[i] != '1' && line[i] != ' '
 			&& line[i] != 'N' && line[i] != 'S' && line[i] != 'E'
-			&& line[i] != 'W' && line[i] != 'D')
+			&& line[i] != 'W' && line[i] != 'D' && line[i] != '2')
 			return (0);
 		i++;
 	}

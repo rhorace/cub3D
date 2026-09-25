@@ -44,6 +44,12 @@ static int	remplir_chemin(t_game *cub3d, char *chemin, char *flag)
 			return (0);
 		cub3d->map.do_path = chemin;
 	}
+	else if (ft_strcmp(flag, "OD") == 0)
+	{
+		if (cub3d->map.od_path)
+			return (0);
+		cub3d->map.od_path = chemin;
+	}
 	return (1);
 }
 
@@ -68,7 +74,7 @@ static int	matches_flag(char *flag)
 {
 	if (ft_strcmp(flag, "NO") != 0 && ft_strcmp(flag, "SO") != 0
 		&& ft_strcmp(flag, "WE") != 0 && ft_strcmp(flag, "EA") != 0
-		&& ft_strcmp(flag, "DO") != 0)
+		&& ft_strcmp(flag, "DO") != 0 && ft_strcmp(flag, "OD") != 0)
 		return (0);
 	return (1);
 }

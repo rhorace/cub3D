@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/24 17:15:22 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/27 16:47:49 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ int	main(int argc, char **argv)
 	if (load_textures_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
 	if (!load_door_texture(cub3d))
-	{
-		printf("load_door_texture\n");
-		return (close_cub3d(cub3d, 1), 1);
-	}
+		return (printf("Load door texture failed\n"), close_cub3d(cub3d, 1), 1);
 	init_player(cub3d);
 	rendu(cub3d);
 	init_hooks(cub3d);

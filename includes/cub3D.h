@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/24 17:17:12 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/27 17:30:27 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 # define MOVE_SPEED 0.01
 # define ROT_SPEED 0.01
-# define MOUSE_SENSITIVITY 0.002
+# define MOUSE_SENSITIVITY 0.05
 
 # define MINIMAP_TILE 8
 # define MINIMAP_X 20
@@ -243,7 +243,7 @@ typedef struct s_map_node
 typedef struct s_door
 {
 	int				x;
-	int				y;	
+	int				y;
 	struct s_door	*next;
 }	t_door;
 

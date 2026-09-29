@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_cub3d_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 13:06:12 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/24 16:16:30 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/28 22:06:13 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // static int	closing : Empêche double free/double destroy (ESC + croix, etc.)
 
-static void	free_tab(char **tab)
+void	free_tab(char **tab)
 {
 	int	i;
 
@@ -86,6 +86,7 @@ void	close_cub3d(t_game	*cub3d, int code)
 	free(cub3d->map.ea_path);
 	free(cub3d->map.do_path);
 	free(cub3d->map.od_path);
+	free_tab(cub3d->map.anim_path);
 	free_tab(cub3d->map.grid);
 	cub3d->map.grid = NULL;
 	free(cub3d);

@@ -141,6 +141,7 @@ tracer des droites et se deplacer dessus : [https://www.desmos.com/calculator/o2
 ### IA :
 - Pour approfondir certains éléments que les autres sources web n'ont pas permis de comprendre à elles-seules
 - Pour les bugs récalcitrants
+- Pour produire la texture du portail (mais pas celles des images intermédaires de l'animation)
 
 ## Description du programme :
 

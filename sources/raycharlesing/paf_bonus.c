@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 15:25:38 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/29 21:36:46 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/29 21:30:02 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,17 @@ static void	haut(t_vector *current, t_game *cub, t_vector *ray,
 		c = cub->map.grid[(int)(current->y)][partie_entiere(current->x)];
 		if (ray->y > 0)
 		{
-			if (c == '1' || c == 'D' || c == '2')
+			if (c == '1' || c == 'D' || c == '2' || c == 'A' || c == 'Z')
 			{
 				wall->side = SI_NO;
 				if (c == '1')
 					wall->tex = TEX_NO;
 				else if (c == '2')
 					wall->tex = TEX_OD;
+				else if (c == 'A')
+					wall->is_anim = choose_opening_tex(cub);
+				else if (c == 'Z')
+					wall->is_anim = choose_closing_tex(cub);
 				else
 					wall->tex = TEX_DO;
 			}
@@ -46,13 +50,17 @@ static void	bas(t_vector *current, t_game *cub, t_vector *ray,
 		c = cub->map.grid[(int)(current->y) - 1][partie_entiere(current->x)];
 		if (ray->y < 0)
 		{
-			if (c == '1' || c == 'D' || c == '2')
+			if (c == '1' || c == 'D' || c == '2' || c == 'A' || c == 'Z')
 			{
 				wall->side = SI_SO;
 				if (c == '1')
 					wall->tex = TEX_SO;
 				else if (c == '2')
 					wall->tex = TEX_OD;
+				else if (c == 'A')
+					wall->is_anim = choose_opening_tex(cub);
+				else if (c == 'Z')
+					wall->is_anim = choose_closing_tex(cub);
 				else
 					wall->tex = TEX_DO;
 			}
@@ -70,13 +78,17 @@ static void	gauche(t_vector *current, t_game *cub, t_vector *ray,
 		c = cub->map.grid[partie_entiere(current->y)][(int)(current->x)];
 		if (ray->x > 0)
 		{
-			if (c == '1' || c == 'D' || c == '2')
+			if (c == '1' || c == 'D' || c == '2' || c == 'A' || c == 'Z')
 			{
 				wall->side = SI_WE;
 				if (c == '1')
 					wall->tex = TEX_WE;
 				else if (c == '2')
 					wall->tex = TEX_OD;
+				else if (c == 'A')
+					wall->is_anim = choose_opening_tex(cub);
+				else if (c == 'Z')
+					wall->is_anim = choose_closing_tex(cub);
 				else
 					wall->tex = TEX_DO;
 			}
@@ -94,13 +106,17 @@ static void	droite(t_vector *current, t_game *cub, t_vector *ray,
 		c = cub->map.grid[partie_entiere(current->y)][(int)(current->x) - 1];
 		if (ray->x < 0)
 		{
-			if (c == '1' || c == 'D' || c == '2')
+			if (c == '1' || c == 'D' || c == '2' || c == 'A' || c == 'Z')
 			{
 				wall->side = SI_EA;
 				if (c == '1')
 					wall->tex = TEX_EA;
 				else if (c == '2')
 					wall->tex = TEX_OD;
+				else if (c == 'A')
+					wall->is_anim = choose_opening_tex(cub);
+				else if (c == 'Z')
+					wall->is_anim = choose_closing_tex(cub);
 				else
 					wall->tex = TEX_DO;
 			}

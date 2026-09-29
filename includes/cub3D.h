@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/27 17:30:27 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/29 21:31:26 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define CUB3D_H
 
 # include <mlx.h>
+# include "get_next_line.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+# include <sys/time.h>
 # include <X11/X.h> // KeyPress, KeyPressMask, KeyRelease, KeyReleaseMask
 # include <X11/keysym.h> // XK_Escape, XK_w, XK_s, XK_a, XK_d
 
@@ -32,7 +34,7 @@
 
 # define MOVE_SPEED 0.01
 # define ROT_SPEED 0.01
-# define MOUSE_SENSITIVITY 0.05
+# define MOUSE_SENSITIVITY 0.08
 
 # define MINIMAP_TILE 8
 # define MINIMAP_X 20
@@ -42,7 +44,11 @@
 # define DOOR_CLOSED 0
 # define DOOR_OPENING 1
 # define DOOR_OPEN 2
-# define DOOR_DISTANCE 1.0 //Distance max de la porte pour interagir avec elle
+# define DOOR_DISTANCE 2 //Distance max de la porte pour interagir avec elle
+
+# define ANIM_FRAME_NUMBER 36 //nombre d'images composant l'animation
+# define SPF 50 // nombre de millisecondes par image
+# define PATH_MAX_SIZE 200
 
 /** =============================== CONSTANTES ============================= **/
 
@@ -94,6 +100,7 @@ typedef struct s_wall_hit
 {
 	t_texture_id	tex;
 	t_side_id		side;
+	int				is_anim;
 }	t_wall_hit;
 
 /** ============================== VECTEUR 2D ============================== **/
@@ -183,6 +190,7 @@ typedef struct s_map
 	char	*ea_path;
 	char	*do_path;
 	char	*od_path;
+	char	**anim_path;
 }	t_map;
 
 /** =============================== TEXTURE ================================ **/
@@ -260,6 +268,15 @@ typedef struct s_door
 ** ceiling_color   : couleur du plafond convertie en entier
 */
 
+typedef struct s_animation
+{
+	int				opening;
+	int				closing;
+	int				x;
+	int				y;
+	struct timeval	start;
+}	t_animation;
+
 typedef struct s_game
 {
 	t_player	player;
@@ -269,9 +286,11 @@ typedef struct s_game
 	t_texture	tex[5];
 	t_texture	door_tex;
 	t_texture	open_door_tex;
+	t_texture	door_animation[ANIM_FRAME_NUMBER + 1];
 	t_door		*doors;
 	t_color		floor;
 	t_color		ceiling;
+	t_animation	anim_encours;
 }	t_game;
 
 // initialisation
@@ -287,6 +306,7 @@ void			print_map(char **map);
 
 //gestion erreurs et sorties
 void			send_message(char *msg, char *arg);
+void			free_tab(char **tab);
 void			close_cub3d(t_game	*cub3d, int code);
 void			free_map_list(t_map_node *map_list);
 
@@ -300,6 +320,7 @@ char			*ft_strdup(const char *s);
 char			*ft_substr2(const char *line, int start, int end);
 char			*ft_strstr(const char *texte, const char *str);
 void			*ft_calloc(size_t count, size_t size);
+void			ft_memmove2(void *src, void *dest, int size);
 
 // verificateurs map
 int				bad_extension(char *path, char *extension);
@@ -319,6 +340,7 @@ void			remove_newline(char *line);
 int				bad_file(t_game *cub3d, char *path);
 void			manage_line(t_game *cub3d, char *line, int fd);
 int				is_texture_line(char *line);
+int				remplir_chemin(t_game *cub3d, char *chemin, char *flag);
 int				is_color_line(char *line);
 char			*pad_map_line(char *line, int max_width);
 
@@ -357,6 +379,8 @@ int				get_brique(int brique, int h);
 int				get_col(t_vector impact, t_wall_hit *wall);
 int				hauteur_mur(t_game *cub, t_vector impact);
 t_wall_hit		is_wall_or_door(t_vector *current, t_game *cub, t_vector *ray);
+int				choose_closing_tex(t_game *cub);
+int				choose_opening_tex(t_game *cub);
 
 /* ============================== DRAWING ================================ */
 

@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/24 16:46:06 by sohollar          #+#    #+#             */
-/*   Updated: 2026/09/24 17:14:27 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/28 22:18:23 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,21 @@ static int	load_texture(t_game *cub3d, t_texture *tex, char *path)
 
 int	load_door_texture(t_game *cub3d)
 {
+	int	i;
+
 	if (!load_texture(cub3d, &cub3d->door_tex,
 			cub3d->map.do_path))
 		return (0);
 	if (!load_texture(cub3d, &cub3d->open_door_tex,
 			cub3d->map.od_path))
 		return (0);
+	i = 0;
+	while (i < ANIM_FRAME_NUMBER)
+	{
+		if (!load_texture(cub3d, &cub3d->door_animation[i],
+				cub3d->map.anim_path[i]))
+			return (0);
+		i++;
+	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:38 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/27 16:47:49 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/29 22:34:09 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ static void	init_hooks(t_game *cub3d)
 	mlx_hook(cub3d->mlx.window, 17, 0, (void *)close_win, cub3d);
 }
 
+int	door_path_found(t_map map)
+{
+	if (map.do_path == NULL || map.od_path == NULL)
+		return (0);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*cub3d;
@@ -50,7 +57,7 @@ int	main(int argc, char **argv)
 		return (close_cub3d(cub3d, 1), 1);
 	if (load_textures_failed(cub3d))
 		return (close_cub3d(cub3d, 1), 1);
-	if (!load_door_texture(cub3d))
+	if (door_path_found(cub3d->map) && !load_door_texture(cub3d))
 		return (printf("Load door texture failed\n"), close_cub3d(cub3d, 1), 1);
 	init_player(cub3d);
 	rendu(cub3d);

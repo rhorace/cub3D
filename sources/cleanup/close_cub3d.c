@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_cub3d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhorace <rhorace@student.42paris.fr>       +#+  +:+       +#+        */
+/*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 13:06:12 by rhorace           #+#    #+#             */
-/*   Updated: 2026/08/24 16:16:30 by rhorace          ###   ########.fr       */
+/*   Updated: 2026/09/29 21:38:41 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // static int	closing : Empêche double free/double destroy (ESC + croix, etc.)
 
-static void	free_tab(char **tab)
+void	free_tab(char **tab)
 {
 	int	i;
 

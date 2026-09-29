@@ -6,7 +6,7 @@
 #    By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/06 11:34:08 by rhorace           #+#    #+#              #
-#    Updated: 2026/09/23 23:16:48 by sohollar         ###   ########.fr        #
+#    Updated: 2026/09/29 22:39:39 by sohollar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ COMMON_SRCS	:= \
 	sources/get_next_line/get_next_line.c \
 	sources/get_next_line/gnl_utils.c \
 	sources/graphics/textures.c \
-	sources/init/init_cub3d.c \
 	sources/init/init_mlx.c \
 	sources/init/init_player.c \
 	sources/parsing/get_texture_path.c \
@@ -47,9 +46,9 @@ COMMON_SRCS	:= \
 	sources/parsing/map_node.c \
 	sources/parsing/pad_map_line.c \
 	sources/parsing/read_file.c \
+	sources/parsing/remplir_chemin.c \
 	sources/raycharlesing/affichage_utils.c \
 	sources/raycharlesing/mur.c \
-	sources/raycharlesing/paf.c \
 	sources/raycharlesing/tarzan_utils.c \
 	sources/utils/ft_utils_2.c \
 	sources/utils/ft_utils.c \
@@ -65,8 +64,10 @@ MANDATORY_SRCS	:= \
 	sources/main.c \
 	sources/parsing/is_texture_line.c \
 	sources/cleanup/close_cub3d.c \
+	sources/init/init_cub3d.c \
 	sources/events/game_loop.c \
 	sources/raycharlesing/rendu.c \
+	sources/raycharlesing/paf.c \
 	$(COMMON_SRCS)
 
 # ============================================================================ #
@@ -78,11 +79,14 @@ BONUS_SRCS	:= \
 	bonus/parsing/is_texture_line_bonus.c \
 	bonus/cleanup/close_cub3d_bonus.c \
 	bonus/events/game_loop_bonus.c \
+	bonus/init_bonus/init_cub3d_bonus.c \
 	bonus/door/door_utils.c \
 	bonus/door/free_doors.c \
 	bonus/door/interact_door.c \
 	bonus/door/load_doors_textures.c \
 	bonus/raycharlesing/rendu_bonus.c \
+	sources/raycharlesing/choose_frame.c \
+	sources/raycharlesing/paf_bonus.c \
 	$(COMMON_SRCS) \
 	bonus/minimap/draw_minimap.c \
 	bonus/minimap/minimap_utils.c

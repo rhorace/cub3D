@@ -6,7 +6,7 @@
 /*   By: sohollar <sohollar@student.42paris.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/06 09:49:58 by rhorace           #+#    #+#             */
-/*   Updated: 2026/09/29 21:31:26 by sohollar         ###   ########.fr       */
+/*   Updated: 2026/09/30 18:26:37 by sohollar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define DOOR_CLOSED 0
 # define DOOR_OPENING 1
 # define DOOR_OPEN 2
-# define DOOR_DISTANCE 0.5 //Distance max de la porte pour interagir avec elle
+# define DOOR_DISTANCE 2 //Distance max de la porte pour interagir avec elle
 
 # define ANIM_FRAME_NUMBER 36 //nombre d'images composant l'animation
 # define SPF 50 // nombre de millisecondes par image

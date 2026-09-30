@@ -1,7 +1,7 @@
 *This project has been created as part of the 42 curriculum by sohollar and rhorace.*
 
 # English
- --*French below*-- \
+ --*French below*--
 ## Project description:
 
 This project consists of creating a mini-game that gives the illusion of 3D using the raycasting method. It relies on the provided MinilibX graphics library.
@@ -54,12 +54,13 @@ Drawing straight lines and moving along them: [https://www.desmos.com/calculator
 ### AI:
 - To gain a deeper understanding of certain elements that the other web sources alone did not make sufficiently clear
 - For persistent bugs
+- To create the portal texture (but not all the animation textures)
 
 ## Programme description:
 
 ### Initialisation:
 The programme is divided into three main parts:
-- parsing: this part
+- **parsing:** this part
     - checks that the map provided as an argument is valid
     - loads the textures and colours
     - stores the map as an array
@@ -71,7 +72,7 @@ The programme is divided into three main parts:
         - the map
     - other small utility structures (coordinates, wall hit by a ray, door, ...)
 
-- displaying an image
+- **displaying an image**
     - Filling the background with the colours provided in the map
     - raycasting:
     - casting one ray for each pixel across the width of the final image
@@ -82,7 +83,7 @@ The programme is divided into three main parts:
     - placing the identified pixels at the corresponding address in the final image, at the x-coordinate corresponding to the ray and centred vertically
     - displaying the final image
 
-- event handling, with one hook for each:
+- **event handling, with one hook for each:**
     - WASD for movement
     - the arrow keys to rotate the camera
     - the mouse to rotate the camera
@@ -147,7 +148,7 @@ tracer des droites et se deplacer dessus : [https://www.desmos.com/calculator/o2
 
 ### Initialisation :
 Le programme s'articule en trois grandes parties :
-- le parsing : cette partie
+- **le parsing** : cette partie
     - vérifie que la carte prise en argument est valide
     - charge les textures et les couleurs
     - stocke la carte sous forme de tableau
@@ -158,7 +159,7 @@ Le programme s'articule en trois grandes parties :
             - les textures
             - la carte
         - d'autres petites structures utilitaires (coordonnées, mur tapé par un rayon, porte, ...)
-- l'affichage d'une image
+- **l'affichage d'une image**
     - Remplissage du fond par les couleurs fournies dans la carte
     - raycasting :
         - émission d'un rayon par pixel de largeur de l'image finale
@@ -168,9 +169,9 @@ Le programme s'articule en trois grandes parties :
         - détermination de la colonne de pixel de la texture à prélever, et de chaque pixel pertinent dans cette colonne, selon la taille du mur calculée
         - placement des pixels identifiées dans l'adresse de l'image finale, à l'abcisse correspondant au rayon et centrés verticalement
         - affichage de l'image finale
-- la gestion des événements, un hook our chacun :
-        - WASD pour les déplacements
-        - les flèches pour tourner la caméra
-        - la souris pour tourner la caméra
-        - ESC pour fermer la fenêtre proprement
+- **la gestion des événements, un hook pour chacun** \
+        - WASD pour les déplacements \
+        - les flèches pour tourner la caméra \
+        - la souris pour tourner la caméra \
+        - ESC pour fermer la fenêtre proprement \
         - cliquer sur la croix pour fermer la fenêtre proprement

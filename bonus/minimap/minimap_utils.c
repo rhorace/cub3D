@@ -12,6 +12,9 @@
 
 #include "cub3D.h"
 
+/* Déssine une ligne de pixels entre start et end
+   delta.x : distance à parcourir sur X
+   delta.y : distance à parcourir sur Y */
 void	draw_line(t_game *cub3d, t_vector start, t_vector end)
 {
 	t_vector	delta;
@@ -33,37 +36,20 @@ void	draw_line(t_game *cub3d, t_vector start, t_vector end)
 	}
 }
 
+// On déssine un carré plein de taille : TAILLE_CARRE
 void	draw_minimap_square(t_game *cub3d, int x, int y, int color)
 {
 	int	px;
 	int	py;
 
 	py = 0;
-	while (py < MINIMAP_TILE)
+	while (py < TAILLE_CARRE)
 	{
 		px = 0;
-		while (px < MINIMAP_TILE)
+		while (px < TAILLE_CARRE)
 		{
-			put_pixel(cub3d, MINIMAP_X + x * MINIMAP_TILE + px,
-				MINIMAP_Y + y * MINIMAP_TILE + py, color);
-			px++;
-		}
-		py++;
-	}
-}
-
-void	draw_minimap_player(t_game *cub3d, int x, int y)
-{
-	int	px;
-	int	py;
-
-	py = -2;
-	while (py <= 2)
-	{
-		px = -2;
-		while (px <= 2)
-		{
-			put_pixel(cub3d, x + px, y + py, 0xFF0000);
+			put_pixel(cub3d, DECALAGE_X + x * TAILLE_CARRE + px,
+				DECALAGE_Y + y * TAILLE_CARRE + py, color);
 			px++;
 		}
 		py++;

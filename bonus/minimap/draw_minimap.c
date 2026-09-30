@@ -12,49 +12,49 @@
 
 #include "cub3D.h"
 
+/* Calcule le point de départ et le point d'arrivée de la ligne
+   En convertissant la position du joueur dans la map en coordonnées
+   en pixels sur la minimap.
+*/
 static void	draw_player_direction(t_game *cub3d)
 {
 	t_vector	start;
 	t_vector	end;
 
-	start.x = MINIMAP_X
-		+ cub3d->player.pos.x * MINIMAP_TILE;
-	start.y = MINIMAP_Y
-		+ cub3d->player.pos.y * MINIMAP_TILE;
+	start.x = DECALAGE_X
+		+ cub3d->player.pos.x * TAILLE_CARRE;
+	start.y = DECALAGE_Y
+		+ cub3d->player.pos.y * TAILLE_CARRE;
 	end.x = start.x
-		+ cub3d->player.dir.x * MINIMAP_DIR_LEN;
+		+ cub3d->player.dir.x * LONGUEUR_LIGNE;
 	end.y = start.y
-		+ cub3d->player.dir.y * MINIMAP_DIR_LEN;
+		+ cub3d->player.dir.y * LONGUEUR_LIGNE;
 	draw_line(cub3d, start, end);
 }
 
-static int	get_tile_color(char tile)
-{
-	if (tile == '1')
-		return (0x555555);
-	if (tile == '0')
-		return (0xEEEEEE);
-	if (tile == 'N' || tile == 'S')
-		return (0xEEEEEE);
-	if (tile == 'E' || tile == 'W')
-		return (0xEEEEEE);
-	if (tile == 'D')
-		return (0x0000FF);
-	if (tile == '2')
-		return (0x00FF00);
-	return (-1);
-}
-
+/* On associe une couleur à la case (x, y)
+   On déssine un carré plein de cette couleur avec draw_minimap_square() */
 static void	draw_tile(t_game *cub3d, int x, int y)
 {
-	int	color;
+	char	tile;
+	int		color;
 
-	color = get_tile_color(cub3d->map.grid[y][x]);
-	if (color == -1)
+	tile = cub3d->map.grid[y][x];
+	if (tile == '1')
+		color = 0x555555;
+	else if (tile == '0' || tile == 'N' || tile == 'S'
+		|| tile == 'E' || tile == 'W')
+		color = 0xEEEEEE;
+	else if (tile == 'D')
+		color = 0x0000FF;
+	else if (tile == '2')
+		color = 0x00FF00;
+	else
 		return ;
 	draw_minimap_square(cub3d, x, y, color);
 }
 
+// On déssine un carré rouge plein de taille : 2
 static void	draw_player(t_game *cub3d)
 {
 	int	x;
@@ -62,8 +62,8 @@ static void	draw_player(t_game *cub3d)
 	int	px;
 	int	py;
 
-	x = MINIMAP_X + cub3d->player.pos.x * MINIMAP_TILE;
-	y = MINIMAP_Y + cub3d->player.pos.y * MINIMAP_TILE;
+	x = DECALAGE_X + cub3d->player.pos.x * TAILLE_CARRE;
+	y = DECALAGE_Y + cub3d->player.pos.y * TAILLE_CARRE;
 	py = -2;
 	while (py <= 2)
 	{
@@ -77,6 +77,10 @@ static void	draw_player(t_game *cub3d)
 	}
 }
 
+/* On parcourt la map
+   Une case (x, y) de la map sera déssinée avec draw_tile() 
+   On dessine une ligne pour la direction du joueur avec draw_player_direction()
+   On déssine le joueur avec draw_player() */
 void	draw_minimap(t_game *cub3d)
 {
 	int	x;

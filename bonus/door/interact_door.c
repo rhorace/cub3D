@@ -19,7 +19,9 @@ static void	snapshot(t_game *cub, int x, int y, struct timeval time)
 	cub->anim_encours.start = time;
 }
 
-// 2.0 -> distance d'interaction
+// DOOR_DISTANCE 0.5 -> distance d'interaction
+/* A: Porte en cours d'ouverture
+   Z: Porte en cours de fermeture */
 void	interact_door(t_game *cub3d)
 {
 	int				x;

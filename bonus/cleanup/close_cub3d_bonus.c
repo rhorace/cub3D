@@ -78,7 +78,7 @@ void	close_cub3d(t_game	*cub3d, int code)
 	if (closing)
 		exit(code);
 	closing = 1;
-	destroy_door_texture(cub3d);
+	destroy_door_textures(cub3d);
 	close_mlx(cub3d);
 	free(cub3d->map.no_path);
 	free(cub3d->map.so_path);

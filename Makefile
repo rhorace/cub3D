@@ -80,7 +80,6 @@ BONUS_SRCS	:= \
 	bonus/cleanup/close_cub3d_bonus.c \
 	bonus/events/game_loop_bonus.c \
 	bonus/init_bonus/init_cub3d_bonus.c \
-	bonus/door/door_utils.c \
 	bonus/door/free_doors.c \
 	bonus/door/interact_door.c \
 	bonus/door/load_doors_textures.c \

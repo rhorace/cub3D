@@ -36,15 +36,15 @@
 # define ROT_SPEED 0.01
 # define MOUSE_SENSITIVITY 0.08
 
-# define MINIMAP_TILE 8
-# define MINIMAP_X 20
-# define MINIMAP_Y 20
-# define MINIMAP_DIR_LEN 15
+# define TAILLE_CARRE 8
+# define DECALAGE_X 20
+# define DECALAGE_Y 20
+# define LONGUEUR_LIGNE 15
 
 # define DOOR_CLOSED 0
 # define DOOR_OPENING 1
 # define DOOR_OPEN 2
-# define DOOR_DISTANCE 2 //Distance max de la porte pour interagir avec elle
+# define DOOR_DISTANCE 0.5 //Distance max de la porte pour interagir avec elle
 
 # define ANIM_FRAME_NUMBER 36 //nombre d'images composant l'animation
 # define SPF 50 // nombre de millisecondes par image
@@ -401,13 +401,11 @@ int				is_pos_int(float x);
 // MINIMAP
 void			draw_minimap(t_game *cub3d);
 void			draw_minimap_square(t_game *cub3d, int x, int y, int color);
-void			draw_minimap_player(t_game *cub3d, int x, int y);
 void			draw_line(t_game *cub3d, t_vector start, t_vector end);
 
 //DOOR
-t_door			*get_door(t_game *cub3d, int x, int y);
 int				load_door_texture(t_game *cub3d);
 void			interact_door(t_game *cub3d);
-void			destroy_door_texture(t_game *cub3d);
+void			destroy_door_textures(t_game *cub3d);
 
 #endif

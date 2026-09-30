@@ -12,30 +12,27 @@
 
 #include "cub3D.h"
 
-void	destroy_door_texture(t_game *cub3d)
+static void	destroy_texture(t_game *cub3d, t_texture *tex)
+{
+	if (tex->img_ptr)
+	{
+		mlx_destroy_image(cub3d->mlx.graphics, tex->img_ptr);
+		tex->img_ptr = NULL;
+	}
+}
+
+void	destroy_door_textures(t_game *cub3d)
 {
 	int	i;
 
 	if (!cub3d->mlx.graphics)
 		return ;
 	i = 0;
-	while (cub3d->map.anim_path[i] && cub3d->map.anim_path[i][0] != '\0')
+	while (i < ANIM_FRAME_NUMBER)
 	{
-		mlx_destroy_image(cub3d->mlx.graphics,
-			cub3d->door_animation[i].img_ptr);
-		cub3d->door_animation[i].img_ptr = NULL;
+		destroy_texture(cub3d, &cub3d->door_animation[i]);
 		i++;
 	}
-	if (cub3d->door_tex.img_ptr)
-	{
-		mlx_destroy_image(cub3d->mlx.graphics,
-			cub3d->door_tex.img_ptr);
-		cub3d->door_tex.img_ptr = NULL;
-	}
-	if (cub3d->open_door_tex.img_ptr)
-	{
-		mlx_destroy_image(cub3d->mlx.graphics,
-			cub3d->open_door_tex.img_ptr);
-		cub3d->open_door_tex.img_ptr = NULL;
-	}
+	destroy_texture(cub3d, &cub3d->door_tex);
+	destroy_texture(cub3d, &cub3d->open_door_tex);
 }
